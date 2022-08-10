@@ -1,12 +1,6 @@
-# Template TCC FGA-UnB
+# Informações
 
-Template para Trabalhos de Conclusão de Cursos (TCC) na Faculdade do
-Gama (FGA) em Latex.
-
-Licenciado em Creative Commons Atribuição 3.0:
-http://creativecommons.org/licenses/by/3.0/
-
-Desenvolvido e adaptado pelo professor Edson Alves <edsomjr@gmail.com>.
+Este repositório contém o documento referente ao Trabalho de Conclusão de Curso 1 do aluno Marco Antônio de Lima Costa
 
 ## Dependências
 Para utilizar, certifique-se de ter instalados no seu ambiente o [Docker](https://docs.docker.com/engine/install/) e o [Docker-compose](https://docs.docker.com/compose/install/).
