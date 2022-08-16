@@ -1,0 +1,15 @@
+INTRODUÇÃO
+	- Introdução
+	- Justificativa
+	- Objetivos
+		+ Objetivo Geral
+		+ Objetivo Especifico
+	- Estrutura do Documento
+FUNDAMENTAÇÃO TEÓRICA
+	- Contém conceitos teóricos considerados necessários para uma melhor compreensão do trabalho que será desenvolvido
+PROPOSTA DE TRABALHO
+	- Contém uma explanação da proposta de trabalho à ser desenvolvido
+METODOLOGIA
+	
+RESULTADOS E DISCUSSÕES (TCC2)
+CONCLUSÃO (TCC2)
