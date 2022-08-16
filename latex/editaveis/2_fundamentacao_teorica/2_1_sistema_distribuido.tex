@@ -1,0 +1,17 @@
+\section{Sistemas Distribuídos}
+
+    Tanenbaum e Steen no livro “Sistemas Distribuídos: Princípios e Paradigmas” define um sistema distribuído como: %(Andrew S. Tanenbaum; Maarten Van Steen. “Sistemas Distribuídos: Princípios E Paradigmas.” 2ª ed. Prentice Hall Brasil: São Paulo – SP, 2007.)
+
+    “Um conjunto de computadores independentes que se apresenta a seus usuários como um sistema único e coerente.”
+
+    Dessa maneira tem-se que um sistema distribuído é composto por diferentes computadores autônomos que se comunicam entre si através de uma rede, dando ao usuário a sensação de que está em um sistema único. Tendo em vista que cada nó desse sistema é um computador independente, esse tipo de sistema permite que ele seja extremamente escalável, basta adicionar ou retirar uma instância para que esse sistema cresça ou diminua. A comunicação entre os nós desse sistema deve ocorrer de forma oculta ao usuário, fazendo com que ele não perceba que está lidando com diferentes computadores. Os sistemas distribuídos também ajudam na disponibilização contínua dos serviços, pois mesmo que algumas partes estejam temporariamente indisponíveis o sistema deve continuar funcionando sem que o usuário perceba quais são essas partes comprometidas.
+
+    Para que tudo isso ocorra, os sistemas distribuídos costumam possuir uma camada de software intermediária que é situada logicamente entre uma camada de nível mais alto, composta de usuários e aplicações, e uma camada de nível mais baixo, que consiste em sistemas operacionais e facilidades básicas de comunicação. Por esse motivo, essa camada é chamada de middleware.
+
+    A figura 1 representa um sistema distribuído com quatro computadores em rede permitindo que os componentes de uma aplicação se comuniquem com eles mesmo e ao mesmo tempo se comuniquem com diferentes aplicações.
+
+    % FIGURA
+    % Figura 1 – Sistema distribuído organizado como middleware - Imagem retirada de (Andrew S. Tanenbaum; Maarten Van Steen. “Sistemas Distribuídos: Princípios E Paradigmas.” 2ª ed. Prentice Hall Brasil: São Paulo – SP, 2007.)
+
+
+    
