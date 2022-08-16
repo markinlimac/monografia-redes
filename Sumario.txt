@@ -13,3 +13,5 @@ METODOLOGIA
 	
 RESULTADOS E DISCUSSÕES (TCC2)
 CONCLUSÃO (TCC2)
+
+Nas explicações, dizer o que é um kernel, drivers e espaço de usuario
