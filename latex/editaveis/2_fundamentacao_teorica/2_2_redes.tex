@@ -19,17 +19,25 @@
 
 		    Este modelo possui uma estratégia de camada em pares, o que significa dizer que cada informação adicionada em uma camada pelo lado do emissor deve chegar à camada de mesmo nível do lado do receptor.
 
-		    Na imagem 2 está representada as 7 camadas do modelo OSI que estão dispostas da seguinte maneira:
+		    Na imagem \ref{fig:modelo-osi} está representada as 7 camadas do modelo OSI que estão dispostas da seguinte maneira:
 
-            \begin{itemize}
-                \item \textbf{Física:} Estabelece a comunicação real entre os dispositivos;
-                \item \textbf{Enlace:} Detecção e correção de erros que aconteceu na camada anterior, controle de fluxo  da transmissão de dados entre dispositivos;
-                \item \textbf{Rede:} Endereçamento dos dispositivos na rede, caminho que as informações deverão seguir da origem até o destino (roteamento);
-                \item \textbf{Transporte:} Detecção e correção de erros das camadas inferiores, controle de fluxo de dados da origem até o destino e ordenação para garantir que os dados cheguem da mesma forma que foram enviados;
-                \item \textbf{Sessão:} Comunicação entre processos dos diferentes sistemas;
-                \item \textbf{Apresentação:} Conversão dos formatos de caractere para serem usados na transmissão, compressão e criptografia;
-                \item \textbf{Aplicação:} Programas de computadores tanto dos servidores quanto dos clientes;
-            \end{itemize}
+        \begin{itemize}
+            \item \textbf{Física:} Estabelece a comunicação real entre os dispositivos;
+            \item \textbf{Enlace:} Detecção e correção de erros que aconteceu na camada anterior, controle de fluxo  da transmissão de dados entre dispositivos;
+            \item \textbf{Rede:} Endereçamento dos dispositivos na rede, caminho que as informações deverão seguir da origem até o destino (roteamento);
+            \item \textbf{Transporte:} Detecção e correção de erros das camadas inferiores, controle de fluxo de dados da origem até o destino e ordenação para garantir que os dados cheguem da mesma forma que foram enviados;
+            \item \textbf{Sessão:} Comunicação entre processos dos diferentes sistemas;
+            \item \textbf{Apresentação:} Conversão dos formatos de caractere para serem usados na transmissão, compressão e criptografia;
+            \item \textbf{Aplicação:} Programas de computadores tanto dos servidores quanto dos clientes;
+        \end{itemize}
+
+        \begin{figure}[h]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figuras/modelo-osi.eps}
+          \caption{Sistema distribuído organizado como middleware - Imagem retirada de \cite{}.}
+          \label{fig:modelo-osi}
+        \end{figure}
+          
 
         \subsection{Pilha TCP/IP}
             O modelo OSI é um modelo de referência, mas na prática a internet está modelada de outra forma. A modelagem da internet atualmente
