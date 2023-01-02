@@ -1,0 +1,44 @@
+site_name: Trabalho de Conclusão de Curso
+
+repo_name: "monografia-redes"
+repo_url: "https://github.com/markinlimac/monografia-redes"
+
+theme: 
+  name: material
+  language: pt
+  logo: 'img/unb.png'
+  favicon: 'img/unb.ico'
+  features:
+    - content.tabs.link
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Prática de Laboratório 01:
+    - Introdução às Redes de Computadores: experimento_01.md
+  - Prática de Laboratório 02:
+    - Depuração de Problemas na Camada de Aplicação: experimento_02.md
+  - Prática de Laboratório 03:
+    - Depuração de Problemas na Camada de Transporte: experimento_03.md
+  - Prática de Laboratório 04:
+    - Depuração de Problemas na Camada de Internet: experimento_04.md
+  - Prática de Laboratório 05:
+    - Camada de Internet (DHCP): experimento_05.md
+  - Prática de Laboratório 06:
+    - Camada de Internet (NAT): experimento_06.md
+  - Prática de Laboratório 07:
+    - Camada de Rede (ARP): experimento_07.md
+  - Prática de Laboratório 08:
+    - Firewall: experimento_08.md
+  - Prática de Laboratório 09:
+    - Camada de Aplicação (Proxy): experimento_09.md
+  - Prática de Laboratório 10:
+    - Camada de Aplicação (DNS): experimento_10.md
+  - Prática de Laboratório 11:
+    - Introdução ao IPV6: experimento_11.md
+  - Prática de Laboratório 12:
+    - Issues: experimento_12.md
