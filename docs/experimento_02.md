@@ -27,7 +27,7 @@ Protocolos de Camada de Aplicação.
 - Software nas máquinas: ambiente FreeBSD básico
 - Acesso à Internet – NÃO é necessário
 - Servidores HTTP, DNS e SMTP devidamente configurados
-- Ferramentas de diagnóstico: **ifconfig**, **ping**, **traceroute**, **sockstat**, **host**, **dig**
+- Ferramentas de diagnóstico: **ifconfig**, **ping**, **traceroute**, **sockstat**, **host**
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
@@ -47,7 +47,7 @@ Confira se seu equipamento é capaz de executar a resolução de nomes usando DN
 ```console
 $ host nome_do_host opt_servidor_dns
 ```
-ATENÇÃO: O parâmetro **opt_servidor_dns** é opcional. Execute o comando sem indicar esse parâmetro inicialmente.
+<t style="color: red;">ATENÇÃO:</t> O parâmetro **opt_servidor_dns** é opcional. Execute o comando sem indicar esse parâmetro inicialmente.
 
 Pesquise sobre o arquivo **/etc/hosts** e seu papel no processo de resolução de nomes.
 
@@ -92,8 +92,8 @@ Costa, Matheus. O que é HTTP. **canaltech**, 2019. Disponível em: &lt;https://
 
 Reynolds, Luke. Send an email using Telnet. **linuxconfig**, 2021. Disponível em: &lt;https://linuxconfig.org/send-an-email-using-telnet&gt;. Acesso em: 11 dez. de 2022.
 
-**host(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?query=host&sektion=1&gt;. Acesso em: 10 dez. 2022.
+**host(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?query=host&sektion=1&gt;. Acesso em: 11 dez. 2022.
 
-**telnet(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?telnet&gt;. Acesso em: 10 dez. 2022.
+**telnet(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?telnet&gt;. Acesso em: 11 dez. 2022.
 
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

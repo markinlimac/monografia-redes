@@ -11,10 +11,10 @@ theme:
   features:
     - content.tabs.link
 
-markdown_extensions:
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
+# markdown_extensions:
+#   - pymdownx.superfences
+#   - pymdownx.tabbed:
+#       alternate_style: true
 
 nav:
   - Home: index.md

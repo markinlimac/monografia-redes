@@ -10,7 +10,7 @@
 Para que haja uma conexão por meio de um canal de transmissão confiável, é necessário uma série de mecanismos que protegem a comunicação quanto a efeitos adversos do meio de transmissão: corrupção de dados; congestionamentos e perdas de pacote. Portanto, este experimento apresenta um conjunto mínimo de ferramentas que permitirão a execução de um diagnóstico preciso ao se encarar uma situação de interrupção ou instabilidade de serviço típico de camada de transporte.
 
 ## *Objetivos*
-1. Exercitar uma comunicação típica TCP por meio de ferramentas de diagnóstico (**telnet**, **netcat**, **netstat** e **nmap**).
+1. Exercitar uma comunicação típica TCP por meio de ferramentas de diagnóstico (**telnet**, **netcat**, **sockstat** e **nmap**).
 
 ## *Referências Teóricas*
 Funcionamento básico de uma rede TCP/IP.
@@ -25,13 +25,17 @@ Protocolos de Camada de Transporte.
 - Software nas máquinas: ambiente FreeBSD básico
 - Acesso à Internet – NÃO é necessário
 - Servidores HTTP, DNS e SMTP devidamente configurados
-- Ferramentas de diagnóstico: **telnet**, **nmap**, **netcat** e **netstat**
+- Ferramentas de diagnóstico: **telnet**, **nmap**, **netcat** e **sockstat**
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
 Os alunos receberão uma topologia com 2 ou mais máquinas e informações sobre intervalo de endereços IP dos equipamentos e máscara de rede.
 
 Além dessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: DNS, HTTP e SMTP.
+
+<p align="center">
+  <img src="../img/topologia_experimento3.png" alt="image">
+</p>
 
 ### 2. Configurar os clientes na rede de testes e validar as configurações.
 Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
@@ -46,8 +50,9 @@ Para validar a abertura do socket servidor, utilize, no sistema operacional Free
 ```console
 $ sockstat -4l
 ```
+<t style="color: red;">ATENÇÃO:</t> A ferramenta netcat precisa continuar executando a escuta do socket TCP para que o comando **sockstat -4l** o encontre. Portanto, abra outro terminal para executar o segundo comando. No FreeBSD, é possível alternar entre terminais usando os atalhos (**Alt+F1** e **Alt+F2**).
 
-Esse comando irá exibir todos os processos, IPv4 (-4), em estado de escuta (**-l**) e que abriram portas. Execute os próximos passos apenas se for possível identificar o processo da aplicação **netcat** vinculado à porta indicada.
+Esse comando irá exibir todos os processos, IPv4 (**-4**), em estado de escuta (**-l**) e que abriram portas. Execute os próximos passos apenas se for possível identificar o processo da aplicação **netcat** vinculado à porta indicada.
 
 ### 4. Interações com o socket servidor
 Na prática sobre camada de aplicação, usamos a aplicação telnet. Essa ferramenta é capaz de abrir sockets TCP cliente a servidores.
@@ -77,7 +82,7 @@ $ nmap nome_do_host
 ```console
 $ nmap faixa_de_ip
 ```
-onde faixa_de_ip pode ser uma faixa por intervalos (como 192.168.133.1-20, o que contemplaria todos os IPs entre 192.168.133.1 e 192.168.133.20) ou mesmo a indicação de uma subrede usando notação CIDR
+onde faixa_de_ip pode ser uma faixa por intervalos (como 192.168.133.1-20, o que contemplaria todos os IPs entre 192.168.133.1 e 192.168.133.20) ou mesmo a indicação de uma subrede usando notação CIDR.
 
 ## *Questões para Estudo*
 1. A porta de um servidor que provê aplicações sobre TCP pode se encontrar em diferentes estados. Quais são esses estados e como evolui a comunicação entre um cliente e um servidor TCP quando a porta se apresenta em cada um dos estados possíveis?
@@ -88,5 +93,18 @@ onde faixa_de_ip pode ser uma faixa por intervalos (como 192.168.133.1-20, o que
 6. O **nmap** é considerado uma ferramenta extremamente poderosa. Como você a utilizaria para identificar quais são os equipamentos que estão ativos e em execução em uma rede?
 
 ## *Referências Bibliográficas*
+GITE, Vivek. FreeBSD List/Display Open Ports With sockstat Command. **Cyberciti**, 2008. Disponível em: &lt;https://www.cyberciti.biz/tips/freebsd-lists-open-internet-unix-domain-sockets.html&gt;. Acesso em: 11 dez. de 2022.
+
+ELLINGWOOD, Justin. How To Use Netcat to Establish and Test TCP and UDP Connections. **Digital Ocean**, 2021. Disponível em: &lt;https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections&gt;. Acesso em: 11 dez. de 2022.
+
+SHIVANANDHAN, Manish. What is Nmap and How to Use it – A Tutorial for the Greatest Scanning Tool of All Time. **FreeCodeCamp**, 2021. Disponível em: &lt;https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-the-greatest-scanning-tool-of-all-time/&gt;. Acesso em: 11 dez. de 2022.
+
+**telnet(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?telnet&gt;. Acesso em: 11 dez. 2022.
+
+**nmap(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?query=nmap&manpath=SuSE+Linux%2Fi386+11.3&gt;. Acesso em: 11 dez. 2022.
+
+**nc(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?nc&gt;. Acesso em: 11 dez. 2022.
+
+**sockstat(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?query=sockstat&sektion=1&gt;. Acesso em: 11 dez. 2022.
 
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.
