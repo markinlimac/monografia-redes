@@ -86,3 +86,5 @@ Aqui vai uma sugestão de como adicionar uma etapa no roteiro para configurar ou
 3. Onde fica o arquivo de configuração do "named" no FreeBSD?
 4. Quais são os arquivos de zona e para que servem?
 5. Como você pode verificar o funcionamento do servidor DNS no FreeBSD?
+
+## *Referências Bibliográficas*

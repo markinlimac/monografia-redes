@@ -58,3 +58,5 @@ Teste as configurações de rede usando as ferramentas discutidas em práticas a
 3. Como você sugere verificar se está acessando a Internet através de um NAT?
 4. Reinicie o seu equipamento usado para a implementação de um NAT usando o sistema operacional Linux e verifique se as suas configurações ainda funcionam. Descreva que tipo de procedimentos foram realizados para tornar as configurações de NAT persistentes.
 5. Utilizando o sistema operacional FreeBSD, quais serão as etapas necessárias para a implementação de um NAT de comportamento semelhante ao que foi implementado em sala de aula com o Linux?
+
+## *Referências Bibliográficas*

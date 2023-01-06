@@ -66,3 +66,5 @@ Em seguida, repita o comando arp.
 2. Suponha que uma aplicação utilize um esquema de controle de acesso baseado no valor do MAC address das placas de rede. Haveria algum problema de segurança nessa abordagem? Justifique.
 3. É possível que o protocolo ARP interfira no desempenho de uma rede? Elabore sua resposta, apresentando exemplos/justificativas.
 4. Há, na literatura, ataques que envolvem o protocolo ARP? Se a resposta for afirmativa, cite exemplos.
+
+## *Referências Bibliográficas*

@@ -68,3 +68,5 @@ Experimente realizar a conexão SSH entre H1 e S1 usando a regra de DNAT criada.
 ## *Questões para Estudo*
 1. O serviço ssh é sobre o TCP ou UDP? Conferir com o tcpdump, simulando a situação onde S1 faz ssh em H1.
 2. Em relação aos testes do Item 3 (testes da Etapa 1) do roteiro, como é possível ao Nmap indicar a eventual presença de portas filtradas através do roteador R que atua como Firewall?
+
+## *Referências Bibliográficas*

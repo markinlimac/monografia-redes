@@ -16,7 +16,7 @@
 ## *Referências Teóricas*
 Funcionamento básico de uma rede TCP/IP.
 
-Protocolos de Camada de Rede.
+Protocolos de Camada de Internet.
 
 ## *Material Necessário*
 - Interfaces de rede (NIC's)
@@ -76,7 +76,7 @@ Há uma aplicação que exercita os serviços típicos e protocolos da camada de
 
 Porém, dependendo do tipo da instituição que se comunica através de um sistema autônomo de roteamento, a informação do caminho seguido pelo pacote pode classificada como sensível. Dessa forma, o acesso deverá ser restrito àqueles que dela dependem sustentar o funcionamento do sistema autônomo. Naturalmente, outros usuários não deverão ser capazes de extrair essa informação de forma trivial a partir de interações com a rede.
 
-A ferramenta de diagnóstico explorada nessa etapa chama-se **traceroute**. Por meio de interações com mecanismos típicos da camada de rede e da camada de transporte, essa ferramenta consegue extrair de redes qual o caminho percorrido por determinado pacote. Para tanto, basta que seu usuário indique um ip alvo para que a aplicação realize o processo de traçado da rota.
+A ferramenta de diagnóstico explorada nessa etapa chama-se **traceroute**. Por meio de interações com mecanismos típicos da camada de internet e da camada de transporte, essa ferramenta consegue extrair de redes qual o caminho percorrido por determinado pacote. Para tanto, basta que seu usuário indique um ip alvo para que a aplicação realize o processo de traçado da rota.
 ```console
 $ traceroute ip_do_alvo
 ```
@@ -87,3 +87,5 @@ $ traceroute ip_do_alvo
 3. A execução do comando **ping** em uma rede é uma das primeiras medidas para verificação de continuidade de serviço. Embora seja um comando muito simples de invocar e cujos resultados práticos são muito fáceis de interpretar, a riqueza de detalhes da saída típica de execução do **ping** é grande. Descreva cada um dos itens que compõem a saída de execução típica de um comando **ping**.
 4. Em relação à **Etapa 5** do presente roteiro, descreva cada um dos itens que compõem a saída de execução típica de um comando **netstat -nr**. Qual seria a sintaxe usada para extrair a mesma informação, porém a partir do comando **ip**?
 5. Em relação à **Etapa 6** do presente roteiro, descreva o processo típico de detecção da rota percorrida por um pacote através da execução do comando **traceroute**.
+
+## *Referências Bibliográficas*

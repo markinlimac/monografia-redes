@@ -56,3 +56,5 @@ Montar regras em R (e onde for preciso) para garantir o proxy transparente (ou s
 ## *Questões para Estudo*
 1. 
 2. 
+
+## *Referências Bibliográficas*
