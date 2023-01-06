@@ -11,7 +11,7 @@
 
 ## *Objetivos*
 1. Exercitar as configurações básicas para navegabilidade em uma rede de computadores bem como usar ferramentas de diagnóstico para validar configurações.
-2. Exercitar os princípios básicos de uma comunicação em redes TCP/IP, com ênfase nos serviços típicos de camada de rede. Conhecer e manipular ferramentas de diagnóstico (**ping**, **traceroute**, **netstat** e **route**) para fixação de conceitos de camada de rede.
+2. Exercitar os princípios básicos de uma comunicação em redes TCP/IP, com ênfase nos serviços típicos da camada de internet. Conhecer e manipular ferramentas de diagnóstico (**ping**, **traceroute**, **netstat** e **route**) para fixação de conceitos da camada de internet.
 
 ## *Referências Teóricas*
 Funcionamento básico de uma rede TCP/IP.
@@ -25,7 +25,7 @@ Protocolos de Camada de Rede.
 - Switches ou HUBs
 - Software nas máquinas: ambiente FreeBSD básico
 - Acesso à Internet – NÃO é necessário
-- Servidores HTTP, DNS e SMTP devidamente configurados.
+- Servidores HTTP, DNS e SMTP devidamente configurados
 - Ferramentas de diagnóstico: **ping**, **traceroute**, **netstat** e **route**
 
 ## *Roteiro*
@@ -33,6 +33,10 @@ Protocolos de Camada de Rede.
 Os alunos receberão uma topologia com 2 ou mais máquinas e informações sobre intervalo de endereços IP dos equipamentos e máscara de rede. 
 
 Além dessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: DHCP e NAT.
+
+<p align="center">
+  <img src="../img/topologia_experimento4.png" alt="image">
+</p>
 
 ### 2. Configurar os clientes na rede de testes e validar as configurações.
 Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
@@ -51,7 +55,7 @@ $ ping ip_do_host
 ```
 
 ### 5. Tabela de encaminhamento
-Às vezes, faz-se necessário verificar qual é o caminho que poderá ser seguido por um pacote em uma comunicação típica através de uma rede TCP/IP. Ainda no equipamento emissor, pode ser necessária a conferência da tabela de encaminhamento em vigência. O sistema operacional Linux provê algumas ferramentas que permitem a conferência da tabela de encaminhamento ativa.
+Às vezes, faz-se necessário verificar qual é o caminho que poderá ser seguido por um pacote em uma comunicação típica através de uma rede TCP/IP. Ainda no equipamento emissor, pode ser necessária a conferência da tabela de encaminhamento em vigência. O sistema operacional FreeBSD provê algumas ferramentas que permitem a conferência da tabela de encaminhamento ativa.
 
 O comando **netstat** é uma dessas ferramentas. Embora essa aplicação já tenha sido utilizada em práticas anteriores, ela possui uma opção que indica ao usuário quais são as informações constantes na tabela de encaminhamento. Execute o seguinte comando com acesso administrativo:
 ```console
