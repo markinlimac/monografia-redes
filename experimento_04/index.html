@@ -1062,7 +1062,7 @@
 <h2 id="objetivos"><em>Objetivos</em></h2>
 <ol>
 <li>Exercitar as configurações básicas para navegabilidade em uma rede de computadores bem como usar ferramentas de diagnóstico para validar configurações.</li>
-<li>Exercitar os princípios básicos de uma comunicação em redes TCP/IP, com ênfase nos serviços típicos de camada de rede. Conhecer e manipular ferramentas de diagnóstico (<strong>ping</strong>, <strong>traceroute</strong>, <strong>netstat</strong> e <strong>route</strong>) para fixação de conceitos de camada de rede.</li>
+<li>Exercitar os princípios básicos de uma comunicação em redes TCP/IP, com ênfase nos serviços típicos da camada de internet. Conhecer e manipular ferramentas de diagnóstico (<strong>ping</strong>, <strong>traceroute</strong>, <strong>netstat</strong> e <strong>route</strong>) para fixação de conceitos da camada de internet.</li>
 </ol>
 <h2 id="referencias-teoricas"><em>Referências Teóricas</em></h2>
 <p>Funcionamento básico de uma rede TCP/IP.</p>
@@ -1075,13 +1075,17 @@
 <li>Switches ou HUBs</li>
 <li>Software nas máquinas: ambiente FreeBSD básico</li>
 <li>Acesso à Internet – NÃO é necessário</li>
-<li>Servidores HTTP, DNS e SMTP devidamente configurados.</li>
+<li>Servidores HTTP, DNS e SMTP devidamente configurados</li>
 <li>Ferramentas de diagnóstico: <strong>ping</strong>, <strong>traceroute</strong>, <strong>netstat</strong> e <strong>route</strong></li>
 </ul>
 <h2 id="roteiro"><em>Roteiro</em></h2>
 <h3 id="1-montagem-de-rede-interconectada-para-o-experimento">1. Montagem de rede interconectada para o experimento</h3>
 <p>Os alunos receberão uma topologia com 2 ou mais máquinas e informações sobre intervalo de endereços IP dos equipamentos e máscara de rede. </p>
 <p>Além dessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: DHCP e NAT.</p>
+<p align="center">
+  <img src="../img/topologia_experimento4.png" alt="image">
+</p>
+
 <h3 id="2-configurar-os-clientes-na-rede-de-testes-e-validar-as-configuracoes">2. Configurar os clientes na rede de testes e validar as configurações.</h3>
 <p>Lembrem-se das etapas que foram percorridas na <strong>Prática de Laboratório 01</strong>.</p>
 <h3 id="3-conferencia-de-informacoes-sobre-interfaces-de-rede">3. Conferência de informações sobre interfaces de rede.</h3>
@@ -1093,7 +1097,7 @@
 <pre><code class="language-console">$ ping ip_do_host
 </code></pre>
 <h3 id="5-tabela-de-encaminhamento">5. Tabela de encaminhamento</h3>
-<p>Às vezes, faz-se necessário verificar qual é o caminho que poderá ser seguido por um pacote em uma comunicação típica através de uma rede TCP/IP. Ainda no equipamento emissor, pode ser necessária a conferência da tabela de encaminhamento em vigência. O sistema operacional Linux provê algumas ferramentas que permitem a conferência da tabela de encaminhamento ativa.</p>
+<p>Às vezes, faz-se necessário verificar qual é o caminho que poderá ser seguido por um pacote em uma comunicação típica através de uma rede TCP/IP. Ainda no equipamento emissor, pode ser necessária a conferência da tabela de encaminhamento em vigência. O sistema operacional FreeBSD provê algumas ferramentas que permitem a conferência da tabela de encaminhamento ativa.</p>
 <p>O comando <strong>netstat</strong> é uma dessas ferramentas. Embora essa aplicação já tenha sido utilizada em práticas anteriores, ela possui uma opção que indica ao usuário quais são as informações constantes na tabela de encaminhamento. Execute o seguinte comando com acesso administrativo:</p>
 <pre><code class="language-console">$ netstat -nr
 </code></pre>
