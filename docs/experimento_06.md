@@ -22,22 +22,26 @@ Objetivo e funcionamento do esquema NAT
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
 - Software nas máquinas: ambiente FreeBSD básico
-- Acesso à Internet – NÃO é necessário
+- Acesso à Internet – necessário
 - Desligar o servidor DHCP para as máquinas de aula
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
 Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o gateway da topologia e lhe dê dois endereços de IP: um IP fixo e válido para a rede de saída e um IP restrito, inválido.
 
+<p align="center">
+  <img src="../img/topologia_experimento6.png" alt="image">
+</p>
+
 ### 2. Configuração do Servidor DHCP (opcional)
 Se for do interesse da equipe que executa o experimento evitar configurações nas máquinas que usarão o gateway com NAT, é conveniente implantar o serviço de DHCP em algum servidor da rede local (privada) que usará o equipamento com NAT como gateway.
 
 ### 3. Configuração do NAT
-No Debian, configure o arquivo interfaces (**/etc/network/interfaces**) citado em experiências anteriores e ponha uma interface em questão, a interface de saída, configurada de forma fixa usando um IP válido da rede de saída. Use o comando **ifconfig** para verificar o endereço configurado.
+No FreeBSD, configure o arquivo rc.conf (**/etc/rc.conf**) citado em experiências anteriores e ponha uma interface em questão, a interface de saída, configurada de forma fixa usando um IP válido da rede de saída. Use o comando **ifconfig** para verificar o endereço configurado.
 
 Em seguida, crie uma rede privada e configure o IP da outra interface de rede do equipamento gateway para que possua o primeiro IP do espaço de endereçamento privado. Caso tenha optado por instalar DHCP nesta interface, não será necessária a configuração dos clientes que acessarão a Internet através do NAT; se esse não for seu caso, configure uma máquina cliente de testes no espaço de endereçamento da rede privada recém criada e conecte o cliente ao servidor NAT.
 
-### 4. Configuração do Iptables
+### 4. Configuração do PF (filtro de pacotes)
 Identifique as interfaces configuradas no passo acima e realize os ajustes adequados. Doravante, chamaremos **ethSaida** a interface de saída e **ethPriv** a interface interna (com ou sem DHCP).
 
 Realize a limpeza de eventuais regras de firewall presentes no equipamento:
