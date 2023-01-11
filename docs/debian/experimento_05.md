@@ -2,7 +2,7 @@
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_05.pdf)
 
-<img style="width: 100%" alt="" src="../img/header.jpg">
+<img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 05</p>
 <p align="center"><b>Camada de Aplicação (DHCP)</b></p>
 
@@ -13,7 +13,7 @@ Para o correto funcionamento de redes, alguns serviços de nível de aplicação
 1. Visualizar a importância dos serviços de atribuição dinâmica de configurações.
 2. Entender como funciona a implementação do DHCP no FreeBSD, e configurá-la.
 
-## *Referências Teóricas*
+## *Teoria abordada no experimento*
 Objetivo e funcionamento do protocolo DHCP.
 
 ## *Material Necessário*
@@ -27,11 +27,16 @@ Objetivo e funcionamento do protocolo DHCP.
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
-Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o servidor DHCP e lhe dê um endereço IP fixo.
+- H1 (192.168.1.3), H2 (192.168.1.2), H3 (192.168.1.4) e R/eth0 (192.168.1.1).
 
+<p align="center">
+  <img src="../../img/topologia_experimento5.png" alt="image">
+</p>
+
+### 2. Configurar os clientes na rede de testes e validar as configurações.
 Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 
-### 2. Instalação do pacote de servidor DHCP
+### 3. Instalação do pacote de servidor DHCP
 Para a execução deste experimento é essencial a instalação do pacote **isc-dhcp44-server**, que não é incluso por padrão no FreeBSD. Para prosseguir com a instalação, execute o seguinte comando:
 
 ```console
@@ -39,7 +44,7 @@ $ pkg install isc-dhcp44-server
 ```
 <t style="color: red;">ATENÇÃO:</t> É normal ocorrer uma falha, pois, ao finalizar a instalação, ele tenta iniciar o servidor que não tem nenhum escopo DHCP criado ainda.
 
-### 3. Configuração do Servidor DHCP
+### 4. Configuração do Servidor DHCP
 Os arquivos mais importantes do servidor DHCP a ser usado, são:
 
 **/etc/dhcp3/dhcpd.conf** : configurações para o servidor DHCP
@@ -104,7 +109,7 @@ Após a configuração do servidor DHCP, caso apresente algum problema e não es
 $ grep dhcpd /var/log/syslog
 ```
 
-### 4. Configuração do cliente DHCP
+### 5. Configuração do cliente DHCP
 No FreeBSD, configure o arquivo rc.conf (**/etc/rc.conf**) citado em experiências anteriores e ponha a interface em questão configurável via dhcp, adicionando a linha abaixo:
 ```
 ifconfig_em0=”DHCP”

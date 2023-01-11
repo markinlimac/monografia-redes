@@ -2,7 +2,7 @@
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_10.pdf)
 
-<img style="width: 100%" alt="" src="../img/header.jpg">
+<img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 10</p>
 <p align="center"><b>Camada de Aplicação (DNS)</b></p>
 
@@ -16,7 +16,7 @@ O objetivo deste experimento é demonstrar como configurar um servidor DNS no si
 2. Mostrar como configurar um servidor DNS no FreeBSD
 3. Verificar o funcionamento do servidor DNS através de consultas utilizando o comando "dig"
 
-## *Referências Teóricas*
+## *Teoria abordada no experimento*
 "DNS e BIND" (Albitz, Liu, 2013)
 
 "FreeBSD Handbook" (FreeBSD Documentation Project, 2021)

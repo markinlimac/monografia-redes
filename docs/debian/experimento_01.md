@@ -2,7 +2,7 @@
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_01.pdf)
 
-<img style="width: 100%" alt="" src="../img/header.jpg">
+<img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 01</p>
 <p align="center"><b>Introdução às Redes de Computadores</b></p>
 
@@ -13,7 +13,7 @@ Algumas configurações básicas necessárias para o correto funcionamento de eq
 1. Compreender as configurações básicas para navegabilidade em uma rede de computadores.
 2. Exercitar configurações básicas em diferentes sistemas operacionais e entender como usar ferramentas de diagnóstico para validar configurações.
 
-## *Referências Teóricas*
+## *Teoria abordada no experimento*
 Funcionamento básico de uma rede TCP/IP.
 
 ## *Material Necessário*
@@ -27,10 +27,10 @@ Funcionamento básico de uma rede TCP/IP.
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
-Os alunos receberão uma topologia com 2 ou mais máquinas e informações sobre intervalo de endereços IP dos equipamentos e máscara de rede:
+- H1 (192.168.1.3), H2 (192.168.1.2) e R/eth0 (192.168.1.1).
 
 <p align="center">
-  <img src="../img/topologia_experimento1.png" alt="image">
+  <img src="../../img/topologia_experimento1.png" alt="image">
 </p>
 
 ### 2. Configurar os clientes na rede de testes.
@@ -51,19 +51,19 @@ de em0. É praxe em0 ser vinculada à primeira interface de rede Ethernet do com
 kernel do FreeBSD.
 
 Dispondo de privilégios de superusuário, execute o seguinte comando para forçar a configuração da mesma:
-```console
+```bash
 $ ./etc/netstart <interface>
 ```
 <t style="color: red;">ATENÇÃO:</t> substitua **&lt;interface&gt;** pelo identificador da interface de rede do equipamento de testes.
 
 Em seguida, para verificar o endereço configurado, use o comando:
-```console
+```bash
 $ ifconfig
 ```
 
 Também é possível executar os seguintes comandos para configuração das interfaces de rede:
 
-```console
+```bash
 $ # ifconfig interface-name IP-address netmask Netmask
 $ ifconfig em0 192.168.133.250 netmask 255.255.255.0
 $ route add default 192.168.133.1
@@ -72,12 +72,12 @@ $ route -n
 
 ### 3. Validando as configurações
 Confira a conectividade básica enviando pacotes ICMP para algum outro computador que esteja conectado à mesma rede:
-```console
+```bash
 $ ping <IP-address>
 ```
 
 Confira as configurações de roteamento enviando pacotes ICMP para algum outro computador que esteja conectado à outra rede.
-```console
+```bash
 $ ping <IP-address>
 ```
 

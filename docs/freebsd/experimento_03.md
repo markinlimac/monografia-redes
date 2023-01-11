@@ -2,7 +2,7 @@
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_03.pdf)
 
-<img style="width: 100%" alt="" src="../img/header.jpg">
+<img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 03</p>
 <p align="center"><b>Depuração de Problemas na Camada de Transporte</b></p>
 
@@ -12,7 +12,7 @@ Para que haja uma conexão por meio de um canal de transmissão confiável, é n
 ## *Objetivos*
 1. Exercitar uma comunicação típica TCP por meio de ferramentas de diagnóstico (**telnet**, **netcat**, **sockstat** e **nmap**).
 
-## *Referências Teóricas*
+## *Teoria abordada no experimento*
 Funcionamento básico de uma rede TCP/IP.
 
 Protocolos de Camada de Transporte.
@@ -29,12 +29,12 @@ Protocolos de Camada de Transporte.
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
-Os alunos receberão uma topologia com 2 ou mais máquinas e informações sobre intervalo de endereços IP dos equipamentos e máscara de rede.
+- H1 (192.168.1.3), H2 (192.168.1.2), H3 (192.168.1.4), H4 (192.168.1.5) e R/eth0 (192.168.1.1).
 
 Além dessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: DNS, HTTP e SMTP.
 
 <p align="center">
-  <img src="../img/topologia_experimento3.png" alt="image">
+  <img src="../../img/topologia_experimento3.png" alt="image">
 </p>
 
 ### 2. Configurar os clientes na rede de testes e validar as configurações.
@@ -42,12 +42,12 @@ Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 
 ### 3. Abertura de um socket servidor.
 Usando um dos computadores disponíveis para o experimento e **usando privilégios administrativos**, habilite um socket TCP em estado de escuta. Como ferramenta de apoio, use a aplicação **netcat**. Para tanto execute:
-```console
+```bash
 $ nc -l numero_da_porta
 ```
 
 Para validar a abertura do socket servidor, utilize, no sistema operacional FreeBSD o seguinte comando:
-```console
+```bash
 $ sockstat -4l
 ```
 <t style="color: red;">ATENÇÃO:</t> A ferramenta netcat precisa continuar executando a escuta do socket TCP para que o comando **sockstat -4l** o encontre. Portanto, abra outro terminal para executar o segundo comando. No FreeBSD, é possível alternar entre terminais usando os atalhos (**Alt+F1** e **Alt+F2**).
@@ -58,7 +58,7 @@ Esse comando irá exibir todos os processos, IPv4 (**-4**), em estado de escuta 
 Na prática sobre camada de aplicação, usamos a aplicação telnet. Essa ferramenta é capaz de abrir sockets TCP cliente a servidores.
 
 Partindo do princípio que há um equipamento em que está aberta uma porta em estado de escuta, ou seja, há um socket servidor de uma aplicação, utilize a ferramenta telnet para se conectar a esse servidor. Apenas relembrando a sintaxe esperada para execuções do telnet:
-```console
+```bash
 $ telnet nome_do_host numero_da_porta
 ```
 
@@ -74,12 +74,12 @@ As ferramentas até então estudadas são capazes de auxiliar o técnico nessa a
 Como as redes TCP/IP já estão em produção há algumas décadas, é natural que algumas ferramentas mais maduras e integradas estejam disponíveis para a identificação mais imediata dos serviços disponíveis. Uma dessas ferramentas é o **nmap**.
 
 Para varrer quais são os serviços ativos em determinado host, executa-se o seguinte comando:
-```console
+```bash
 $ nmap nome_do_host
 ```
 
 É possível demandar uma varredura de um conjunto de equipamentos, por exemplo, todos os equipamentos pertencentes a uma rede. Basta alterar o comando acima da seguinte maneira:
-```console
+```bash
 $ nmap faixa_de_ip
 ```
 onde faixa_de_ip pode ser uma faixa por intervalos (como 192.168.133.1-20, o que contemplaria todos os IPs entre 192.168.133.1 e 192.168.133.20) ou mesmo a indicação de uma subrede usando notação CIDR.

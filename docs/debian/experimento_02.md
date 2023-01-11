@@ -2,7 +2,7 @@
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_02.pdf)
 
-<img style="width: 100%" alt="" src="../img/header.jpg">
+<img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 02</p>
 <p align="center"><b>Depuração de Problemas na Camada de Aplicação</b></p>
 
@@ -14,7 +14,7 @@ Quando um computador está devidamente configurado em uma rede de computadores, 
 2. Exercitar o início de uma comunicação típica SMTP por meio de ferramenta de diagnóstico (**telnet**).
 3. Exercitar as configurações de rede, especialmente no que tange ao serviço de resolução de nomes.
 
-## *Referências Teóricas*
+## *Teoria abordada no experimento*
 Funcionamento básico de uma rede TCP/IP.
 
 Protocolos de Camada de Aplicação.
@@ -31,12 +31,12 @@ Protocolos de Camada de Aplicação.
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
-Os alunos receberão uma topologia com 2 ou mais máquinas e informações sobre intervalo de endereços IP dos equipamentos e máscara de rede.
+- H1 (192.168.1.3), H2 (192.168.1.2), H3 (192.168.1.4), H4 (192.168.1.5) e R/eth0 (192.168.1.1).
 
 Além dessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: DNS, HTTP e SMTP.
 
 <p align="center">
-  <img src="../img/topologia_experimento2.png" alt="image">
+  <img src="../../img/topologia_experimento2.png" alt="image">
 </p>
 
 ### 2. Configurar os clientes na rede de testes e validar as configurações.

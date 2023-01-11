@@ -2,7 +2,7 @@
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_06.pdf)
 
-<img style="width: 100%" alt="" src="../img/header.jpg">
+<img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 06</p>
 <p align="center"><b>Camada de Internet (NAT)</b></p>
 
@@ -13,8 +13,8 @@ Para o correto funcionamento de redes, alguns serviços de nível de aplicação
 1. Visualizar a importância dos serviços de compartilhamento de IPs.
 2. Entender como funciona a implementação do NAT no Linux, e configurá-la.
 
-## *Referências Teóricas*
-Objetivo e funcionamento do esquema NAT
+## *Teoria abordada no experimento*
+Objetivo e funcionamento do esquema ARP.
 
 ## *Material Necessário*
 - Interfaces de rede (NIC's)
@@ -30,7 +30,7 @@ Objetivo e funcionamento do esquema NAT
 Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o gateway da topologia e lhe dê dois endereços de IP: um IP fixo e válido para a rede de saída e um IP restrito, inválido.
 
 <p align="center">
-  <img src="../img/topologia_experimento6.png" alt="image">
+  <img src="../../img/topologia_experimento6.png" alt="image">
 </p>
 
 ### 2. Configuração do Servidor DHCP (opcional)
@@ -45,7 +45,7 @@ Em seguida, crie uma rede privada e configure o IP da outra interface de rede do
 Identifique as interfaces configuradas no passo acima e realize os ajustes adequados. Doravante, chamaremos **ethSaida** a interface de saída e **ethPriv** a interface interna (com ou sem DHCP).
 
 Realize a limpeza de eventuais regras de firewall presentes no equipamento:
-```console
+```bash
 $ iptables --flush
 $ iptables --table nat --flush
 $ iptables --delete-chain

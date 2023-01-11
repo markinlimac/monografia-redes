@@ -2,19 +2,19 @@
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_09.pdf)
 
-<img style="width: 100%" alt="" src="../img/header.jpg">
+<img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 09</p>
 <p align="center"><b>Camada de Aplicação (Proxy)</b></p>
 
 ## *Introdução*
 Em redes de computadores, um *proxy* é um servidor (um sistema de computador ou uma aplicação) que age como um intermediário para requisições de clientes solicitando recursos de outros servidores. 
 
-Um cliente conecta-se ao servidor *proxy*, solicitando algum serviço, como um arquivo, conexão, página web ou outros recursos disponíveis de um servidor diferente e o *proxy* avalia a solicitação como um meio de simplificar e controlar sua complexidade. Os *proxies* foram inventados para adicionar estrutura e encapsulamento a sistemas distribuídos. Hoje, a maioria dos *proxies* é *proxy web*, facilitando o acesso ao conteúdo na World Wide Web e fornecendo anonimato. [1]
+Um cliente conecta-se ao servidor *proxy*, solicitando algum serviço, como um arquivo, conexão, página web ou outros recursos disponíveis de um servidor diferente e o *proxy* avalia a solicitação como um meio de simplificar e controlar sua complexidade. Os *proxies* foram inventados para adicionar estrutura e encapsulamento a sistemas distribuídos. Hoje, a maioria dos *proxies* é *proxy web*, facilitando o acesso ao conteúdo na World Wide Web e fornecendo anonimato. [[1](https://pt.wikipedia.org/wiki/Proxy)]
 
 ## *Objetivos*
-1. Permitir que os alunos tenham contato com regras de Proxy em máquinas Linux.
+1. Permitir que os alunos tenham contato com regras de Proxy em máquinas FreeBSD.
 
-## *Referências Teóricas*
+## *Teoria abordada no experimento*
 Objetivo e funcionamento de um proxy de aplicação.
 
 ## *Material Necessário*
@@ -23,14 +23,14 @@ Objetivo e funcionamento de um proxy de aplicação.
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
 - Software nas máquinas: ambiente FreeBSD básico, pacote DNS server (bind9)
-- Acesso à Internet – NÃO é necessário
+- Acesso à Internet – NÃO é necessário (instalar o squid)
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
 Monte uma topologia de acordo com o seguinte diagrama:
 
 <p align="center">
-  <img src="../img/diagrama_proxy1.png" alt="image">
+  <img src="../../img/diagrama_proxy1.png" alt="image">
 </p>
 
 ### 2. Configuração dos equipamentos: etapa 1
@@ -42,7 +42,7 @@ Ajustar h1 e h2 para que percebam a presença do proxy para o acesso Internet (c
 Montar a configuração de rede abaixo e seguir os requisitos descritos a seguir.
 
 <p align="center">
-  <img src="../img/diagrama_proxy2.png" alt="image">
+  <img src="../../img/diagrama_proxy2.png" alt="image">
 </p>
 
 Transferir a função de proxy para S1, incluindo as restrições definidas nos itens (a) e (b).
@@ -58,3 +58,4 @@ Montar regras em R (e onde for preciso) para garantir o proxy transparente (ou s
 2. 
 
 ## *Referências Bibliográficas*
+[1] https://pt.wikipedia.org/wiki/Proxy

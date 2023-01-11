@@ -2,19 +2,19 @@
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_07.pdf)
 
-<img style="width: 100%" alt="" src="../img/header.jpg">
+<img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 07</p>
 <p align="center"><b>Camada de Rede (ARP)</b></p>
 
 ## *Introdução*
-Para o correto funcionamento de redes, alguns serviços de nível de camada de enlace são primordiais para a adequada cooperação da pilha de protocolos sobre a qual reside a Internet.
+Para o correto funcionamento de redes, alguns serviços de nível de camada de rede são primordiais para a adequada cooperação da pilha de protocolos sobre a qual reside a Internet.
 
 ## *Objetivos*
-1. Exercitar conceitos discutidos nas aulas teóricas da disciplina referentes à camada de enlace.
+1. Exercitar conceitos discutidos nas aulas teóricas da disciplina referentes à camada de rede.
 2. Entender o papel do protocolo ARP e como acontecem suas interações.
 
-## *Referências Teóricas*
-Objetivo e funcionamento do esquema NAT
+## *Teoria abordada no experimento*
+Objetivo e funcionamento do esquema NAT.
 
 ## *Material Necessário*
 - Interfaces de rede (NIC's)
@@ -29,8 +29,12 @@ Objetivo e funcionamento do esquema NAT
 ### 1. Montagem de rede interconectada para o experimento
 Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o gateway da topologia e lhe dê dois endereços de IP: um IP fixo e válido para a rede de saída e um IP restrito, inválido.
 
+<p align="center">
+  <img src="../../img/topologia_experimento7.png" alt="image">
+</p>
+
 ### 2. Configurar os clientes na rede de testes e validar as configurações
-Certifique-se que eventuais serviços de suporte às configurações de rede estejam desativados. Lembrem-se das etapas que foram percorridas na **Atividade Extra 00**.
+Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 
 ### 3. Verificação das entradas presentes na tabela ARP
 Em uma janela distinta, dispare a ferramenta de captura de pacotes:
