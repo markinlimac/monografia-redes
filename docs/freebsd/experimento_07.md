@@ -32,7 +32,7 @@ Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o gateway da t
 Além dessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: HTTP.
 
 - H1 (192.168.1.3), H2 (192.168.1.2) e G/eth0 (192.168.1.1).
-- G/eth1 (172.25.0.1).
+- S1 (172.25.0.2) e G/eth1 (172.25.0.1).
 
 <p align="center">
   <img src="../../img/topologia_experimento7.png" alt="image">
