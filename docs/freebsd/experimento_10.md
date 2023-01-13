@@ -9,82 +9,122 @@
 ## *Introdução*
 O Domain Name System (DNS) é um importante componente da Internet, responsável por fazer a tradução de nomes de domínio para endereços IP e vice-versa. Isso permite que os usuários acessem sites e serviços através de nomes de domínio, em vez de ter que digitar os endereços IP correspondentes.
 
-O objetivo deste experimento é demonstrar como configurar um servidor DNS no sistema operacional FreeBSD, utilizando o utilitário "named". O experimento inclui a instalação do "bind", a edição do arquivo de configuração, a criação dos arquivos de zona, a inicialização do daemon "named" e a verificação do funcionamento do servidor DNS.
-
 ## *Objetivos*
-1. Demonstrar o funcionamento do DNS e sua importância na Internet
-2. Mostrar como configurar um servidor DNS no FreeBSD
-3. Verificar o funcionamento do servidor DNS através de consultas utilizando o comando "dig"
+1. Demonstrar o funcionamento do DNS e sua importância na Internet.
+2. Mostrar como configurar um servidor DNS no FreeBSD.
+3. Verificar o funcionamento do servidor DNS através de consultas utilizando os comandos **dig** e **nslookup**.
 
 ## *Teoria abordada no experimento*
-"DNS e BIND" (Albitz, Liu, 2013)
-
-"FreeBSD Handbook" (FreeBSD Documentation Project, 2021)
-
-"BIND 9 Administrator Reference Manual" (ISC, 2021)
+Objetivo e funcionamento do protocolo DNS.
 
 ## *Material Necessário*
-- 
+- Interfaces de rede (NIC's)
+- Máquinas com sistema FreeBSD
+- Cabos de rede – par trançado normal
+- Switches ou HUBs
+- Software nas máquinas: ambiente FreeBSD básico, pacotes de servidor DNS (bind9)
+- Acesso à Internet – NÃO é necessário
+- Desligar o servidor DNS para as máquinas de aula
 
 ## *Roteiro*
-1. Instale o "bind" através do gerenciador de pacotes do FreeBSD, usando o comando "pkg install bind"
+### 1. Montagem de rede interconectada para o experimento
+- H1 (192.168.1.3), H2 (192.168.1.2), H3 (192.168.1.4) e R/eth0 (192.168.1.1).
 
-2. Edite o arquivo de configuração do "named", que se encontra em "/etc/namedb/named.conf", usando o editor de texto de sua preferência
+<p align="center">
+  <img src="../../img/topologia_experimento10.png" alt="image">
+</p>
 
-3. Crie os arquivos de zona para os domínios especificados no arquivo de configuração
+### 2. Configurar os clientes na rede de testes e validar as configurações
+Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 
-4. Inicie o daemon "named" através do comando "service named start"
+### 3. Instalação do pacote de servidor DNS
+Para a execução deste experimento é essencial a instalação do pacote **bind9**, que não é incluso por padrão no FreeBSD. Para prosseguir com a instalação, execute o seguinte comando:
+```bash
+$ pkg install bind9
+$ service named start
+```
 
-5. Verifique se o servidor DNS está funcionando corretamente, usando o comando "dig" para fazer consultas ao servidor DNS
-### OU
-1. Instale o "bind" através do gerenciador de pacotes do FreeBSD, usando o comando "pkg install bind".
+Verifique se o servidor DNS está funcionando corretamente com o seguinte comando:
+```bash
+$ nslookup localhost
+```
 
-2. Edite o arquivo de configuração do "named", que se encontra em "/etc/namedb/named.conf", usando o editor de texto de sua preferência (por exemplo, o "vi"). No arquivo de configuração, especifique os domínios que o servidor DNS irá resolver, bem como as zonas de pesquisa e os endereços IP dos servidores de nomes primários e secundários.
+### 4. Configuração do Servidor DNS
+Edite o arquivo de configuração do DNS, named.conf (**/usr/local/etc/namedb/named.conf**) e adicione as seguintes linhas para configurar as suas zonas de busca direta e inversa:
+```
+zone "exemplo.com" {
+    type master;
+    file "/usr/local/etc/namedb/master/exemplo.com.db";
+};
 
-3. Crie os arquivos de zona para os domínios especificados no arquivo de configuração. Esses arquivos contêm os registros DNS para os domínios, incluindo os endereços IP dos servidores de nomes primários e secundários, os endereços IP dos servidores de correio, os endereços IP dos servidores web, etc.
+zone "1.168.192.in-addr.arpa" {
+    type master;
+    file "/usr/local/etc/namedb/master/192.168.1.db";
+};
+```
 
-4. Inicie o daemon "named" através do comando "service named start".
+Crie os arquivos de zona de busca direta e inversa. O arquivo de zona de busca direta, exemplo.com.db (**/usr/local/etc/namedb/master/exemplo.com.db**), deve conter informações sobre os seus servidores de nomes e endereços IP:
+```
+$TTL    86400
+@       IN      SOA     ns1.exemplo.com. admin.exemplo.com. (
+                        20201022      ;Serial
+                        3600          ;Refresh
+                        1800          ;Retry
+                        604800        ;Expire
+                        86400 )       ;Minimum TTL
+;
+@       IN      NS      ns1.exemplo.com.
+@       IN      A       192.168.1.3
+ns1     IN      A       192.168.1.3
+www     IN      A       192.168.1.3
+H1      IN      A       192.168.1.2
+H2      IN      A       192.168.1.4
+```
 
-5. Verifique se o servidor DNS está funcionando corretamente, usando o comando "dig" para fazer consultas ao servidor DNS. Por exemplo, use o comando "dig www.example.com" para obter o endereço IP do servidor web para o domínio "www.example.com".
+O arquivo de zona de busca inversa, 192.168.1.db (**/usr/local/etc/namedb/master/192.168.1.db**), deve conter informações sobre os seus endereços IP e nomes de host:
+```
+$TTL    86400
+@       IN      SOA     ns1.exemplo.com. admin.exemplo.com. (
+                        20201022      ;Serial
+                        3600          ;Refresh
+                        1800          ;Retry
+                        604800        ;Expire
+                        86400 )       ;Minimum TTL
+;
+@       IN      NS      ns1.exemplo.com.
+2       IN      PTR     H1.exemplo.com.
+3       IN      PTR     ns1.exemplo.com.
+4       IN      PTR     H2.exemplo.com.
+```
 
-### OU 
-1. Instale o "bind" através do gerenciador de pacotes do FreeBSD, usando o comando "pkg install bind". Este pacote inclui o utilitário "named", que é um daemon que implementa o protocolo DNS.
+Reinicie o serviço DNS usando o seguinte comando: 
+```bash
+$ service named restart.
+```
 
-2. Edite o arquivo de configuração do "named", que se encontra em "/etc/namedb/named.conf", usando o editor de texto de sua preferência (por exemplo, o "vi"). No arquivo de configuração, você deve especificar os domínios que o servidor DNS irá resolver, bem como as zonas de pesquisa e os endereços IP dos servidores de nomes primários e secundários.
+Faça consultas ao servidor DNS para verificar se está funcionando corretamente:
+```bash
+$ nslookup host_da_rede
+```
 
-3. Crie os arquivos de zona para os domínios especificados no arquivo de configuração. Esses arquivos devem ser criados na pasta "/etc/namedb/namedb/", e devem ter o mesmo nome que os domínios especificados no arquivo de configuração. Por exemplo, se você especificou o domínio "example.com" no arquivo de configuração, deve criar um arquivo chamado "example.com.db" na pasta "/etc/namedb/namedb/". Cada arquivo de zona deve conter os registros DNS para os domínios, incluindo os endereços IP dos servidores de nomes primários e secundários, os endereços IP dos servidores de correio, os endereços IP dos servidores web, etc.
 
-4. Inicie o daemon "named" através do comando "service named start". Isso fará com que o servidor DNS comece a escutar por consultas na porta 53.
+### 5. Configuração do cliente DNS
+Para que outros hosts da rede usem o servidor DNS que você configurou, é necessário especificar o endereço IP do servidor DNS como sendo o servidor de nomes padrão (ou *nameserver*) desses hosts.
 
-5. Verifique se o servidor DNS está funcionando corretamente, usando o comando "dig" para fazer consultas ao servidor DNS. Por exemplo, use o comando "dig www.example.com" para obter o endereço IP do servidor web para o domínio "www.example.com". Você também pode usar o comando "dig -x IP" para obter o nome de domínio associado a um determinado endereço IP.
+No FreeBSD, configure o arquivo resolv.conf (**/etc/resolv.conf**) especificando o servidor de nomes padrão:
+```
+nameserver 192.168.1.4
+```
 
-### Para que outros hosts da rede usem o servidor DNS que você configurou
-Para que outros hosts da rede usem o servidor DNS que você configurou, é necessário especificar o endereço IP do servidor DNS como sendo o servidor de nomes padrão (ou "nameserver") desses hosts. Isso pode ser feito de várias maneiras, dependendo do sistema operacional dos hosts e da forma como eles estão configurados. Algumas das opções são:
-
-Modificar o arquivo de configuração do resolv.conf: em alguns sistemas operacionais (como o Linux e o macOS), é possível especificar o servidor de nomes padrão editando o arquivo "/etc/resolv.conf". Neste arquivo, basta adicionar uma linha com o endereço IP do servidor DNS, da seguinte forma: "nameserver IP_DO_SERVIDOR".
-
-Modificar as configurações de rede do host: em alguns sistemas operacionais (como o Windows e o Android), é possível especificar o servidor de nomes padrão nas configurações de rede do host. Por exemplo, no Windows, você pode acessar as configurações de rede através do Painel de Controle, clicando em "Rede e Internet" e depois em "Adaptadores de Rede". Em seguida, basta selecionar a conexão de rede que deseja configurar e clicar em "Propriedades". Na janela que aparecer, selecione o protocolo "TCP/IPv4" e clique em "Propriedades". Na janela de propriedades, basta especificar o endereço IP do servidor DNS na caixa de texto "Servidores de nomes".
-
-Modificar o arquivo hostname.if: em alguns sistemas operacionais (como o FreeBSD), é possível especificar o servidor de nomes padrão editando o arquivo "hostname.if" na pasta "/etc/". Neste arquivo, basta adicionar uma linha com o endereço IP do servidor DNS, da seguinte forma: "nameserver IP_DO_SERVIDOR".
-
-Espero que essas sugestões ajudem a configurar outros hosts da rede para usar o servidor DNS que você configurou. Se você tiver mais dúvidas ou precisar de mais orientações, não hesite em perguntar.
-
-==========
-
-Aqui vai uma sugestão de como adicionar uma etapa no roteiro para configurar outro host da rede (com o sistema operacional FreeBSD ou Linux) para usar o servidor DNS configurado:
-
-6. Configure outro host da rede para usar o servidor DNS configurado.
-
-    - No host que deseja configurar, edite o arquivo de configuração do resolv.conf (que se encontra em "/etc/resolv.conf" no FreeBSD ou em "/etc/resolv.conf" no Linux).
-    - Adicione uma linha com o endereço IP do servidor DNS, da seguinte forma: "nameserver IP_DO_SERVIDOR".
-    - Salve as alterações e feche o arquivo.
-    - Verifique se o host está usando o servidor DNS configurado, fazendo uma consulta usando o comando "dig". Por exemplo, use o comando "dig www.example.com" para obter
+Verifique se o host está usando o servidor DNS configurado, fazendo uma consulta.
+```bash
+$ nslookup host_da_rede
+```
 
 ## *Questões para Estudo*
-1. O que é o DNS e qual é a sua função na Internet?
-2. Qual é o nome do daemon que implementa o protocolo DNS no FreeBSD?
-3. Onde fica o arquivo de configuração do "named" no FreeBSD?
-4. Quais são os arquivos de zona e para que servem?
-5. Como você pode verificar o funcionamento do servidor DNS no FreeBSD?
+1. Como você faria para adicionar um registro MX (Mail Exchange) ao seu arquivo de zona de busca direta?
+2. Como você faria para configurar uma zona secundária (slave) no seu servidor DNS?
+3. Como você faria para monitorar e solucionar problemas comuns de desempenho em um servidor DNS, como consultas de DNS não autorizadas ou ataques de negação de serviço (DoS)?
+4. Como você faria para configurar o seu servidor DNS para fornecer serviços de resolução de nomes para redes privadas usando NAT?
 
 ## *Referências Bibliográficas*

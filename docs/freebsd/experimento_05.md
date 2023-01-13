@@ -22,7 +22,7 @@ Objetivo e funcionamento do protocolo DHCP.
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
 - Software nas máquinas: ambiente FreeBSD básico, pacotes de servidor DHCP (isc-dhcp44-server)
-- Acesso à Internet – necessário para instalação de ferramentas
+- Acesso à Internet – necessário
 - Desligar o servidor DHCP para as máquinas de aula
 
 ## *Roteiro*
