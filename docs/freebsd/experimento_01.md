@@ -11,7 +11,7 @@ Algumas configurações básicas necessárias para o correto funcionamento de eq
 
 ## *Objetivos*
 1. Compreender as configurações básicas para navegabilidade em uma rede de computadores.
-2. Exercitar configurações básicas em diferentes sistemas operacionais e entender como usar ferramentas de diagnóstico para validar configurações.
+2. Exercitar configurações básicas e entender como usar ferramentas de diagnóstico para validar configurações.
 
 ## *Teoria abordada no experimento*
 Funcionamento básico de uma rede TCP/IP.

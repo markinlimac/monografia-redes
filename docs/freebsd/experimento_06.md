@@ -22,7 +22,7 @@ Objetivo e funcionamento do esquema ARP.
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
 - Software nas máquinas: ambiente FreeBSD básico
-- Acesso à Internet – necessário
+- Acesso à Internet – NÃO é necessário
 - Desligar o servidor DHCP para as máquinas de aula
 
 ## *Roteiro*
@@ -44,9 +44,9 @@ Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 05**.
 ### 3. Configuração do NAT
 No FreeBSD, configure o arquivo rc.conf (**/etc/rc.conf**), do gateway, citado em experiências anteriores e ponha uma interface em questão, a interface de saída, configurada de forma fixa usando um IP válido da rede de saída. Use o comando **ifconfig** para verificar o endereço configurado.
 
-Em seguida, crie uma rede privada e configure o IP da outra interface de rede do equipamento gateway para que possua o primeiro IP do espaço de endereçamento privado. Caso tenha optado por instalar DHCP nesta interface, não será necessária a configuração dos clientes que acessarão a Internet através do NAT; se esse não for seu caso, configure uma máquina cliente de testes no espaço de endereçamento da rede privada recém criada e conecte o cliente ao servidor NAT.
+Em seguida, crie uma rede privada e configure o IP da outra interface de rede do equipamento gateway para que possua o primeiro IP do espaço de endereçamento privado. Caso tenha optado por instalar DHCP nesta interface, não será necessária a configuração dos clientes que acessarão a rede externa através do NAT; se esse não for seu caso, configure uma máquina cliente de testes no espaço de endereçamento da rede privada recém criada e conecte o cliente ao servidor NAT.
 
-Edite o arquivo sysctl.conf (**/etc/sysctl.conf**), para ativar o encaminhamento de pacotes IP (IP *forwarding*), descomente a seguinte linha:
+Edite o arquivo sysctl.conf (**/etc/sysctl.conf**) para ativar o encaminhamento de pacotes IP (IP *forwarding*), descomente a seguinte linha:
 ```
 net.inet.ip.forwarding=1
 ```
@@ -56,15 +56,17 @@ Ative a configuração.
 $ sysctl net.inet.ip.forwarding=1
 ```
 
-### 4. Configuração do IPFW (filtro de pacotes)
+### 4. Configuração do Packet Filter (PF)
 Identifique as interfaces configuradas no passo acima e realize os ajustes adequados. Doravante, chamaremos **ethSaida** a interface de saída e **ethPriv** a interface interna (com ou sem DHCP).
 
-Realize a limpeza de eventuais regras de firewall presentes no equipamento:
+Realize a limpeza de eventuais regras de firewall presentes no equipamento, adicione as regras de NAT e de forwarding no ipfw:
 ```bash
-$ ipfw -f flush
-$ ipfw -f table all flush
-$ ipfw add divert natd all from any to any via em0
-$ ipfw add allow all from any to any via em0
+$ pfctl -F all
+pfctl -t nat -F
+pfctl -X
+pfctl -t nat -X
+pfctl -t nat -A POSTROUTING -o ethSaida -j MASQUERADE -m state --state RELATED,ESTABLISHED -j ACCEPT
+pfctl -A FORWARD -i ethPriv -o ethSaida -j ACCEPT
 ```
 
 Inicie o serviço de natd:
