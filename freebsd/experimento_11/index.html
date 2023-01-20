@@ -825,12 +825,39 @@
     2. Configurar os clientes na rede de testes.
   </a>
   
+    <nav class="md-nav" aria-label="2. Configurar os clientes na rede de testes.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-configuracao-manual-usando-ifconfig8" class="md-nav__link">
+    2.1 Configuração manual usando ifconfig(8)
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3.
+  <a href="#22-enderecos-multicast-uteis" class="md-nav__link">
+    2.2 Endereços Multicast Úteis
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-configuracao-de-host-ipv6" class="md-nav__link">
+    2.3 Configuração de host IPv6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-configuracao-manual-usando-o-arquivo-rcconf" class="md-nav__link">
+    2.4 Configuração manual usando o arquivo rc.conf
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1514,12 +1541,39 @@
     2. Configurar os clientes na rede de testes.
   </a>
   
+    <nav class="md-nav" aria-label="2. Configurar os clientes na rede de testes.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-configuracao-manual-usando-ifconfig8" class="md-nav__link">
+    2.1 Configuração manual usando ifconfig(8)
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3.
+  <a href="#22-enderecos-multicast-uteis" class="md-nav__link">
+    2.2 Endereços Multicast Úteis
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-configuracao-de-host-ipv6" class="md-nav__link">
+    2.3 Configuração de host IPv6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-configuracao-manual-usando-o-arquivo-rcconf" class="md-nav__link">
+    2.4 Configuração manual usando o arquivo rc.conf
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1612,6 +1666,7 @@ Conceitos básicos do IPv6</p>
 </p>
 
 <h3 id="2-configurar-os-clientes-na-rede-de-testes">2. Configurar os clientes na rede de testes.</h3>
+<h4 id="21-configuracao-manual-usando-ifconfig8">2.1 Configuração manual usando <em>ifconfig(8)</em></h4>
 <p>Para ver o estado atual da interface de rede que esta sendo usada na maquina, execute:</p>
 <pre><code class="language-bash">$ ifconfig &lt;interface_nome&gt;
 </code></pre>
@@ -1626,38 +1681,46 @@ Conceitos básicos do IPv6</p>
 <pre><code class="language-bash">$ ssh -v &lt;inet6_endereço&gt;
 </code></pre>
 <p><t style="color: red;">ATENÇÃO:</t> Este teste ira falhar caso o AddressFamily for limitado para inet no arquivo de configuração do sshd_config(8). Veja a saida de sockstat -6 | grep sshd para verificar se sshd(8) escuta o soquete IPv6.</p>
-<h3 id="3">3.</h3>
-<!-- -->
-<!-- -->
-<!-- -->
-<!-- -->
-<!-- -->
-
-<p>No FreeBSD, configure o arquivo rc.conf (<strong>/etc/rc.conf</strong>) e ponha a interface em questão configurável de forma estática, modificando o arquivo para que ele fique semelhante as linhas abaixo:</p>
-<pre><code>hostname=”freebsd”
-ifconfig_em0=”inet 192.0.2.7 netmask 255.255.255.0”
-ifconfig_em0_ipv6=”inet6 accept_rtadv”
-sshd_enable=”YES”
-# Set dumpdev to “AUTO” to enable crash dumps, “NO” to disable
-dumpdev=”AUTO”
-defaultrouter=”192.0.2.254”
+<h4 id="22-enderecos-multicast-uteis">2.2 Endereços Multicast Úteis</h4>
+<p>Um endereço <em>Multicast</em> identifica um conjunto de interfaces, onde um pacote enviado a um endereço multicast é entregue a todas as interfaces associadas a esse endereço.</p>
+<p>A seguir estão representados dois importantes endereços <em>Multicast</em>:</p>
+<ul>
+<li>ff02::1 - endereço multicast de todos os nós da rede no escopo link-local.</li>
+<li>ff02::2 - endereço multicast de todos os roteadores da rede no escopo link-local.</li>
+</ul>
+<p>É possivel enviar pacotes ICMPv6 para visualizar os nós da rede que estão conectados no mesmo link:</p>
+<pre><code class="language-bash">$ ping ff02::1
 </code></pre>
-<p>É possível que o equipamento usado para testes possua uma designação de interface de rede diferente 
-de em0. É praxe em0 ser vinculada à primeira interface de rede Ethernet do computador que executa o 
-kernel do FreeBSD.</p>
-<p>Dispondo de privilégios de superusuário, execute o seguinte comando para forçar a configuração da mesma:</p>
-<pre><code class="language-bash">$ ./etc/netstart &lt;interface&gt;
+<p><t style="color: red;">ATENÇÃO:</t> É necessário informar o identificador de zona no comando anterior. </p>
+<p>A partir das informações dadas, faça a mesma coisa para visualizar os roteadores que estão conectados no mesmo link.</p>
+<h4 id="23-configuracao-de-host-ipv6">2.3 Configuração de host IPv6</h4>
+<p>No IPv6 é possivel configurar mais de um endereço em uma única interface:</p>
+<pre><code class="language-bash">$ ifconfig &lt;interface&gt; inet6 fe80::1/64
 </code></pre>
-<p><t style="color: red;">ATENÇÃO:</t> substitua <strong>&lt;interface&gt;</strong> pelo identificador da interface de rede do equipamento de testes.</p>
-<p>Em seguida, para verificar o endereço configurado, use o comando:</p>
-<pre><code class="language-bash">$ ifconfig
+<p>Envie pacotes icmp (<strong>ping</strong>) para testar a configuração:</p>
+<pre><code class="language-bash">$ ping fe80::1/64
 </code></pre>
-<p>Também é possível executar os seguintes comandos para configuração das interfaces de rede:</p>
-<pre><code class="language-bash">$ # ifconfig interface-name IP-address netmask Netmask
-$ ifconfig em0 192.168.133.250 netmask 255.255.255.0
-$ route add default 192.168.133.1
-$ route -n
+<p>Execute o serviço SSH no FreeBSD e faça um teste para verificar se é possivel conectar no SSH através do IPv6.</p>
+<pre><code class="language-bash">$ ssh -v &lt;inet6_endereço&gt;
 </code></pre>
+<p>Para remover um endereço específico, pode-se usar o parametro <em>-alias</em>:</p>
+<pre><code class="language-bash">$ ifconfig &lt;interface&gt; inet6 fe80::1/64 -alias
+</code></pre>
+<h4 id="24-configuracao-manual-usando-o-arquivo-rcconf">2.4 Configuração manual usando o arquivo <em>rc.conf</em></h4>
+<p>Para configurar o IPv6 no arquivo rc.conf (<strong>/etc/rc.conf</strong>) utiliza-se o <code>ifconfig_&lt;interface&gt;_ipv6</code> para indicar que a interface <code>&lt;interface&gt;</code> é compativel com IPv6. Na seguinte seguinte configuração, apenas um endereço de link-local é configurado automaticamente:</p>
+<pre><code>ifconfig_bge0=&quot;inet 192.168.0.10/24&quot;
+ifconfig_bge0_ipv6=&quot;inet6 auto_linklocal&quot;
+</code></pre>
+<p>Se você quiser adicionar outro endereço de link local manualmente, você pode adicionar a linha <code>inet6</code> em <code>ifconfig_bge0_ipv6</code>.</p>
+<pre><code>ifconfig_bge0=&quot;inet 192.168.0.10/24&quot;
+ifconfig_bge0_ipv6=&quot;inet6 fe80::1/64&quot;
+</code></pre>
+<p>Mais endereços podem ainda ser adicionados usando a linha <code>ifconfig_bge0_alias0</code>:</p>
+<pre><code>ifconfig_bge0=&quot;inet 192.168.0.10/24&quot;
+ifconfig_bge0_ipv6=&quot;inet6 fe80::1/64&quot;
+ifconfig_bge0_alias0=&quot;inet6 2001:db8::1/64&quot;
+</code></pre>
+<p>A partir dos exemplos dados até aqui, configure os endereços mencionados na topologia nos devidos hosts.</p>
 <h3 id="3-validando-as-configuracoes">3. Validando as configurações</h3>
 <p>Confira a conectividade básica enviando pacotes ICMP para algum outro computador que esteja conectado à mesma rede:</p>
 <pre><code class="language-bash">$ ping &lt;IP-address&gt;
@@ -1671,7 +1734,8 @@ $ route -n
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
 <ol>
 <li>Em certo momento do experimento, bastou apenas executar o comando <strong>ifconfig &lt;interface_nome&gt; inet6 -ifdisabled</strong> para que um IPv6 fosse configurado. Porque ocorreu isso e como desativar essa configuração automatica?</li>
-<li>O que é StateLess Address AutoConfiguration e qual é a principal diferença entre esse protocolo e o DHCPv6 para atribuição de endereços IPv6?</li>
+<li>O que é StateLess Address AutoConfiguration (SLAAC) e qual suautilidade na atribuição de endereços IPv6?</li>
+<li>Explique os tipos de endereço IPv6 e seus respectivos prefixos? </li>
 </ol>
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
 <!--
