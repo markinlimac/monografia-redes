@@ -600,8 +600,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-configuracao-do-ipfw-filtro-de-pacotes" class="md-nav__link">
-    4. Configuração do IPFW (filtro de pacotes)
+  <a href="#4-configuracao-do-packet-filter-pf" class="md-nav__link">
+    4. Configuração do Packet Filter (PF)
   </a>
   
 </li>
@@ -1517,8 +1517,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-configuracao-do-ipfw-filtro-de-pacotes" class="md-nav__link">
-    4. Configuração do IPFW (filtro de pacotes)
+  <a href="#4-configuracao-do-packet-filter-pf" class="md-nav__link">
+    4. Configuração do Packet Filter (PF)
   </a>
   
 </li>
@@ -1584,7 +1584,7 @@
 <li>Cabos de rede – par trançado normal</li>
 <li>Switches ou HUBs</li>
 <li>Software nas máquinas: ambiente FreeBSD básico</li>
-<li>Acesso à Internet – necessário</li>
+<li>Acesso à Internet – NÃO é necessário</li>
 <li>Desligar o servidor DHCP para as máquinas de aula</li>
 </ul>
 <h2 id="roteiro"><em>Roteiro</em></h2>
@@ -1603,20 +1603,22 @@
 <p>Lembrem-se das etapas que foram percorridas na <strong>Prática de Laboratório 05</strong>.</p>
 <h3 id="3-configuracao-do-nat">3. Configuração do NAT</h3>
 <p>No FreeBSD, configure o arquivo rc.conf (<strong>/etc/rc.conf</strong>), do gateway, citado em experiências anteriores e ponha uma interface em questão, a interface de saída, configurada de forma fixa usando um IP válido da rede de saída. Use o comando <strong>ifconfig</strong> para verificar o endereço configurado.</p>
-<p>Em seguida, crie uma rede privada e configure o IP da outra interface de rede do equipamento gateway para que possua o primeiro IP do espaço de endereçamento privado. Caso tenha optado por instalar DHCP nesta interface, não será necessária a configuração dos clientes que acessarão a Internet através do NAT; se esse não for seu caso, configure uma máquina cliente de testes no espaço de endereçamento da rede privada recém criada e conecte o cliente ao servidor NAT.</p>
-<p>Edite o arquivo sysctl.conf (<strong>/etc/sysctl.conf</strong>), para ativar o encaminhamento de pacotes IP (IP <em>forwarding</em>), descomente a seguinte linha:</p>
+<p>Em seguida, crie uma rede privada e configure o IP da outra interface de rede do equipamento gateway para que possua o primeiro IP do espaço de endereçamento privado. Caso tenha optado por instalar DHCP nesta interface, não será necessária a configuração dos clientes que acessarão a rede externa através do NAT; se esse não for seu caso, configure uma máquina cliente de testes no espaço de endereçamento da rede privada recém criada e conecte o cliente ao servidor NAT.</p>
+<p>Edite o arquivo sysctl.conf (<strong>/etc/sysctl.conf</strong>) para ativar o encaminhamento de pacotes IP (IP <em>forwarding</em>), descomente a seguinte linha:</p>
 <pre><code>net.inet.ip.forwarding=1
 </code></pre>
 <p>Ative a configuração.</p>
 <pre><code class="language-bash">$ sysctl net.inet.ip.forwarding=1
 </code></pre>
-<h3 id="4-configuracao-do-ipfw-filtro-de-pacotes">4. Configuração do IPFW (filtro de pacotes)</h3>
+<h3 id="4-configuracao-do-packet-filter-pf">4. Configuração do Packet Filter (PF)</h3>
 <p>Identifique as interfaces configuradas no passo acima e realize os ajustes adequados. Doravante, chamaremos <strong>ethSaida</strong> a interface de saída e <strong>ethPriv</strong> a interface interna (com ou sem DHCP).</p>
-<p>Realize a limpeza de eventuais regras de firewall presentes no equipamento:</p>
-<pre><code class="language-bash">$ ipfw -f flush
-$ ipfw -f table all flush
-$ ipfw add divert natd all from any to any via em0
-$ ipfw add allow all from any to any via em0
+<p>Realize a limpeza de eventuais regras de firewall presentes no equipamento, adicione as regras de NAT e de forwarding no ipfw:</p>
+<pre><code class="language-bash">$ pfctl -F all
+pfctl -t nat -F
+pfctl -X
+pfctl -t nat -X
+pfctl -t nat -A POSTROUTING -o ethSaida -j MASQUERADE -m state --state RELATED,ESTABLISHED -j ACCEPT
+pfctl -A FORWARD -i ethPriv -o ethSaida -j ACCEPT
 </code></pre>
 <p>Inicie o serviço de natd:</p>
 <pre><code class="language-bash">$ natd -f /etc/natd.conf -s

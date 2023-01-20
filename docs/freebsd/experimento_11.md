@@ -37,6 +37,7 @@ Conceitos básicos do IPv6
 </p>
 
 ### 2. Configurar os clientes na rede de testes.
+#### 2.1 Configuração manual usando *ifconfig(8)*
 Para ver o estado atual da interface de rede que esta sendo usada na maquina, execute:
 ```bash
 $ ifconfig <interface_nome>
@@ -60,48 +61,64 @@ $ ssh -v <inet6_endereço>
 ```
 <t style="color: red;">ATENÇÃO:</t> Este teste ira falhar caso o AddressFamily for limitado para inet no arquivo de configuração do sshd_config(8). Veja a saida de sockstat -6 | grep sshd para verificar se sshd(8) escuta o soquete IPv6.
 
-### 3. 
-<!-- -->
-<!-- -->
-<!-- -->
-<!-- -->
-<!-- -->
+#### 2.2 Endereços Multicast Úteis
+Um endereço *Multicast* identifica um conjunto de interfaces, onde um pacote enviado a um endereço multicast é entregue a todas as interfaces associadas a esse endereço.
 
-No FreeBSD, configure o arquivo rc.conf (**/etc/rc.conf**) e ponha a interface em questão configurável de forma estática, modificando o arquivo para que ele fique semelhante as linhas abaixo:
+A seguir estão representados dois importantes endereços *Multicast*:
 
-```
-hostname=”freebsd”
-ifconfig_em0=”inet 192.0.2.7 netmask 255.255.255.0”
-ifconfig_em0_ipv6=”inet6 accept_rtadv”
-sshd_enable=”YES”
-# Set dumpdev to “AUTO” to enable crash dumps, “NO” to disable
-dumpdev=”AUTO”
-defaultrouter=”192.0.2.254”
-```
+- ff02::1 - endereço multicast de todos os nós da rede no escopo link-local.
+- ff02::2 - endereço multicast de todos os roteadores da rede no escopo link-local.
 
-É possível que o equipamento usado para testes possua uma designação de interface de rede diferente 
-de em0. É praxe em0 ser vinculada à primeira interface de rede Ethernet do computador que executa o 
-kernel do FreeBSD.
-
-Dispondo de privilégios de superusuário, execute o seguinte comando para forçar a configuração da mesma:
+É possivel enviar pacotes ICMPv6 para visualizar os nós da rede que estão conectados no mesmo link:
 ```bash
-$ ./etc/netstart <interface>
+$ ping ff02::1
 ```
-<t style="color: red;">ATENÇÃO:</t> substitua **&lt;interface&gt;** pelo identificador da interface de rede do equipamento de testes.
+<t style="color: red;">ATENÇÃO:</t> É necessário informar o identificador de zona no comando anterior. 
 
-Em seguida, para verificar o endereço configurado, use o comando:
+A partir das informações dadas, faça a mesma coisa para visualizar os roteadores que estão conectados no mesmo link.
+
+#### 2.3 Configuração de host IPv6 
+No IPv6 é possivel configurar mais de um endereço em uma única interface:
 ```bash
-$ ifconfig
+$ ifconfig <interface> inet6 fe80::1/64
 ```
 
-Também é possível executar os seguintes comandos para configuração das interfaces de rede:
-
+Envie pacotes icmp (**ping**) para testar a configuração:
 ```bash
-$ # ifconfig interface-name IP-address netmask Netmask
-$ ifconfig em0 192.168.133.250 netmask 255.255.255.0
-$ route add default 192.168.133.1
-$ route -n
+$ ping fe80::1/64
 ```
+
+Execute o serviço SSH no FreeBSD e faça um teste para verificar se é possivel conectar no SSH através do IPv6.
+```bash
+$ ssh -v <inet6_endereço>
+```
+
+Para remover um endereço específico, pode-se usar o parametro *-alias*:
+```bash
+$ ifconfig <interface> inet6 fe80::1/64 -alias
+```
+
+#### 2.4 Configuração manual usando o arquivo *rc.conf*
+Para configurar o IPv6 no arquivo rc.conf (**/etc/rc.conf**) utiliza-se o `ifconfig_<interface>_ipv6` para indicar que a interface `<interface>` é compativel com IPv6. Na seguinte seguinte configuração, apenas um endereço de link-local é configurado automaticamente:
+```
+ifconfig_bge0="inet 192.168.0.10/24"
+ifconfig_bge0_ipv6="inet6 auto_linklocal"
+```
+
+Se você quiser adicionar outro endereço de link local manualmente, você pode adicionar a linha ``inet6`` em ``ifconfig_bge0_ipv6``.
+```
+ifconfig_bge0="inet 192.168.0.10/24"
+ifconfig_bge0_ipv6="inet6 fe80::1/64"
+```
+
+Mais endereços podem ainda ser adicionados usando a linha ``ifconfig_bge0_alias0``:
+```
+ifconfig_bge0="inet 192.168.0.10/24"
+ifconfig_bge0_ipv6="inet6 fe80::1/64"
+ifconfig_bge0_alias0="inet6 2001:db8::1/64"
+```
+
+A partir dos exemplos dados até aqui, configure os endereços mencionados na topologia nos devidos hosts.
 
 ### 3. Validando as configurações
 Confira a conectividade básica enviando pacotes ICMP para algum outro computador que esteja conectado à mesma rede:
@@ -121,7 +138,8 @@ Obs.: Esse tipo de configuração explorada no experimento é chamada de **Manua
 
 ## *Questões para Estudo*
 1. Em certo momento do experimento, bastou apenas executar o comando **ifconfig &lt;interface_nome&gt; inet6 -ifdisabled** para que um IPv6 fosse configurado. Porque ocorreu isso e como desativar essa configuração automatica?
-2. O que é StateLess Address AutoConfiguration e qual é a principal diferença entre esse protocolo e o DHCPv6 para atribuição de endereços IPv6?
+2. O que é StateLess Address AutoConfiguration (SLAAC) e qual suautilidade na atribuição de endereços IPv6?
+3. Explique os tipos de endereço IPv6 e seus respectivos prefixos? 
 
 ## *Referências Bibliográficas*
 
