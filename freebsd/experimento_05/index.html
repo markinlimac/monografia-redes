@@ -540,7 +540,7 @@
         
           <li class="md-nav__item">
   <a href="#2-configurar-os-clientes-na-rede-de-testes-e-validar-as-configuracoes" class="md-nav__link">
-    2. Configurar os clientes na rede de testes e validar as configurações.
+    2. Configurar os clientes na rede de testes e validar as configurações
   </a>
   
 </li>
@@ -1511,7 +1511,7 @@
         
           <li class="md-nav__item">
   <a href="#2-configurar-os-clientes-na-rede-de-testes-e-validar-as-configuracoes" class="md-nav__link">
-    2. Configurar os clientes na rede de testes e validar as configurações.
+    2. Configurar os clientes na rede de testes e validar as configurações
   </a>
   
 </li>
@@ -1597,7 +1597,7 @@
 <li>Máquinas com sistema FreeBSD</li>
 <li>Cabos de rede – par trançado normal</li>
 <li>Switches ou HUBs</li>
-<li>Software nas máquinas: ambiente FreeBSD básico, pacotes de servidor DHCP (isc-dhcp44-server)</li>
+<li>Software nas máquinas: ambiente FreeBSD básico, pacotes de servidor DHCP (<strong>isc-dhcp44-server</strong>)</li>
 <li>Acesso à Internet – necessário</li>
 <li>Desligar o servidor DHCP para as máquinas de aula</li>
 </ul>
@@ -1610,7 +1610,7 @@
   <img src="../../img/topologia_experimento5.png" alt="image">
 </p>
 
-<h3 id="2-configurar-os-clientes-na-rede-de-testes-e-validar-as-configuracoes">2. Configurar os clientes na rede de testes e validar as configurações.</h3>
+<h3 id="2-configurar-os-clientes-na-rede-de-testes-e-validar-as-configuracoes">2. Configurar os clientes na rede de testes e validar as configurações</h3>
 <p>Lembrem-se das etapas que foram percorridas na <strong>Prática de Laboratório 01</strong>.</p>
 <h3 id="3-instalacao-do-pacote-de-servidor-dhcp">3. Instalação do pacote de servidor DHCP</h3>
 <p>Para a execução deste experimento é essencial a instalação do pacote <strong>isc-dhcp44-server</strong>, que não é incluso por padrão no FreeBSD. Para prosseguir com a instalação, execute o seguinte comando:</p>
@@ -1619,27 +1619,26 @@
 <p><t style="color: red;">ATENÇÃO:</t> É normal ocorrer uma falha, pois, ao finalizar a instalação, ele tenta iniciar o servidor que não tem nenhum escopo DHCP criado ainda.</p>
 <h3 id="4-configuracao-do-servidor-dhcp">4. Configuração do Servidor DHCP</h3>
 <p>Os arquivos mais importantes do servidor DHCP a ser usado, são:</p>
-<p><strong>/etc/dhcp3/dhcpd.conf</strong> : configurações para o servidor DHCP</p>
+<p><strong>/etc/dhcp/dhcpd.conf</strong> : configurações para o servidor DHCP</p>
 <p><strong>/var/lib/dhcp/dhcpd.leases</strong> : <em>leases</em> já ofertados pelo servidor DHCP</p>
-<p>A configuração do servidor está toda no arquivo dhcpd.conf. Segue abaixo um exemplo comentado:</p>
-<pre><code># ddns=update-style none -&gt; nao vai aceitar atualizações dinâmicas de dns
-# Exemplo de configuração
+<p>A configuração do servidor está toda no arquivo <strong>dhcpd.conf</strong>. Segue abaixo um exemplo comentado:</p>
+<pre><code># Exemplo de configuração
 # Tempo de lease: default mínimo (10 min) e máximo (2 hs)
 # Outros valores: 86400 (1 dia), 604800 (1 semana) e 2592000 (30 dias)
-default-lease-time 600; OK
-max-lease-time 7200; OK
+default-lease-time 600;
+max-lease-time 7200;
 # Reconhece e corrige pedidos de endereços incoerentes
-authoritative; -&gt; torna o servidor DHCP autoritativo da rede, servidor dhcp oficial da rede local OK
-option domain-name-servers 192.168.1.1, 192.168.1.2; #endereço dos servidores dns (roteador e 8.8.8.8 da internet) OK
-option domain-name &quot;mydomain.org&quot;; #nome de dominio OK
-# Pode-se incluir opções especificas para uma subrede (configurações de subrede onde cria os escopos)
-subnet 192.168.1.0 netmask 255.255.255.0 { #ip do escopo (onde a rede esta) e mascara da sub rede
- range 192.168.1.10 192.168.1.100; #faixa de ip que vai usar na rede
- range 192.168.1.150 192.168.1.200; #faixa de ip que vai usar na rede
- # Opções de rede comuns
- option subnet-mask 255.255.255.0; #mascara de sub rede
- option broadcast-address 192.168.1.255; #endereço de broadcast da rede
- option routers 192.168.1.254; #gateway padrão
+authoritative;
+# Opções de rede comuns
+option subnet-mask 255.255.255.0;
+option broadcast-address 192.168.1.255;
+option routers 192.168.1.1;
+option domain-name-servers 192.168.1.1;
+option domain-name &quot;mydomain.org&quot;;
+# Pode-se incluir opções especificas para uma subrede
+subnet 192.168.1.0 netmask 255.255.255.0 {
+ range 192.168.1.2 192.168.1.100;
+ range 192.168.1.150 192.168.1.200;
 }
 # Para designar WINS server para estacões WIN
 #option netbios-name-servers 192.168.1.1;
@@ -1694,6 +1693,12 @@ host haagen {
 <li>Podemos ter mais de um servidor DHCP numa rede? Pode haver alguma confusão? O que acontece se houver?</li>
 </ol>
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
+<p>REIS, Fábio. Como configurar um servidor DHCP no Linux. Boson treinamentos, 2013. Disponível em: http://www.bosontreinamentos.com.br/linux/servidor-dhcp-no-linux/. Acesso em: 14 dez. de 2022.</p>
+<p>MEL. How to install DHCP Server on FreeBSD. Unixcop, 2022. Disponível em: https://unixcop.com/how-to-install-dhcp-server-on-freebsd/. Acesso em: 14 dez. de 2022.</p>
+<p>REIS, Fábio. Servidor DHCP no Linux 01 - Instalação e Configuração de um Escopo. YouTube, 16 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=hqS_EuQA6pQ. Acesso em: 14 dez. de 2022.</p>
+<p>REIS, Fábio. Servidor DHCP no Linux 02 - Ativando e Testando o Escopo criado. YouTube, 16 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=0hfJEnYk_6A. Acesso em: 14 dez. de 2022.</p>
+<p>DROMS, R. Automated configuration of TCP/IP with DHCP. IEEE Internet Computing, 1999.</p>
+<p>LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.</p>
 
 
 
