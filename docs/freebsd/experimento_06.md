@@ -14,7 +14,7 @@ Para o correto funcionamento de redes, alguns serviços de nível de aplicação
 2. Entender como funciona a implementação do NAT no FreeBSD, e configurá-la.
 
 ## *Teoria abordada no experimento*
-Objetivo e funcionamento do esquema ARP.
+Objetivo e funcionamento do esquema NAT.
 
 ## *Material Necessário*
 - Interfaces de rede (NIC's)
@@ -59,44 +59,22 @@ $ sysctl net.inet.ip.forwarding=1
 ### 4. Configuração do Packet Filter (PF)
 Identifique as interfaces configuradas no passo acima e realize os ajustes adequados. Doravante, chamaremos **ethSaida** a interface de saída e **ethPriv** a interface interna (com ou sem DHCP).
 
-Realize a limpeza de eventuais regras de firewall presentes no equipamento, adicione as regras de NAT e de forwarding no ipfw:
-```bash
-$ pfctl -F all
-pfctl -t nat -F
-pfctl -X
-pfctl -t nat -X
-pfctl -t nat -A POSTROUTING -o ethSaida -j MASQUERADE -m state --state RELATED,ESTABLISHED -j ACCEPT
-pfctl -A FORWARD -i ethPriv -o ethSaida -j ACCEPT
+Configure o arquivo de configuração do pf (**/etc/pf.conf**) para executar o NAT na interface de saída para quaisquer pacotes provenientes da rede interna, substituindo o endereço privado pelo endereço externo:
+```
+pass out on ethSaida inet from ethPriv:network to any nat-to (ethSaida)
 ```
 
-Inicie o serviço de natd:
-```bash
-$ natd -f /etc/natd.conf -s
-```
+Há várias maneiras de configurar o arquivo pf.conf para funcionar como NAT, mas a maneira descrita é a que funciona melhor para os mais variados tipos de endereçamento de rede, seja ele manual ou dinâmico.
 
-<!-- 
-Adicione uma rota para a rede de saída, para que as máquinas da rede privada saibam qual é o próximo salto para acessar a Internet. Isso pode ser feito adicionando a seguinte linha ao arquivo /etc/rc.conf:
-```bash
-$ route_<interface_de_entrada>="-net <rede_de_saida> <gateway_da_rede_de_saida> <mascara_de_rede>"
-```
+Para visualizar as traduções NAT ativas, o utilitário **pfctl(8)** é usado com o parâmetro **-s state**. Esta opção listará todas as sessões NAT atuais.
 
-ou
-
-Adicione uma regra no firewall (ipfw) para liberar o tráfego de saída na interface de entrada (em1) para a rede de saída (em0)
-```bash
-$ route_<interface_de_entrada>="-net <rede_de_saida> <gateway_da_rede_de_saida> <mascara_de_rede>"
-```
-
-
--->
-
-Teste as configurações de rede usando as ferramentas discutidas em práticas anteriores. Recomenda-se as seguintes etapas de testes: teste de conectividade entre equipamentos da rede privada e o gateway com NAT, teste de conectividade entre equipamentos da rede privada e equipamentos situados na rede de saída do gateway e teste de conectividade entre equipamentos da rede privada e equipamentos na Internet.
+Teste as configurações de rede usando as ferramentas discutidas em práticas anteriores. Recomenda-se as seguintes etapas de testes: teste de conectividade entre equipamentos da rede privada e o gateway com NAT, teste de conectividade entre equipamentos da rede privada e equipamentos situados na rede de saída do gateway e teste de conectividade entre equipamentos da rede privada e equipamentos na rede externa.
 
 ## *Questões para Estudo*
-1. Alguns passos foram omitidos nesse roteiro. A partir da metodologia de testes, identifique o problema e apresente a solução para que a rede privada recém criada seja capaz de conectar-se à Internet.
+1. Alguns passos foram omitidos nesse roteiro. A partir da metodologia de testes, identifique o problema e apresente a solução para que a rede privada recém criada seja capaz de conectar-se à rede externa.
 2. Consulte a documentação das ferramentas usadas na implementação do NAT e indique o resultado de cada um dos comandos necessários à implementação do NAT.
-3. Como você sugere verificar se está acessando a Internet através de um NAT?
-4. Reinicie o seu equipamento usado para a implementação de um NAT usando o sistema operacional Linux e verifique se as suas configurações ainda funcionam. Descreva que tipo de procedimentos foram realizados para tornar as configurações de NAT persistentes.
-5. Utilizando o sistema operacional FreeBSD, quais serão as etapas necessárias para a implementação de um NAT de comportamento semelhante ao que foi implementado em sala de aula com o Linux?
+3. Como você sugere verificar se está acessando a rede externa através de um NAT?
+4. Reinicie o seu equipamento usado para a implementação de um NAT usando o sistema operacional FreeBSD e verifique se as suas configurações ainda funcionam. Descreva que tipo de procedimentos foram realizados para tornar as configurações de NAT persistentes.
 
 ## *Referências Bibliográficas*
+https://www.openbsd.org/faq/pf/nat.html

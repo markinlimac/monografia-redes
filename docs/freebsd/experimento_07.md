@@ -14,7 +14,7 @@ Para o correto funcionamento de redes, alguns serviços de nível de camada de r
 2. Entender o papel do protocolo ARP e como acontecem suas interações.
 
 ## *Teoria abordada no experimento*
-Objetivo e funcionamento do esquema NAT.
+Objetivo e funcionamento do esquema ARP.
 
 ## *Material Necessário*
 - Interfaces de rede (NIC's)

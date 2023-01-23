@@ -37,10 +37,10 @@ Além dessa topologia, haverá equipamentos que proverão os serviços necessár
   <img src="../../img/topologia_experimento3.png" alt="image">
 </p>
 
-### 2. Configurar os clientes na rede de testes e validar as configurações.
+### 2. Configurar os clientes na rede de testes e validar as configurações
 Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 
-### 3. Abertura de um socket servidor.
+### 3. Abertura de um socket servidor
 Usando um dos computadores disponíveis para o experimento e **usando privilégios administrativos**, habilite um socket TCP em estado de escuta. Como ferramenta de apoio, use a aplicação **netcat**. Para tanto execute:
 ```bash
 $ nc -l numero_da_porta

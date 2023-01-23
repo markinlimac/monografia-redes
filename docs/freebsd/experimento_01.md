@@ -33,7 +33,7 @@ Funcionamento básico de uma rede TCP/IP.
   <img src="../../img/topologia_experimento1.png" alt="image">
 </p>
 
-### 2. Configurar os clientes na rede de testes.
+### 2. Configurar os clientes na rede de testes
 No FreeBSD, configure o arquivo rc.conf (**/etc/rc.conf**) e ponha a interface em questão configurável de forma estática, modificando o arquivo para que ele fique semelhante as linhas abaixo:
 
 ```
