@@ -55,7 +55,7 @@ A configuração do servidor está toda no arquivo dhcpd.conf. Segue abaixo um e
 ```
 # ddns=update-style none -> nao vai aceitar atualizações dinâmicas de dns
 # Exemplo de configuração
-# Tempo de lease: default mínimo (10 min) e maximo (2 hs)
+# Tempo de lease: default mínimo (10 min) e máximo (2 hs)
 # Outros valores: 86400 (1 dia), 604800 (1 semana) e 2592000 (30 dias)
 default-lease-time 600; OK
 max-lease-time 7200; OK
@@ -63,18 +63,18 @@ max-lease-time 7200; OK
 authoritative; -> torna o servidor DHCP autoritativo da rede, servidor dhcp oficial da rede local OK
 option domain-name-servers 192.168.1.1, 192.168.1.2; #endereço dos servidores dns (roteador e 8.8.8.8 da internet) OK
 option domain-name "mydomain.org"; #nome de dominio OK
-# Pode-se incluir opcoes especificas para uma subrede (configurações de subrede onde cria os escopos)
+# Pode-se incluir opções especificas para uma subrede (configurações de subrede onde cria os escopos)
 subnet 192.168.1.0 netmask 255.255.255.0 { #ip do escopo (onde a rede esta) e mascara da sub rede
  range 192.168.1.10 192.168.1.100; #faixa de ip que vai usar na rede
  range 192.168.1.150 192.168.1.200; #faixa de ip que vai usar na rede
- # Opcoes de rede comuns
+ # Opções de rede comuns
  option subnet-mask 255.255.255.0; #mascara de sub rede
  option broadcast-address 192.168.1.255; #endereço de broadcast da rede
- option routers 192.168.1.254; #gateway padrao
+ option routers 192.168.1.254; #gateway padrão
 }
-# Para designar WINS server para estacoes WIN
+# Para designar WINS server para estacões WIN
 #option netbios-name-servers 192.168.1.1;
-# Para atribuir um endereco especifico para um MAC - suporte a clientes
+# Para atribuir um endereço especifico para um MAC - suporte a clientes
 # BOOTP
 host haagen {
  option host-name “leao.labredes.unb.br”;
@@ -124,14 +124,14 @@ Para verificar o endereço obtido do servidor DHCP:
 ```bash
 $ ifconfig
 ```
-<t style="color: red;">ATENÇÃO:</t> Caso o comando **ifconfig** não aponte o ip adquirido através do DHCP, pode ser necessario reiniciar a interface de rede (**ifdown &lt;interface&gt;** + **ifup &lt;interface&gt;**) ou **dhclient &lt;interface&gt;**
+<t style="color: red;">ATENÇÃO:</t> Caso o comando **ifconfig** não aponte o ip adquirido através do DHCP, pode ser necessário reiniciar a interface de rede (**ifdown &lt;interface&gt;** + **ifup &lt;interface&gt;**) ou **dhclient &lt;interface&gt;**
 
 Verifique se o cliente está usando o servidor DHCP correto:
 ```bash
 $ dhclient -v
 ```
 
-Atraves do arquivo de *leases*, verifque as concessões ativas do servidor dhcp:
+Através do arquivo de *leases*, verifique as concessões ativas do servidor dhcp:
 ```bash
 $ cat /var/lib/dhcp/dhcpd.leases | less
 ```

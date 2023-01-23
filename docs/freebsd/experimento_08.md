@@ -1,15 +1,15 @@
-# Firewall
+# *Firewall*
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_08.pdf)
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 08</p>
-<p align="center"><b>Firewall</b></p>
+<p align="center"><b><i>Firewall<i></b></p>
 
 ## *Introdução*
 *Firewall* é uma solução de segurança baseada em *hardware* ou *software* (mais comum) que, a partir de um conjunto de regras ou instruções, analisa o tráfego de rede para determinar quais operações de transmissão ou recepção de dados podem ser executadas. "Parede de fogo", a tradução literal do nome, já deixa claro que o *firewall* se enquadra em uma espécie de barreira de defesa. A sua missão, por assim dizer, consiste basicamente em bloquear tráfego de dados indesejado e liberar acessos bem-vindos. [[1](https://pt.wikipedia.org/wiki/Firewall)]
 
-IPFW é um firewall de pacotes do sistema operacional FreeBSD. Ele fornece controles detalhados para os pacotes IP que passam pelo firewall. Com ele, é possível criar regras para permitir ou negar pacotes com base em critérios como origem, destino, porta, protocolo, tempo de execução, prioridade e muito mais. É possível criar regras para permitir ou negar o acesso a serviços específicos ou a segmentos da rede. IPFW também suporta o NAT (Network Address Translation) para permitir o uso de endereços IP privados em uma rede pública.
+IPFW é um *firewall* de pacotes do sistema operacional FreeBSD. Ele fornece controles detalhados para os pacotes IP que passam pelo *firewall*. Com ele, é possível criar regras para permitir ou negar pacotes com base em critérios como origem, destino, porta, protocolo, tempo de execução, prioridade e muito mais. É possível criar regras para permitir ou negar o acesso a serviços específicos ou a segmentos da rede. IPFW também suporta o NAT (Network Address Translation) para permitir o uso de endereços IP privados em uma rede pública.
 
 ## *Objetivos*
 1. Entender como funciona a implementação de *firewalls* usando o FreeBSD.
@@ -116,18 +116,18 @@ Crie regras em R de modo que S1 não seja capaz de encaminhar pacotes UDP para o
 ```bash
 $ ipfw add 110 deny udp from 172.25.0.2 to 192.168.1.3
 ```
-<t style="color: red;">ATENÇÃO:</t> É importante mencionar que as regras de firewall são baseadas na ordem de criação, então a ordem destas regras é importante para garantir que elas estejam funcionando corretamente.
+<t style="color: red;">ATENÇÃO:</t> É importante mencionar que as regras de <i>firewall</i> são baseadas na ordem de criação, então a ordem destas regras é importante para garantir que elas estejam funcionando corretamente.
 
 ### 7. Testes: Validação das intervenções da Etapa 2
 Para testar as regras de filtragem UDP da Etapa 2, use o envio de consultas DNS para provocar a transmissão de pacotes DNS.
 
 Experimente realizar a conexão SSH entre H1 e S1 usando a regra de DNAT criada.
 
-<t style="color: red;">ATENÇÃO:</t> É possível verificar o log do firewall usando o comando **ipfw show log** ou **ipfw show log verbose** para obter informações adicionais, como endereços IP e portas. Para verificar o log do sistema, você pode usar o comando **tail -f /var/log/messages** ou **syslog** que irá exibir as mensagens de log geradas pelo sistema operacional.
+<t style="color: red;">ATENÇÃO:</t> É possível verificar o log do <i>firewall</i> usando o comando **ipfw show log** ou **ipfw show log verbose** para obter informações adicionais, como endereços IP e portas. Para verificar o log do sistema, você pode usar o comando **tail -f /var/log/messages** ou **syslog** que irá exibir as mensagens de log geradas pelo sistema operacional.
 
 ## *Questões para Estudo*
 1. O serviço ssh é sobre o TCP ou UDP? Conferir com o tcpdump, simulando a situação onde S1 faz ssh em H1.
-2. Em relação aos testes do Item 4 (testes da Etapa 1) do roteiro, como é possível ao Nmap indicar a eventual presença de portas filtradas através do roteador R que atua como Firewall?
+2. Em relação aos testes do Item 4 (testes da Etapa 1) do roteiro, como é possível ao Nmap indicar a eventual presença de portas filtradas através do roteador R que atua como *Firewall*?
 
 ## *Referências Bibliográficas*
 [1] https://pt.wikipedia.org/wiki/Firewall

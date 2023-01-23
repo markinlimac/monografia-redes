@@ -46,7 +46,7 @@ No FreeBSD, configure o arquivo rc.conf (**/etc/rc.conf**), do gateway, citado e
 
 Em seguida, crie uma rede privada e configure o IP da outra interface de rede do equipamento gateway para que possua o primeiro IP do espaço de endereçamento privado. Caso tenha optado por instalar DHCP nesta interface, não será necessária a configuração dos clientes que acessarão a rede externa através do NAT; se esse não for seu caso, configure uma máquina cliente de testes no espaço de endereçamento da rede privada recém criada e conecte o cliente ao servidor NAT.
 
-Edite o arquivo sysctl.conf (**/etc/sysctl.conf**) para ativar o encaminhamento de pacotes IP (IP *forwarding*), descomente a seguinte linha:
+Edite o arquivo sysctl.conf (**/etc/sysctl.conf**) para ativar o encaminhamento de pacotes IP (IP *forwarding*), remova o comentário da seguinte linha:
 ```
 net.inet.ip.forwarding=1
 ```

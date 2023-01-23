@@ -1,10 +1,10 @@
-# Camada de Aplicação (Proxy)
+# Camada de Aplicação (*Proxy*)
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_09.pdf)
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 09</p>
-<p align="center"><b>Camada de Aplicação (Proxy)</b></p>
+<p align="center"><b>Camada de Aplicação (<i>Proxy</i>)</b></p>
 
 ## *Introdução*
 Em redes de computadores, um *proxy* é um servidor (um sistema de computador ou uma aplicação) que age como um intermediário para requisições de clientes solicitando recursos de outros servidores. 
@@ -12,10 +12,10 @@ Em redes de computadores, um *proxy* é um servidor (um sistema de computador ou
 Um cliente conecta-se ao servidor *proxy*, solicitando algum serviço, como um arquivo, conexão, página web ou outros recursos disponíveis de um servidor diferente e o *proxy* avalia a solicitação como um meio de simplificar e controlar sua complexidade. Os *proxies* foram inventados para adicionar estrutura e encapsulamento a sistemas distribuídos. Hoje, a maioria dos *proxies* é *proxy web*, facilitando o acesso ao conteúdo na World Wide Web e fornecendo anonimato. [[1](https://pt.wikipedia.org/wiki/Proxy)]
 
 ## *Objetivos*
-1. Permitir que os alunos tenham contato com regras de Proxy em máquinas FreeBSD.
+1. Permitir que os alunos tenham contato com regras de *Proxy* em máquinas FreeBSD.
 
 ## *Teoria abordada no experimento*
-Objetivo e funcionamento de um proxy de aplicação.
+Objetivo e funcionamento de um *proxy* de aplicação.
 
 ## *Material Necessário*
 - Interfaces de rede (NIC's)
@@ -45,7 +45,7 @@ $ # instalar SQUID
 $ pkg install squid
 ```
 
-Após a instalação, é possivel verificar o arquivo de configuração do SQUID:
+Após a instalação, é possível verificar o arquivo de configuração do SQUID:
 ```bash
 $ squid -f /usr/local/etc/squid/squid.conf -k parse
 ```
@@ -114,7 +114,7 @@ Ajustar h1 e h2 para que percebam a presença do proxy para o acesso Internet (c
 $ sysctl net.inet.http.proxy=192.168.1.1:3128
 ```
 
-- Em R, edite o arquivo sysctl.conf (**/etc/sysctl.conf**), para ativar o encaminhamento de pacotes IP (IP *forwarding*), descomente a seguinte linha:
+- Em R, edite o arquivo sysctl.conf (**/etc/sysctl.conf**), para ativar o encaminhamento de pacotes IP (IP *forwarding*), remova o comentário da seguinte linha:
 ```
 net.inet.ip.forwarding=1
 ```
@@ -124,7 +124,7 @@ net.inet.ip.forwarding=1
 $ sysctl net.inet.ip.forwarding=1
 ```
 
-- Configure e reinicie o firewall para permitir as conexões de H1 e H2:
+- Configure e reinicie o *firewall* para permitir as conexões de H1 e H2:
 ```bash
 $ ipfw add 120 allow all from 192.168.1.2 to any
 $ ipfw add 130 allow all from 192.168.1.3 to any
@@ -153,7 +153,7 @@ $ ipfw add 150 forward ip from 192.168.1.3 to any via 172.25.0.2
 
 - Montar um SNAT em R para que S1 possa acessar a Internet.
 
-    Isso pode ser feito usando o recurso de NAT do firewall de R, adicionando as seguintes regras:
+    Isso pode ser feito usando o recurso de NAT do *firewall* de R, adicionando as seguintes regras:
 ```bash
 $ # <interface> é o nome da interface de rede que está conectada à Internet
 $ ipfw add 160 nat 1 ip from 172.25.0.2 to any out via <interface>
@@ -172,8 +172,8 @@ $ ipfw add redirect_port tcp from 192.168.1.3 80 to 172.25.0.2 8080
 
 ## *Questões para Estudo*
 1. Como o protocolo HTTP funciona e como ele é usado pelo Squid para implementar o proxy?
-2. Como o uso de chains no firewall IPFW pode ser usado para implementar políticas de firewall mais avançadas e flexíveis?
-3. Quais são as principais diferenças entre o proxy e o firewall e como eles podem ser usados ​​juntos para melhorar a segurança da rede?
+2. Como o uso de chains no *firewall* IPFW pode ser usado para implementar políticas de *firewall* mais avançadas e flexíveis?
+3. Quais são as principais diferenças entre o proxy e o *firewall* e como eles podem ser usados ​​juntos para melhorar a segurança da rede?
 10. Como o Squid possui configuração para melhorar a segurança do proxy? Explique.
 
 ## *Referências Bibliográficas*
