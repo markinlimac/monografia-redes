@@ -24,6 +24,7 @@ Funcionamento básico de uma rede TCP/IP.
 - Software nas máquinas: ambiente FreeBSD básico
 - Acesso à Internet – NÃO é necessário
 - Desligar o servidor e cliente DHCP para as máquinas do experimento
+- Ferramentas de diagnóstico: **ifconfig**, **ping**
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
@@ -38,12 +39,12 @@ No FreeBSD, configure o arquivo rc.conf (**/etc/rc.conf**) e ponha a interface e
 
 ```
 hostname=”freebsd”
-ifconfig_em0=”inet 192.0.2.7 netmask 255.255.255.0”
+ifconfig_em0=”inet 192.168.1.2 netmask 255.255.255.0”
 ifconfig_em0_ipv6=”inet6 accept_rtadv”
 sshd_enable=”YES”
 # Set dumpdev to “AUTO” to enable crash dumps, “NO” to disable
 dumpdev=”AUTO”
-defaultrouter=”192.0.2.254”
+defaultrouter=”192.168.1.1”
 ```
 
 É possível que o equipamento usado para testes possua uma designação de interface de rede diferente 
@@ -65,8 +66,8 @@ Também é possível executar os seguintes comandos para configuração das inte
 
 ```bash
 $ # ifconfig interface-name IP-address netmask Netmask
-$ ifconfig em0 192.168.133.250 netmask 255.255.255.0
-$ route add default 192.168.133.1
+$ ifconfig em0 192.168.1.3 netmask 255.255.255.0
+$ route add default 192.168.1.1
 $ route -n
 ```
 
@@ -91,8 +92,8 @@ Obs.: Esse tipo de configuração explorada no experimento é chamada de **Manua
 3. O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.
 
 ## *Referências Bibliográficas*
-RAINVILLE, Shane. How to configure network settings in FreeBSD. **Serverlab**, 2020. Disponível em: &lt;https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/&gt;. Acesso em: 10 dez. de 2022.
+RAINVILLE, Shane. How to configure network settings in FreeBSD. Serverlab, 2020. Disponível em: https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/. Acesso em: 10 dez. de 2022.
 
-**ping(8)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?ping(8)&gt;. Acesso em: 10 dez. 2022.
+FreeBSD.org. ping(8). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?ping(8). Acesso em: 10 dez. 2022.
 
-LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019
+LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

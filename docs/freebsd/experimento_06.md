@@ -78,3 +78,9 @@ Teste as configurações de rede usando as ferramentas discutidas em práticas a
 
 ## *Referências Bibliográficas*
 https://www.openbsd.org/faq/pf/nat.html
+
+https://docs.freebsd.org/doc/6.1-RELEASE/usr/share/doc/handbook/network-natd.html
+
+https://www.comptia.org/content/guides/what-is-network-address-translation
+
+LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

@@ -21,7 +21,7 @@ Objetivo e funcionamento do protocolo DHCP.
 - Máquinas com sistema FreeBSD
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
-- Software nas máquinas: ambiente FreeBSD básico, pacotes de servidor DHCP (isc-dhcp44-server)
+- Software nas máquinas: ambiente FreeBSD básico, pacotes de servidor DHCP (**isc-dhcp44-server**)
 - Acesso à Internet – necessário
 - Desligar o servidor DHCP para as máquinas de aula
 
@@ -33,7 +33,7 @@ Objetivo e funcionamento do protocolo DHCP.
   <img src="../../img/topologia_experimento5.png" alt="image">
 </p>
 
-### 2. Configurar os clientes na rede de testes e validar as configurações.
+### 2. Configurar os clientes na rede de testes e validar as configurações
 Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 
 ### 3. Instalação do pacote de servidor DHCP
@@ -47,30 +47,29 @@ $ pkg install isc-dhcp44-server
 ### 4. Configuração do Servidor DHCP
 Os arquivos mais importantes do servidor DHCP a ser usado, são:
 
-**/etc/dhcp3/dhcpd.conf** : configurações para o servidor DHCP
+**/etc/dhcp/dhcpd.conf** : configurações para o servidor DHCP
 
 **/var/lib/dhcp/dhcpd.leases** : *leases* já ofertados pelo servidor DHCP
 
-A configuração do servidor está toda no arquivo dhcpd.conf. Segue abaixo um exemplo comentado:
+A configuração do servidor está toda no arquivo **dhcpd.conf**. Segue abaixo um exemplo comentado:
 ```
-# ddns=update-style none -> nao vai aceitar atualizações dinâmicas de dns
 # Exemplo de configuração
 # Tempo de lease: default mínimo (10 min) e máximo (2 hs)
 # Outros valores: 86400 (1 dia), 604800 (1 semana) e 2592000 (30 dias)
-default-lease-time 600; OK
-max-lease-time 7200; OK
+default-lease-time 600;
+max-lease-time 7200;
 # Reconhece e corrige pedidos de endereços incoerentes
-authoritative; -> torna o servidor DHCP autoritativo da rede, servidor dhcp oficial da rede local OK
-option domain-name-servers 192.168.1.1, 192.168.1.2; #endereço dos servidores dns (roteador e 8.8.8.8 da internet) OK
-option domain-name "mydomain.org"; #nome de dominio OK
-# Pode-se incluir opções especificas para uma subrede (configurações de subrede onde cria os escopos)
-subnet 192.168.1.0 netmask 255.255.255.0 { #ip do escopo (onde a rede esta) e mascara da sub rede
- range 192.168.1.10 192.168.1.100; #faixa de ip que vai usar na rede
- range 192.168.1.150 192.168.1.200; #faixa de ip que vai usar na rede
- # Opções de rede comuns
- option subnet-mask 255.255.255.0; #mascara de sub rede
- option broadcast-address 192.168.1.255; #endereço de broadcast da rede
- option routers 192.168.1.254; #gateway padrão
+authoritative;
+# Opções de rede comuns
+option subnet-mask 255.255.255.0;
+option broadcast-address 192.168.1.255;
+option routers 192.168.1.1;
+option domain-name-servers 192.168.1.1;
+option domain-name "mydomain.org";
+# Pode-se incluir opções especificas para uma subrede
+subnet 192.168.1.0 netmask 255.255.255.0 {
+ range 192.168.1.2 192.168.1.100;
+ range 192.168.1.150 192.168.1.200;
 }
 # Para designar WINS server para estacões WIN
 #option netbios-name-servers 192.168.1.1;
@@ -146,3 +145,14 @@ Visualize as mensagens sendo trocadas entre cliente e servidor DHCP com um anali
 5. Podemos ter mais de um servidor DHCP numa rede? Pode haver alguma confusão? O que acontece se houver?
 
 ## *Referências Bibliográficas*
+REIS, Fábio. Como configurar um servidor DHCP no Linux. Boson treinamentos, 2013. Disponível em: http://www.bosontreinamentos.com.br/linux/servidor-dhcp-no-linux/. Acesso em: 14 dez. de 2022.
+
+MEL. How to install DHCP Server on FreeBSD. Unixcop, 2022. Disponível em: https://unixcop.com/how-to-install-dhcp-server-on-freebsd/. Acesso em: 14 dez. de 2022.
+
+REIS, Fábio. Servidor DHCP no Linux 01 - Instalação e Configuração de um Escopo. YouTube, 16 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=hqS_EuQA6pQ. Acesso em: 14 dez. de 2022.
+
+REIS, Fábio. Servidor DHCP no Linux 02 - Ativando e Testando o Escopo criado. YouTube, 16 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=0hfJEnYk_6A. Acesso em: 14 dez. de 2022.
+
+DROMS, R. Automated configuration of TCP/IP with DHCP. IEEE Internet Computing, 1999.
+
+LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

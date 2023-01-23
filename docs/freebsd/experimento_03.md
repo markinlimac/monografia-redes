@@ -31,7 +31,7 @@ Protocolos de Camada de Transporte.
 ### 1. Montagem de rede interconectada para o experimento
 - H1 (192.168.1.3), H2 (192.168.1.2), H3 (192.168.1.4), H4 (192.168.1.5) e R/eth0 (192.168.1.1).
 
-Além dessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: DNS, HTTP e SMTP.
+Nessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: DNS, HTTP e SMTP.
 
 <p align="center">
   <img src="../../img/topologia_experimento3.png" alt="image">
@@ -65,7 +65,7 @@ $ telnet nome_do_host numero_da_porta
 Uma vez aberto o socket, envie bytes através da digitação de caracteres do teclado. Para demandar o envido, pressione a tecla **ENTER** após as digitações.
 
 ### 5. Identificação de serviços disponíveis em um host
-Às vezes, faz-se necessário verificar se há serviços em execução em determinado host conectado à rede. Porém, diferentemente do cenário apresentado na **Etapa 3**, há situações em que não se terá acesso administrativo (ou físico) ao equipamento a ser analisado.
+Às vezes, faz-se necessário verificar se há serviços em execução em determinado host conectado à rede. Porém, diferentemente do cenário apresentado na [etapa 3](#3-abertura-de-um-socket-servidor), há situações em que não se terá acesso administrativo (ou físico) ao equipamento a ser analisado.
 
 Nesse contexto, será necessário empreender um teste do tipo **caixa-preta** para verificar se determinados serviços estão ativos. Na verdade, no contexto da camada de transporte, o teste verificará se determinadas portas estão abertas e em estado de escuta no equipamento sobre testes.
 
@@ -82,29 +82,29 @@ $ nmap nome_do_host
 ```bash
 $ nmap faixa_de_ip
 ```
-onde faixa_de_ip pode ser uma faixa por intervalos (como 192.168.133.1-20, o que contemplaria todos os IPs entre 192.168.133.1 e 192.168.133.20) ou mesmo a indicação de uma subrede usando notação CIDR.
+onde **faixa_de_ip** pode ser uma faixa por intervalos (como 192.168.133.1-20, o que contemplaria todos os IPs entre 192.168.133.1 e 192.168.133.20) ou mesmo a indicação de uma subrede usando notação CIDR.
 
 ## *Questões para Estudo*
 1. A porta de um servidor que provê aplicações sobre TCP pode se encontrar em diferentes estados. Quais são esses estados e como evolui a comunicação entre um cliente e um servidor TCP quando a porta se apresenta em cada um dos estados possíveis?
 2. Que tipo de informações o arquivo **/etc/services** provê?
 3. Que tipo de ferramentas você recomendaria para a repetição dos mesmos procedimentos sobre UDP?
-4. Em relação à **Etapa 4** do presente roteiro, descreva o que se observou durante as interações com o socket servidor.
+4. Em relação à [etapa 4](#4-interacoes-com-o-socket-servidor) do presente roteiro, descreva o que se observou durante as interações com o socket servidor.
 5. Como você implementaria um transmissor básico de arquivos usando apenas as ferramentas executadas nesse experimento?
 6. O **nmap** é considerado uma ferramenta extremamente poderosa. Como você a utilizaria para identificar quais são os equipamentos que estão ativos e em execução em uma rede?
 
 ## *Referências Bibliográficas*
-GITE, Vivek. FreeBSD List/Display Open Ports With sockstat Command. **Cyberciti**, 2008. Disponível em: &lt;https://www.cyberciti.biz/tips/freebsd-lists-open-internet-unix-domain-sockets.html&gt;. Acesso em: 11 dez. de 2022.
+GITE, Vivek. FreeBSD List/Display Open Ports With sockstat Command. Cyberciti, 2008. Disponível em: https://www.cyberciti.biz/tips/freebsd-lists-open-internet-unix-domain-sockets.html. Acesso em: 11 dez. de 2022.
 
-ELLINGWOOD, Justin. How To Use Netcat to Establish and Test TCP and UDP Connections. **Digital Ocean**, 2021. Disponível em: &lt;https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections&gt;. Acesso em: 11 dez. de 2022.
+ELLINGWOOD, Justin. How To Use Netcat to Establish and Test TCP and UDP Connections. Digital Ocean, 2021. Disponível em: https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections. Acesso em: 11 dez. de 2022.
 
-SHIVANANDHAN, Manish. What is Nmap and How to Use it – A Tutorial for the Greatest Scanning Tool of All Time. **FreeCodeCamp**, 2021. Disponível em: &lt;https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-the-greatest-scanning-tool-of-all-time/&gt;. Acesso em: 11 dez. de 2022.
+SHIVANANDHAN, Manish. What is Nmap and How to Use it – A Tutorial for the Greatest Scanning Tool of All Time. FreeCodeCamp, 2021. Disponível em: https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-the-greatest-scanning-tool-of-all-time/. Acesso em: 11 dez. de 2022.
 
-**telnet(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?telnet&gt;. Acesso em: 11 dez. 2022.
+FreeBSD.org. telnet(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?telnet. Acesso em: 11 dez. 2022.
 
-**nmap(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?query=nmap&manpath=SuSE+Linux%2Fi386+11.3&gt;. Acesso em: 11 dez. 2022.
+FreeBSD.org. nmap(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=nmap&manpath=SuSE+Linux%2Fi386+11.3. Acesso em: 11 dez. 2022.
 
-**nc(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?nc&gt;. Acesso em: 11 dez. 2022.
+FreeBSD.org. nc(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?nc. Acesso em: 11 dez. 2022.
 
-**sockstat(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?query=sockstat&sektion=1&gt;. Acesso em: 11 dez. 2022.
+FreeBSD.org. sockstat(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=sockstat&sektion=1. Acesso em: 11 dez. 2022.
 
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

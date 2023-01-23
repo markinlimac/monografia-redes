@@ -17,7 +17,7 @@ Quando um computador está devidamente configurado em uma rede de computadores, 
 ## *Teoria abordada no experimento*
 Funcionamento básico de uma rede TCP/IP.
 
-Protocolos de Camada de Aplicação.
+Protocolos da Camada de Aplicação.
 
 ## *Material Necessário*
 - Interfaces de rede (NIC's)
@@ -27,13 +27,13 @@ Protocolos de Camada de Aplicação.
 - Software nas máquinas: ambiente FreeBSD básico
 - Acesso à Internet – NÃO é necessário
 - Servidores HTTP, DNS e SMTP devidamente configurados
-- Ferramentas de diagnóstico: **ifconfig**, **ping**, **traceroute**, **sockstat**, **host**
+- Ferramentas de diagnóstico: **ifconfig**, **ping**, **host**, **telnet**
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
 - H1 (192.168.1.3), H2 (192.168.1.2), H3 (192.168.1.4), H4 (192.168.1.5) e R/eth0 (192.168.1.1).
 
-Além dessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: DNS, HTTP e SMTP.
+Nessa topologia, haverá equipamentos que proverão os serviços necessários às práticas da aula: DNS, HTTP e SMTP.
 
 <p align="center">
   <img src="../../img/topologia_experimento2.png" alt="image">
@@ -57,7 +57,7 @@ Usando os conceitos que foram estudados sobre o protocolo HTTP, use a ferramenta
 $ telnet nome_do_host numero_da_porta
 ```
 
-Uma vez aberto o socket, envie o seguinte comando para obter o objeto **index.html**
+Uma vez aberto o socket, envie o seguinte comando para obter o objeto **index.html**:
 ```
 GET /index.html HTTP/1.1
 ```
@@ -86,14 +86,14 @@ HELO
 4. Em vários dos protocolos ora estudados, foi presenciada uma etapa de autorização que preparava uma sessão para a recepção de comandos de determinado cliente. O SMTP demonstrou-se um protocolo que não demanda uma etapa de autorização. Em que momento isso acontece? O fato de essa etapa ser suprimida resulta em algum risco para um serviço de e-mail?
 
 ## *Referências Bibliográficas*
-Brasil, HSC. Saiba o que é e como funciona o protocolo SMTP. **hscbrasil**, 2019. Disponível em: &lt;https://www.hscbrasil.com.br/protocolo-smtp/&gt;. Acesso em: 11 dez. de 2022.
+Brasil, HSC. Saiba o que é e como funciona o protocolo SMTP. hscbrasil, 2019. Disponível em: https://www.hscbrasil.com.br/protocolo-smtp/. Acesso em: 11 dez. de 2022.
 
-Costa, Matheus. O que é HTTP. **canaltech**, 2019. Disponível em: &lt;https://canaltech.com.br/internet/o-que-e-http/&gt;. Acesso em: 11 dez. de 2022.
+Costa, Matheus. O que é HTTP. canaltech, 2019. Disponível em: https://canaltech.com.br/internet/o-que-e-http/. Acesso em: 11 dez. de 2022.
 
-Reynolds, Luke. Send an email using Telnet. **linuxconfig**, 2021. Disponível em: &lt;https://linuxconfig.org/send-an-email-using-telnet&gt;. Acesso em: 11 dez. de 2022.
+Reynolds, Luke. Send an email using Telnet. linuxconfig, 2021. Disponível em: https://linuxconfig.org/send-an-email-using-telnet. Acesso em: 11 dez. de 2022.
 
-**host(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?query=host&sektion=1&gt;. Acesso em: 11 dez. 2022.
+FreeBSD.org. host(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=host&sektion=1. Acesso em: 11 dez. 2022.
 
-**telnet(1)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?telnet&gt;. Acesso em: 11 dez. 2022.
+FreeBSD.org. telnet(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?telnet. Acesso em: 11 dez. 2022.
 
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

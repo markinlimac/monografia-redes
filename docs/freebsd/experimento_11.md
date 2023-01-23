@@ -221,7 +221,7 @@ rtadvd_interfaces="bge1"
 Configure H1 para utilizar a configuração automática de endereço e verifique se está tudo ocorrendo da maneira correta.
 
 ### 7. Usando DHCPv6
-O tipo de configuração apresentado na seção [4.2](#42-configuracao-automatica-de-endereco-global-slaac) é algo mais próximo do DHCP no IPv4. No entanto, você não pode controlar qual endereço está realmente configurado em cada host porque eles são gerados a partir dos endereços MAC. Para um controle mais refinado da configuração automática de endereço, você precisará de outro método, como DHCPv6.
+O tipo de configuração apresentado na [etapa 4.2](#42-configuracao-automatica-de-endereco-global-slaac) é algo mais próximo do DHCP no IPv4. No entanto, você não pode controlar qual endereço está realmente configurado em cada host porque eles são gerados a partir dos endereços MAC. Para um controle mais refinado da configuração automática de endereço, você precisará de outro método, como DHCPv6.
 
 Para configurar um host em uma rede que utiliza o DHCPv6, edite o arquivo rc.conf (**/etc/rc.conf**):
 ```
