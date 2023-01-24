@@ -149,6 +149,8 @@ REIS, Fábio. Como configurar um servidor DHCP no Linux. Boson treinamentos, 201
 
 MEL. How to install DHCP Server on FreeBSD. Unixcop, 2022. Disponível em: https://unixcop.com/how-to-install-dhcp-server-on-freebsd/. Acesso em: 14 dez. de 2022.
 
+Medium.com. Highly Available DHCP Server on FreeBSD, 2018. Disponível em: https://medium.com/@vermaden/highly-available-dhcp-server-on-freebsd-2bf81a5e4e77. Acesso em: 14 dez. de 2022.
+
 REIS, Fábio. Servidor DHCP no Linux 01 - Instalação e Configuração de um Escopo. YouTube, 16 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=hqS_EuQA6pQ. Acesso em: 14 dez. de 2022.
 
 REIS, Fábio. Servidor DHCP no Linux 02 - Ativando e Testando o Escopo criado. YouTube, 16 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=0hfJEnYk_6A. Acesso em: 14 dez. de 2022.

@@ -77,3 +77,10 @@ Em seguida, repita o comando arp.
 4. Há, na literatura, ataques que envolvem o protocolo ARP? Se a resposta for afirmativa, cite exemplos.
 
 ## *Referências Bibliográficas*
+Geeksforgeeks.org. How Address Resolution Protocol (ARP) works?. GeeksForGeeks, 2022. Disponível em: https://www.geeksforgeeks.org/how-address-resolution-protocol-arp-works/. Acesso em: 16 dez. de 2022.
+
+FreeBSD.org. arp. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=arp. Acesso em: 16 dez. 2022.
+
+WETHERALL, D. J; TANENBAUM, A. S. Computer networks. Pearson Education, 2013.
+
+LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

@@ -88,4 +88,12 @@ LEE, Chern. Network Address Translation. Data desconhecida. FreeBSD Manual Pages
 
 Comptia.org. What Is NAT?. Data desconhecida. CompTIA. Disponível em: https://www.comptia.org/content/guides/what-is-network-address-translation. Acesso em: 15 dez. de 2022.
 
+Scyphus Solutions Co. FreeBSD as NAT gateway. Scyphus Solutions Co, 2003. Disponível em: http://draft.scyphus.co.jp/freebsd/nat.html. Acesso em: 15 dez. de 2022.
+
+ELATOV, Karim. FreeBSD Firewall and NAT with PF. Github, 2011. Disponível em: https://elatov.github.io/2011/05/freebsd-firewall-and-nat-with-pf/. Acesso em: 15 dez. de 2022.
+
+NOOR, Justin. How To Configure Packet Filter (PF) on FreeBSD 12.1. Digital Ocean, 2020. Disponível em: https://www.digitalocean.com/community/tutorials/how-to-configure-packet-filter-pf-on-freebsd-12-1. Acesso em: 15 dez. de 2022.
+
+WETHERALL, D. J; TANENBAUM, A. S. Computer networks. Pearson Education, 2013.
+
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

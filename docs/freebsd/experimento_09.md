@@ -9,7 +9,7 @@
 ## *Introdução*
 Em redes de computadores, um *proxy* é um servidor (um sistema de computador ou uma aplicação) que age como um intermediário para requisições de clientes solicitando recursos de outros servidores. 
 
-Um cliente conecta-se ao servidor *proxy*, solicitando algum serviço, como um arquivo, conexão, página web ou outros recursos disponíveis de um servidor diferente e o *proxy* avalia a solicitação como um meio de simplificar e controlar sua complexidade. Os *proxies* foram inventados para adicionar estrutura e encapsulamento a sistemas distribuídos. Hoje, a maioria dos *proxies* é *proxy web*, facilitando o acesso ao conteúdo na World Wide Web e fornecendo anonimato. [[1](https://pt.wikipedia.org/wiki/Proxy)]
+Um cliente conecta-se ao servidor *proxy*, solicitando algum serviço, como um arquivo, conexão, página web ou outros recursos disponíveis de um servidor diferente e o *proxy* avalia a solicitação como um meio de simplificar e controlar sua complexidade. Os *proxies* foram inventados para adicionar estrutura e encapsulamento a sistemas distribuídos. Hoje, a maioria dos *proxies* é *proxy web*, facilitando o acesso ao conteúdo na World Wide Web e fornecendo anonimato.
 
 ## *Objetivos*
 1. Permitir que os alunos tenham contato com regras de *Proxy* em máquinas FreeBSD.
@@ -22,7 +22,7 @@ Objetivo e funcionamento de um *proxy* de aplicação.
 - Máquinas com sistema FreeBSD
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
-- Software nas máquinas: ambiente FreeBSD básico, pacote DNS server (bind9)
+- Software nas máquinas: ambiente FreeBSD básico, pacote *Proxy server* (**Squid**)
 - Acesso à Internet – necessário
 
 ## *Roteiro*
@@ -177,4 +177,14 @@ $ ipfw add redirect_port tcp from 192.168.1.3 80 to 172.25.0.2 8080
 10. Como o Squid possui configuração para melhorar a segurança do proxy? Explique.
 
 ## *Referências Bibliográficas*
-[1] https://pt.wikipedia.org/wiki/Proxy
+ROGÉRIO. FreeBSD com proxy Squid - Revista Infra Magazine 4. Devmedia, 2012. Disponível em: https://www.devmedia.com.br/freebsd-com-proxy-squid-revista-infra-magazine-4/23440. Acesso em: 18 dez. 2022.
+
+Linuxhelp.com. How to install squid proxy server on freeBSD. Data desconhecida. Linux Help. Disponível em: https://www.linuxhelp.com/how-to-install-squid-proxy-server-on-freebsd. Acesso em: 18 dez. 2022.
+
+FreeBSD.org. squid. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=squid. Acesso em: 18 dez. 2022.
+
+Wikipedia.org. Proxy. Data desconhecida. Wikipedia. Disponível em: https://pt.wikipedia.org/wiki/Proxy. Acesso em: 18 dez. de 2022.
+
+WETHERALL, D. J; TANENBAUM, A. S. Computer networks. Pearson Education, 2013.
+
+LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

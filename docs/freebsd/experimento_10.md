@@ -22,7 +22,7 @@ Objetivo e funcionamento do protocolo DNS.
 - Máquinas com sistema FreeBSD
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
-- Software nas máquinas: ambiente FreeBSD básico, pacotes de servidor DNS (bind9)
+- Software nas máquinas: ambiente FreeBSD básico, pacotes de servidor DNS (**bind9**)
 - Acesso à Internet – NÃO é necessário
 - Desligar o servidor DNS para as máquinas de aula
 
@@ -128,3 +128,14 @@ $ nslookup host_da_rede
 4. Como você faria para configurar o seu servidor DNS para fornecer serviços de resolução de nomes para redes privadas usando NAT?
 
 ## *Referências Bibliográficas*
+LEE, C; RHODES, T; GERZO, D. Domain Name System (DNS). Data desconhecida. FreeBSD Handbook. Disponível em: https://docs.freebsd.org/doc/7.4-RELEASE/usr/share/doc/handbook/network-dns.html. Acesso em: 19 dez. 2022.
+
+OLIVEIRA, W. P. Instalando e configurando o Serviço DNS na rede com Linux com BIND9 - Parte 1. YouTube, 6 de abr. de 2021. Disponível em: https://www.youtube.com/watch?v=m1ffSGGRDb0. Acesso em: 19 dez. de 2022.
+
+OLIVEIRA, W. P. Instalando e configurando o Serviço DNS na rede com Linux com BIND9 - Parte 2. YouTube, 7 de abr. de 2021. Disponível em: https://www.youtube.com/watch?v=SSzdIHGYSZw. Acesso em: 19 dez. de 2022.
+
+OLIVEIRA, W. P. Instalando e configurando o Serviço DNS na rede com Linux com BIND9 - Parte 3. YouTube, 7 de abr. de 2021. Disponível em: https://www.youtube.com/watch?v=HHq7NbddFPg. Acesso em: 19 dez. de 2022.
+
+WETHERALL, D. J; TANENBAUM, A. S. Computer networks. Pearson Education, 2013.
+
+LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

@@ -1572,6 +1572,7 @@
 <li>Software nas máquinas: ambiente FreeBSD básico</li>
 <li>Acesso à Internet – NÃO é necessário</li>
 <li>Desligar o servidor e cliente DHCP para as máquinas do experimento</li>
+<li>Ferramentas de diagnóstico: <strong>ifconfig</strong>, <strong>ping</strong></li>
 </ul>
 <h2 id="roteiro"><em>Roteiro</em></h2>
 <h3 id="1-montagem-de-rede-interconectada-para-o-experimento">1. Montagem de rede interconectada para o experimento</h3>
@@ -1585,12 +1586,12 @@
 <h3 id="2-configurar-os-clientes-na-rede-de-testes">2. Configurar os clientes na rede de testes</h3>
 <p>No FreeBSD, configure o arquivo rc.conf (<strong>/etc/rc.conf</strong>) e ponha a interface em questão configurável de forma estática, modificando o arquivo para que ele fique semelhante as linhas abaixo:</p>
 <pre><code>hostname=”freebsd”
-ifconfig_em0=”inet 192.0.2.7 netmask 255.255.255.0”
+ifconfig_em0=”inet 192.168.1.2 netmask 255.255.255.0”
 ifconfig_em0_ipv6=”inet6 accept_rtadv”
 sshd_enable=”YES”
 # Set dumpdev to “AUTO” to enable crash dumps, “NO” to disable
 dumpdev=”AUTO”
-defaultrouter=”192.0.2.254”
+defaultrouter=”192.168.1.1”
 </code></pre>
 <p>É possível que o equipamento usado para testes possua uma designação de interface de rede diferente 
 de em0. É praxe em0 ser vinculada à primeira interface de rede Ethernet do computador que executa o 
@@ -1604,8 +1605,8 @@ kernel do FreeBSD.</p>
 </code></pre>
 <p>Também é possível executar os seguintes comandos para configuração das interfaces de rede:</p>
 <pre><code class="language-bash">$ # ifconfig interface-name IP-address netmask Netmask
-$ ifconfig em0 192.168.133.250 netmask 255.255.255.0
-$ route add default 192.168.133.1
+$ ifconfig em0 192.168.1.3 netmask 255.255.255.0
+$ route add default 192.168.1.1
 $ route -n
 </code></pre>
 <h3 id="3-validando-as-configuracoes">3. Validando as configurações</h3>
@@ -1624,9 +1625,9 @@ $ route -n
 <li>O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.</li>
 </ol>
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
-<p>RAINVILLE, Shane. How to configure network settings in FreeBSD. <strong>Serverlab</strong>, 2020. Disponível em: &lt;https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/&gt;. Acesso em: 10 dez. de 2022.</p>
-<p><strong>ping(8)</strong>. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?ping(8)&gt;. Acesso em: 10 dez. 2022.</p>
-<p>LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019</p>
+<p>RAINVILLE, Shane. How to configure network settings in FreeBSD. Serverlab, 2020. Disponível em: https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/. Acesso em: 10 dez. de 2022.</p>
+<p>FreeBSD.org. ping(8). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?ping(8). Acesso em: 10 dez. 2022.</p>
+<p>LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.</p>
 
 
 

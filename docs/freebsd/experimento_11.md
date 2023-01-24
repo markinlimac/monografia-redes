@@ -256,3 +256,18 @@ Procure saber sobre a configuração de um servidor DHCPv6 utilizando o FreeBSD.
 7. Em vários momentos do experimento foi omitido a parte do identificador de zona e isso pode ter causado problemas. O que é o identificador de zona e por que é necessário ele em um endereço de IPv6?
 
 ## *Referências Bibliográficas*
+SATO, Hiroki. Pragmatic IPv6 (Part 1). FreeBSD Journal, 2022. Disponível em: https://freebsdfoundation.org/wp-content/uploads/2022/06/hiroki_IPv6.pdf. Acesso em: 20 dez. 2022.
+
+SATO, Hiroki. Pragmatic IPv6 (Part 2). FreeBSD Journal, 2022. Disponível em: https://issue.freebsdfoundation.org/publication/?m=33057&i=759043&p=1&ver=html5. Acesso em: 20 dez. 2022.
+
+Ipv6.br. Endereçamento. IPv6, 2012. Disponível em: https://ipv6.br/post/enderecamento/. Acesso em: 20 dez. 2022.
+
+NICbrvideos. IPv6 no Café da Manhã - 01 de 03 - Planejamento e Endereçamento de Redes IPv6. YouTube, 27 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=rWVm9JCR4Fc. Acesso em: 20 dez. de 2022.
+
+NICbrvideos. IPv6 no Café da Manhã - 02 de 03 - Planejamento e Endereçamento de Redes IPv6. YouTube, 27 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=COblHE5hpfg. Acesso em: 20 dez. de 2022.
+
+NICbrvideos. IPv6 no Café da Manhã - 03 de 03 - Planejamento e Endereçamento IPv6. YouTube, 27 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=lRty4OlZWjA. Acesso em: 20 dez. de 2022.
+
+WETHERALL, D. J; TANENBAUM, A. S. Computer networks. Pearson Education, 2013.
+
+LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.
