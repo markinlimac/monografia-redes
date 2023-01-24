@@ -1590,16 +1590,15 @@
 <h2 id="roteiro"><em>Roteiro</em></h2>
 <h3 id="1-montagem-de-rede-interconectada-para-o-experimento">1. Montagem de rede interconectada para o experimento</h3>
 <p>Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o gateway da topologia e lhe dê dois endereços de IP: um IP fixo e válido para a rede de saída e um IP restrito, inválido.</p>
-<ul>
-<li>H1 (192.168.1.3), H2 (192.168.1.2) e G/eth0 (192.168.1.1).</li>
-<li>S1 (172.25.0.2) e G/eth1 (172.25.0.1).</li>
-</ul>
+<!-- - H1 (192.168.1.3), H2 (192.168.1.2) e G/eth0 (192.168.1.1).
+- S1 (172.25.0.2) e G/eth1 (172.25.0.1).
+
 <p align="center">
   <img src="../../img/topologia_experimento6.png" alt="image">
-</p>
+</p> -->
 
 <h3 id="2-configuracao-do-servidor-dhcp-opcional">2. Configuração do Servidor DHCP (opcional)</h3>
-<p>Se for do interesse da equipe que executa o experimento evitar configurações nas máquinas que usarão o gateway com NAT, é conveniente implantar o serviço de DHCP em algum servidor da rede local (privada) que usará o equipamento com NAT como gateway.</p>
+<p>Se for do interesse de quem executa o experimento evitar configurações nas máquinas que usarão o gateway com NAT, é conveniente implantar o serviço de DHCP em algum servidor da rede local (privada) que usará o equipamento com NAT como gateway.</p>
 <p>Lembrem-se das etapas que foram percorridas na <strong>Prática de Laboratório 05</strong>.</p>
 <h3 id="3-configuracao-do-nat">3. Configuração do NAT</h3>
 <p>No FreeBSD, configure o arquivo rc.conf (<strong>/etc/rc.conf</strong>), do gateway, citado em experiências anteriores e ponha uma interface em questão, a interface de saída, configurada de forma fixa usando um IP válido da rede de saída. Use o comando <strong>ifconfig</strong> para verificar o endereço configurado.</p>
@@ -1616,7 +1615,10 @@
 <pre><code>pass out on ethSaida inet from ethPriv:network to any nat-to (ethSaida)
 </code></pre>
 <p>Há várias maneiras de configurar o arquivo pf.conf para funcionar como NAT, mas a maneira descrita é a que funciona melhor para os mais variados tipos de endereçamento de rede, seja ele manual ou dinâmico.</p>
-<p>Para visualizar as traduções NAT ativas, o utilitário <strong>pfctl(8)</strong> é usado com o parâmetro <strong>-s state</strong>. Esta opção listará todas as sessões NAT atuais.</p>
+<p>Para visualizar as traduções NAT ativas, o utilitário <strong>pfctl(8)</strong> é usado com o parâmetro <strong>-s state</strong>. Esta opção listará todas as sessões NAT atuais:</p>
+<pre><code class="language-bash">$ pfctl -s state
+</code></pre>
+<p>Explique a saída do comando anterior.</p>
 <p>Teste as configurações de rede usando as ferramentas discutidas em práticas anteriores. Recomenda-se as seguintes etapas de testes: teste de conectividade entre equipamentos da rede privada e o gateway com NAT, teste de conectividade entre equipamentos da rede privada e equipamentos situados na rede de saída do gateway e teste de conectividade entre equipamentos da rede privada e equipamentos na rede externa.</p>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
 <ol>
@@ -1626,9 +1628,13 @@
 <li>Reinicie o seu equipamento usado para a implementação de um NAT usando o sistema operacional FreeBSD e verifique se as suas configurações ainda funcionam. Descreva que tipo de procedimentos foram realizados para tornar as configurações de NAT persistentes.</li>
 </ol>
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
-<p>https://www.openbsd.org/faq/pf/nat.html</p>
-<p>https://docs.freebsd.org/doc/6.1-RELEASE/usr/share/doc/handbook/network-natd.html</p>
-<p>https://www.comptia.org/content/guides/what-is-network-address-translation</p>
+<p>HOLLAND, N; KNIGHT, J. PF - Network Address Translation. OpenBSD, 2004. Disponível em: https://www.openbsd.org/faq/pf/nat.html. Acesso em: 15 dez. de 2022.</p>
+<p>LEE, Chern. Network Address Translation. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://docs.freebsd.org/doc/6.1-RELEASE/usr/share/doc/handbook/network-natd.html. Acesso em: 15 dez. de 2022.</p>
+<p>Comptia.org. What Is NAT?. Data desconhecida. CompTIA. Disponível em: https://www.comptia.org/content/guides/what-is-network-address-translation. Acesso em: 15 dez. de 2022.</p>
+<p>Scyphus Solutions Co. FreeBSD as NAT gateway. Scyphus Solutions Co, 2003. Disponível em: http://draft.scyphus.co.jp/freebsd/nat.html. Acesso em: 15 dez. de 2022.</p>
+<p>ELATOV, Karim. FreeBSD Firewall and NAT with PF. Github, 2011. Disponível em: https://elatov.github.io/2011/05/freebsd-firewall-and-nat-with-pf/. Acesso em: 15 dez. de 2022.</p>
+<p>NOOR, Justin. How To Configure Packet Filter (PF) on FreeBSD 12.1. Digital Ocean, 2020. Disponível em: https://www.digitalocean.com/community/tutorials/how-to-configure-packet-filter-pf-on-freebsd-12-1. Acesso em: 15 dez. de 2022.</p>
+<p>WETHERALL, D. J; TANENBAUM, A. S. Computer networks. Pearson Education, 2013.</p>
 <p>LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.</p>
 
 

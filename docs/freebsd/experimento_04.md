@@ -12,7 +12,7 @@ Uma vez devidamente configurado, um equipamento que se comunica através de uma 
 O estudo sobre a Camada de Internet introduz vários protocolos que tipicamente dão suporte às aplicações em rede, que, por sua vez, provêm os
 serviços que usamos diariamente.
 
-O conjunto de protocolos que cooperam no provimento dos serviços típicos de camada de rede podem ser separados em duas categorias: protocolos que geram tabelas de encaminhamento, os protocolos de roteamento, e os protocolos que utilizam as tabelas de encaminhamento.
+O conjunto de protocolos que cooperam no provimento dos serviços típicos de camada de internet podem ser separados em duas categorias: protocolos que geram tabelas de encaminhamento, os protocolos de roteamento, e os protocolos que utilizam as tabelas de encaminhamento.
 
 Antes de serem introduzidas ferramentas de inspeção de protocolos de diferentes camadas, faz-se necessário apresentar ao estudante um conjunto mínimo de ferramentas que permitirão a execução de um diagnóstico preciso ao se encarar uma situação de interrupção ou instabilidade de serviço típico da camada de internet.
 

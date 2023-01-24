@@ -1,6 +1,6 @@
 # Camada de Aplicação (DHCP)
 
-[Baixar como PDF](files/Pratica_de_Laboratorio_05.pdf)
+[Baixar como PDF](files/debian/Pratica_de_Laboratorio_05.pdf)
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 05</p>
@@ -11,18 +11,18 @@ Para o correto funcionamento de redes, alguns serviços de nível de aplicação
 
 ## *Objetivos*
 1. Visualizar a importância dos serviços de atribuição dinâmica de configurações.
-2. Entender como funciona a implementação do DHCP no FreeBSD, e configurá-la.
+2. Entender como funciona a implementação do DHCP no Linux, e configurá-la.
 
 ## *Teoria abordada no experimento*
 Objetivo e funcionamento do protocolo DHCP.
 
 ## *Material Necessário*
 - Interfaces de rede (NIC's)
-- Máquinas com sistema FreeBSD
+- Máquinas com sistema GNU/Linux
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
-- Software nas máquinas: ambiente FreeBSD básico, pacotes de servidor DHCP (isc-dhcp44-server)
-- Acesso à Internet – necessário para instalação de ferramentas
+- Software nas máquinas: ambiente GNU/Linux básico, pacotes de servidor DHCP (**isc-dhcp-server**)
+- Acesso à Internet – necessário
 - Desligar o servidor DHCP para as máquinas de aula
 
 ## *Roteiro*
@@ -33,48 +33,50 @@ Objetivo e funcionamento do protocolo DHCP.
   <img src="../../img/topologia_experimento5.png" alt="image">
 </p>
 
-### 2. Configurar os clientes na rede de testes e validar as configurações.
+### 2. Configurar os clientes na rede de testes e validar as configurações
+Certifique-se que eventuais serviços de suporte às configurações de rede estejam desativados.
+
 Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 
 ### 3. Instalação do pacote de servidor DHCP
-Para a execução deste experimento é essencial a instalação do pacote **isc-dhcp44-server**, que não é incluso por padrão no FreeBSD. Para prosseguir com a instalação, execute o seguinte comando:
+Para a execução deste experimento é essencial a instalação do pacote **isc-dhcp-server**, que não é incluso por padrão no Debian. Para prosseguir com a instalação, execute o seguinte comando:
 
-```console
-$ pkg install isc-dhcp44-server
+```bash
+$ sudo apt-get update
+$ sudo apt-get install isc-dhcp-server
 ```
 <t style="color: red;">ATENÇÃO:</t> É normal ocorrer uma falha, pois, ao finalizar a instalação, ele tenta iniciar o servidor que não tem nenhum escopo DHCP criado ainda.
 
 ### 4. Configuração do Servidor DHCP
 Os arquivos mais importantes do servidor DHCP a ser usado, são:
 
-**/etc/dhcp3/dhcpd.conf** : configurações para o servidor DHCP
+**/etc/dhcp/dhcpd.conf** : configurações para o servidor DHCP
 
 **/var/lib/dhcp/dhcpd.leases** : *leases* já ofertados pelo servidor DHCP
 
-A configuração do servidor está toda no arquivo dhcpd.conf. Segue abaixo um exemplo comentado:
+A configuração do servidor está toda no arquivo **dhcpd.conf**. Segue abaixo um exemplo comentado:
 ```
-# ddns=update-style none -> nao vai aceitar atualizações dinâmicas de dns
 # Exemplo de configuração
-# Tempo de lease: default mínimo (10 min) e maximo (2 hs)
+# Tempo de lease: default mínimo (10 min) e máximo (2 hs)
 # Outros valores: 86400 (1 dia), 604800 (1 semana) e 2592000 (30 dias)
-default-lease-time 600; OK
-max-lease-time 7200; OK
+default-lease-time 600;
+max-lease-time 7200;
 # Reconhece e corrige pedidos de endereços incoerentes
-authoritative; -> torna o servidor DHCP autoritativo da rede, servidor dhcp oficial da rede local OK
-option domain-name-servers 192.168.1.1, 192.168.1.2; #endereço dos servidores dns (roteador e 8.8.8.8 da internet) OK
-option domain-name "mydomain.org"; #nome de dominio OK
-# Pode-se incluir opcoes especificas para uma subrede (configurações de subrede onde cria os escopos)
-subnet 192.168.1.0 netmask 255.255.255.0 { #ip do escopo (onde a rede esta) e mascara da sub rede
- range 192.168.1.10 192.168.1.100; #faixa de ip que vai usar na rede
- range 192.168.1.150 192.168.1.200; #faixa de ip que vai usar na rede
- # Opcoes de rede comuns
- option subnet-mask 255.255.255.0; #mascara de sub rede
- option broadcast-address 192.168.1.255; #endereço de broadcast da rede
- option routers 192.168.1.254; #gateway padrao
+authoritative;
+# Opções de rede comuns
+option subnet-mask 255.255.255.0;
+option broadcast-address 192.168.1.255;
+option routers 192.168.1.1;
+option domain-name-servers 192.168.1.1;
+option domain-name "mydomain.org";
+# Pode-se incluir opções especificas para uma subrede
+subnet 192.168.1.0 netmask 255.255.255.0 {
+ range 192.168.1.2 192.168.1.100;
+ range 192.168.1.150 192.168.1.200;
 }
-# Para designar WINS server para estacoes WIN
+# Para designar WINS server para estacões WIN
 #option netbios-name-servers 192.168.1.1;
-# Para atribuir um endereco especifico para um MAC - suporte a clientes
+# Para atribuir um endereço especifico para um MAC - suporte a clientes
 # BOOTP
 host haagen {
  option host-name “leao.labredes.unb.br”;
@@ -84,55 +86,55 @@ host haagen {
 ```
 
 O comando abaixo pode ser executado para verificar a sintaxe do arquivo **dhcpd.conf** com o objetivo de garantir que nenhum erro de digitação foi cometido:
-```console
+```bash
 $ dhcpd -t
 ```
 
 Em caso de nenhum erro de sintaxe indicado pelo comando acima, deve-se reiniciar o servidor para que as alterações tenham efeito.
-```console
-$ service isc-dhcp-server start ou service isc-dhcpd start
+```bash
+$ /etc/init.d/isc-dhcp-server start
 ```
 
 esta é a maneira correta de disparar serviços num servidor FreeBSD, porém queremos ver o que está acontecendo com o servidor na sua tela. Por isso vamos disparar o servidor “na mão” com o comando:
-```console
+```bash
 $ dhcpd -d -f <interface de rede>
 ```
 a opção **-d** habilita o modo de depuração, que fornece um rastreamento mais detalhado do processo de inicialização do servidor DHCP e a opção **-f** especifica qual interface de rede deve ser usada.
 
 Para disparar o serviço somente numa interface sempre, acrescente a opção da interface no arquivo **/etc/default/isc-dhcp-server**:
 ```
-INTERFACES="em0";
+INTERFACESv4="eth0";
 ```
 
 Após a configuração do servidor DHCP, caso apresente algum problema e não esteja funcionando, pode ser necessário verificar os arquivos de log do sistema (**/var/log/syslog**), com o seguinte comando:
-```console
+```bash
 $ grep dhcpd /var/log/syslog
 ```
 
 ### 5. Configuração do cliente DHCP
-No FreeBSD, configure o arquivo rc.conf (**/etc/rc.conf**) citado em experiências anteriores e ponha a interface em questão configurável via dhcp, adicionando a linha abaixo:
+No Debian, configure o arquivo interfaces (**/etc/network/interfaces**) citado em experiências anteriores e ponha a interface em questão configurável via dhcp, adicionando a linha abaixo:
 ```
-ifconfig_em0=”DHCP”
+iface <interface> inet dhcp
 ```
 
 Para forçar a configuração da interface de rede, dê o comando:
-```console
+```bash
 $ ifup <interface>
 ```
 
 Para verificar o endereço obtido do servidor DHCP:
-```console
+```bash
 $ ifconfig
 ```
-<t style="color: red;">ATENÇÃO:</t> Caso o comando **ifconfig** não aponte o ip adquirido através do DHCP, pode ser necessario reiniciar a interface de rede (**ifdown &lt;interface&gt;** + **ifup &lt;interface&gt;**) ou **dhclient &lt;interface&gt;**
+<t style="color: red;">ATENÇÃO:</t> Caso o comando **ifconfig** não aponte o ip adquirido através do DHCP, pode ser necessário reiniciar a interface de rede (**ifdown &lt;interface&gt;** + **ifup &lt;interface&gt;**) ou **dhclient &lt;interface&gt;**
 
 Verifique se o cliente está usando o servidor DHCP correto:
-```console
+```bash
 $ dhclient -v
 ```
 
-Atraves do arquivo de *leases*, verifque as concessões ativas do servidor dhcp:
-```console
+Através do arquivo de *leases*, verifique as concessões ativas do servidor dhcp:
+```bash
 $ cat /var/lib/dhcp/dhcpd.leases | less
 ```
 
@@ -146,3 +148,16 @@ Visualize as mensagens sendo trocadas entre cliente e servidor DHCP com um anali
 5. Podemos ter mais de um servidor DHCP numa rede? Pode haver alguma confusão? O que acontece se houver?
 
 ## *Referências Bibliográficas*
+REIS, Fábio. Como configurar um servidor DHCP no Linux. Boson treinamentos, 2013. Disponível em: http://www.bosontreinamentos.com.br/linux/servidor-dhcp-no-linux/. Acesso em: 14 dez. de 2022.
+
+MEL. How to install DHCP Server on FreeBSD. Unixcop, 2022. Disponível em: https://unixcop.com/how-to-install-dhcp-server-on-freebsd/. Acesso em: 14 dez. de 2022.
+
+Medium.com. Highly Available DHCP Server on FreeBSD, 2018. Disponível em: https://medium.com/@vermaden/highly-available-dhcp-server-on-freebsd-2bf81a5e4e77. Acesso em: 14 dez. de 2022.
+
+REIS, Fábio. Servidor DHCP no Linux 01 - Instalação e Configuração de um Escopo. YouTube, 16 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=hqS_EuQA6pQ. Acesso em: 14 dez. de 2022.
+
+REIS, Fábio. Servidor DHCP no Linux 02 - Ativando e Testando o Escopo criado. YouTube, 16 de jun. de 2013. Disponível em: https://www.youtube.com/watch?v=0hfJEnYk_6A. Acesso em: 14 dez. de 2022.
+
+DROMS, R. Automated configuration of TCP/IP with DHCP. IEEE Internet Computing, 1999.
+
+LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

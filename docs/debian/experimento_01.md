@@ -1,6 +1,6 @@
 # Introdução às Redes de Computadores
 
-[Baixar como PDF](files/Pratica_de_Laboratorio_01.pdf)
+[Baixar como PDF](files/debian/Pratica_de_Laboratorio_01.pdf)
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 01</p>
@@ -11,19 +11,20 @@ Algumas configurações básicas necessárias para o correto funcionamento de eq
 
 ## *Objetivos*
 1. Compreender as configurações básicas para navegabilidade em uma rede de computadores.
-2. Exercitar configurações básicas em diferentes sistemas operacionais e entender como usar ferramentas de diagnóstico para validar configurações.
+2. Exercitar configurações básicas e entender como usar ferramentas de diagnóstico para validar configurações.
 
 ## *Teoria abordada no experimento*
 Funcionamento básico de uma rede TCP/IP.
 
 ## *Material Necessário*
 - Interfaces de rede (NIC's)
-- Máquinas com sistema FreeBSD
+- Máquinas com sistema GNU/Linux
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
-- Software nas máquinas: ambiente FreeBSD básico
+- Software nas máquinas: ambiente GNU/Linux básico
 - Acesso à Internet – NÃO é necessário
 - Desligar o servidor e cliente DHCP para as máquinas do experimento
+- Ferramentas de diagnóstico: **ifconfig**, **ping**
 
 ## *Roteiro*
 ### 1. Montagem de rede interconectada para o experimento
@@ -33,26 +34,27 @@ Funcionamento básico de uma rede TCP/IP.
   <img src="../../img/topologia_experimento1.png" alt="image">
 </p>
 
-### 2. Configurar os clientes na rede de testes.
-No FreeBSD, configure o arquivo rc.conf (**/etc/rc.conf**) e ponha a interface em questão configurável de forma estática, modificando o arquivo para que ele fique semelhante as linhas abaixo:
-
-```
-hostname=”freebsd”
-ifconfig_em0=”inet 192.0.2.7 netmask 255.255.255.0”
-ifconfig_em0_ipv6=”inet6 accept_rtadv”
-sshd_enable=”YES”
-# Set dumpdev to “AUTO” to enable crash dumps, “NO” to disable
-dumpdev=”AUTO”
-defaultrouter=”192.0.2.254”
+### 2. Configurar os clientes na rede de testes
+Certifique-se que eventuais serviços de suporte às configurações de rede estejam desativados. No Debian, execute o seguinte comando (com conta de superusuário):
+```bash
+$ service network-manager stop
 ```
 
-É possível que o equipamento usado para testes possua uma designação de interface de rede diferente 
-de em0. É praxe em0 ser vinculada à primeira interface de rede Ethernet do computador que executa o 
-kernel do FreeBSD.
+No Debian, configure o arquivo interfaes (**/etc/network/interfaces**) e ponha a interface em questão configurável de forma estática, modificando o arquivo para que ele fique semelhante as linhas abaixo:
+
+```
+auto eth0
+iface eth0 inet static
+    address 192.168.1.3
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+```
+
+É possível que o equipamento usado para testes possua uma designação de interface de rede diferente de eth0. É praxe eth0 ser vinculada à primeira interface de rede Ethernet do computador que executa o kernel do Linux.
 
 Dispondo de privilégios de superusuário, execute o seguinte comando para forçar a configuração da mesma:
 ```bash
-$ ./etc/netstart <interface>
+$ ifup <interface>
 ```
 <t style="color: red;">ATENÇÃO:</t> substitua **&lt;interface&gt;** pelo identificador da interface de rede do equipamento de testes.
 
@@ -65,8 +67,8 @@ Também é possível executar os seguintes comandos para configuração das inte
 
 ```bash
 $ # ifconfig interface-name IP-address netmask Netmask
-$ ifconfig em0 192.168.133.250 netmask 255.255.255.0
-$ route add default 192.168.133.1
+$ ifconfig eth0 192.168.1.3 netmask 255.255.255.0
+$ route add default 192.168.1.1
 $ route -n
 ```
 
@@ -83,6 +85,8 @@ $ ping <IP-address>
 
 Como proceder para configurar o esquema de resolução de nomes?
 
+A maioria dos sistemas operacionais possuem ferramentas de auxílio à configuração de placas de redes. Execute os passos anteriores usando a ferramenta disponível em seu sistema operacional. 
+
 Obs.: Esse tipo de configuração explorada no experimento é chamada de **Manual** ou **Estática**.
 
 ## *Questões para Estudo*
@@ -91,8 +95,8 @@ Obs.: Esse tipo de configuração explorada no experimento é chamada de **Manua
 3. O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.
 
 ## *Referências Bibliográficas*
-RAINVILLE, Shane. How to configure network settings in FreeBSD. **Serverlab**, 2020. Disponível em: &lt;https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/&gt;. Acesso em: 10 dez. de 2022.
+RAINVILLE, Shane. How to configure network settings in FreeBSD. Serverlab, 2020. Disponível em: https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/. Acesso em: 10 dez. de 2022.
 
-**ping(8)**. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?ping(8)&gt;. Acesso em: 10 dez. 2022.
+FreeBSD.org. ping(8). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?ping(8). Acesso em: 10 dez. 2022.
 
-LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019
+LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

@@ -54,10 +54,10 @@ $ sockstat -4l
 
 Esse comando irá exibir todos os processos, IPv4 (**-4**), em estado de escuta (**-l**) e que abriram portas. Execute os próximos passos apenas se for possível identificar o processo da aplicação **netcat** vinculado à porta indicada.
 
-### 4. Interações com o socket servidor
-Na prática sobre camada de aplicação, usamos a aplicação telnet. Essa ferramenta é capaz de abrir sockets TCP cliente a servidores.
+### 4. Interações com o *socket* servidor
+Na prática sobre camada de aplicação, usamos a aplicação **telnet**. Essa ferramenta é capaz de abrir *sockets* TCP cliente a servidores.
 
-Partindo do princípio que há um equipamento em que está aberta uma porta em estado de escuta, ou seja, há um socket servidor de uma aplicação, utilize a ferramenta telnet para se conectar a esse servidor. Apenas relembrando a sintaxe esperada para execuções do telnet:
+Partindo do princípio que há um equipamento em que está aberta uma porta em estado de escuta, ou seja, há um *socket* servidor de uma aplicação, utilize a ferramenta **telnet** para se conectar a esse servidor. Apenas relembrando a sintaxe esperada para execuções do **telnet**:
 ```bash
 $ telnet nome_do_host numero_da_porta
 ```
@@ -69,7 +69,7 @@ Uma vez aberto o socket, envie bytes através da digitação de caracteres do te
 
 Nesse contexto, será necessário empreender um teste do tipo **caixa-preta** para verificar se determinados serviços estão ativos. Na verdade, no contexto da camada de transporte, o teste verificará se determinadas portas estão abertas e em estado de escuta no equipamento sobre testes.
 
-As ferramentas até então estudadas são capazes de auxiliar o técnico nessa atividade de identificação de serviços ativos, porém demandarão uma série de interações do operador ou mesmo a programação de scripts que serão executados para varrer determinados conjuntos de parâmetros de interesse.
+As ferramentas até então estudadas são capazes de auxiliar o técnico nessa atividade de identificação de serviços ativos, porém demandarão uma série de interações do operador ou mesmo a programação de *scripts* que serão executados para varrer determinados conjuntos de parâmetros de interesse.
 
 Como as redes TCP/IP já estão em produção há algumas décadas, é natural que algumas ferramentas mais maduras e integradas estejam disponíveis para a identificação mais imediata dos serviços disponíveis. Uma dessas ferramentas é o **nmap**.
 
@@ -82,7 +82,7 @@ $ nmap nome_do_host
 ```bash
 $ nmap faixa_de_ip
 ```
-onde **faixa_de_ip** pode ser uma faixa por intervalos (como 192.168.133.1-20, o que contemplaria todos os IPs entre 192.168.133.1 e 192.168.133.20) ou mesmo a indicação de uma subrede usando notação CIDR.
+onde **faixa_de_ip** pode ser uma faixa por intervalos (como 192.168.1.1-20, o que contemplaria todos os IPs entre 192.168.1.1 e 192.168.1.20) ou mesmo a indicação de uma subrede usando notação CIDR.
 
 ## *Questões para Estudo*
 1. A porta de um servidor que provê aplicações sobre TCP pode se encontrar em diferentes estados. Quais são esses estados e como evolui a comunicação entre um cliente e um servidor TCP quando a porta se apresenta em cada um dos estados possíveis?

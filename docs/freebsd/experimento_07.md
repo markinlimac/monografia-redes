@@ -1,16 +1,16 @@
-# Camada de Rede (ARP)
+# Camada de Enlace (ARP)
 
 [Baixar como PDF](files/Pratica_de_Laboratorio_07.pdf)
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 07</p>
-<p align="center"><b>Camada de Rede (ARP)</b></p>
+<p align="center"><b>Camada de Enlace (ARP)</b></p>
 
 ## *Introdução*
-Para o correto funcionamento de redes, alguns serviços de nível de camada de rede são primordiais para a adequada cooperação da pilha de protocolos sobre a qual reside a Internet.
+Para o correto funcionamento de redes, alguns serviços de nível de camada de enlace são primordiais para a adequada cooperação da pilha de protocolos sobre a qual reside a Internet.
 
 ## *Objetivos*
-1. Exercitar conceitos discutidos nas aulas teóricas da disciplina referentes à camada de rede.
+1. Exercitar conceitos referentes à camada de enlace.
 2. Entender o papel do protocolo ARP e como acontecem suas interações.
 
 ## *Teoria abordada no experimento*
