@@ -29,17 +29,18 @@ Objetivo e funcionamento de *firewalls*.
 ### 1. Montagem de rede interconectada para o experimento
 Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o gateway da topologia e lhe dê dois endereços de IP: um IP fixo e válido para a rede de saída e um IP restrito, inválido.
 
+Os equipamentos H1 e S1 deverão prover o serviço SSH na porta 22.
+
 <t style="color: green;">DICA:</t> Use as configurações e topologia utilizadas na **Prática de Laboratório 06**.
 
-- R/eth1 (172.25.0.1) e S1 (172.25.0.2).
+<!-- - R/eth1 (172.25.0.1) e S1 (172.25.0.2).
 - H1 (192.168.1.3), H2 (192.168.1.2) e R/eth0 (192.168.1.1).
 - **OPCIONAL**: R/eth2 (184.45.0.1) e S2 (184.45.0.2).
 
-Os equipamentos H1 e S1 deverão prover o serviço SSH na porta 22.
 
 <p align="center">
   <img src="../../img/topologia_experimento8.png" alt="image">
-</p>
+</p> -->
 
 ### 2. Configurar os clientes na rede de testes e validar as configurações
 Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
