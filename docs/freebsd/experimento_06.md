@@ -29,15 +29,15 @@ Objetivo e funcionamento do esquema NAT.
 ### 1. Montagem de rede interconectada para o experimento
 Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o gateway da topologia e lhe dê dois endereços de IP: um IP fixo e válido para a rede de saída e um IP restrito, inválido.
 
-- H1 (192.168.1.3), H2 (192.168.1.2) e G/eth0 (192.168.1.1).
+<!-- - H1 (192.168.1.3), H2 (192.168.1.2) e G/eth0 (192.168.1.1).
 - S1 (172.25.0.2) e G/eth1 (172.25.0.1).
 
 <p align="center">
   <img src="../../img/topologia_experimento6.png" alt="image">
-</p>
+</p> -->
 
 ### 2. Configuração do Servidor DHCP (opcional)
-Se for do interesse da equipe que executa o experimento evitar configurações nas máquinas que usarão o gateway com NAT, é conveniente implantar o serviço de DHCP em algum servidor da rede local (privada) que usará o equipamento com NAT como gateway.
+Se for do interesse de quem executa o experimento evitar configurações nas máquinas que usarão o gateway com NAT, é conveniente implantar o serviço de DHCP em algum servidor da rede local (privada) que usará o equipamento com NAT como gateway.
 
 Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 05**.
 
@@ -66,7 +66,12 @@ pass out on ethSaida inet from ethPriv:network to any nat-to (ethSaida)
 
 Há várias maneiras de configurar o arquivo pf.conf para funcionar como NAT, mas a maneira descrita é a que funciona melhor para os mais variados tipos de endereçamento de rede, seja ele manual ou dinâmico.
 
-Para visualizar as traduções NAT ativas, o utilitário **pfctl(8)** é usado com o parâmetro **-s state**. Esta opção listará todas as sessões NAT atuais.
+Para visualizar as traduções NAT ativas, o utilitário **pfctl(8)** é usado com o parâmetro **-s state**. Esta opção listará todas as sessões NAT atuais:
+```bash
+$ pfctl -s state
+```
+
+Explique a saída do comando anterior.
 
 Teste as configurações de rede usando as ferramentas discutidas em práticas anteriores. Recomenda-se as seguintes etapas de testes: teste de conectividade entre equipamentos da rede privada e o gateway com NAT, teste de conectividade entre equipamentos da rede privada e equipamentos situados na rede de saída do gateway e teste de conectividade entre equipamentos da rede privada e equipamentos na rede externa.
 
@@ -77,10 +82,10 @@ Teste as configurações de rede usando as ferramentas discutidas em práticas a
 4. Reinicie o seu equipamento usado para a implementação de um NAT usando o sistema operacional FreeBSD e verifique se as suas configurações ainda funcionam. Descreva que tipo de procedimentos foram realizados para tornar as configurações de NAT persistentes.
 
 ## *Referências Bibliográficas*
-https://www.openbsd.org/faq/pf/nat.html
+HOLLAND, N; KNIGHT, J. PF - Network Address Translation. OpenBSD, 2004. Disponível em: https://www.openbsd.org/faq/pf/nat.html. Acesso em: 15 dez. de 2022.
 
-https://docs.freebsd.org/doc/6.1-RELEASE/usr/share/doc/handbook/network-natd.html
+LEE, Chern. Network Address Translation. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://docs.freebsd.org/doc/6.1-RELEASE/usr/share/doc/handbook/network-natd.html. Acesso em: 15 dez. de 2022.
 
-https://www.comptia.org/content/guides/what-is-network-address-translation
+Comptia.org. What Is NAT?. Data desconhecida. CompTIA. Disponível em: https://www.comptia.org/content/guides/what-is-network-address-translation. Acesso em: 15 dez. de 2022.
 
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.
