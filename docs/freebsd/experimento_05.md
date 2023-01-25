@@ -1,7 +1,5 @@
 # Camada de Aplicação (DHCP)
 
-[Baixar como PDF](files/Pratica_de_Laboratorio_05.pdf)
-
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 05</p>
 <p align="center"><b>Camada de Aplicação (DHCP)</b></p>

@@ -1,7 +1,5 @@
 # Introdução às Redes de Computadores
 
-[Baixar como PDF](files/debian/Pratica_de_Laboratorio_01.pdf)
-
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 01</p>
 <p align="center"><b>Introdução às Redes de Computadores</b></p>

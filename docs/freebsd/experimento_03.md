@@ -1,7 +1,5 @@
 # Depuração de Problemas na Camada de Transporte
 
-[Baixar como PDF](files/Pratica_de_Laboratorio_03.pdf)
-
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 03</p>
 <p align="center"><b>Depuração de Problemas na Camada de Transporte</b></p>

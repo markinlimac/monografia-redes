@@ -1,7 +1,5 @@
 # Camada de Aplicação (DNS)
 
-[Baixar como PDF](files/Pratica_de_Laboratorio_10.pdf)
-
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 10</p>
 <p align="center"><b>Camada de Aplicação (DNS)</b></p>

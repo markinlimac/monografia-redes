@@ -1,7 +1,5 @@
 # Introdução ao IPv6
 
-[Baixar como PDF](files/debian/Pratica_de_Laboratorio_11.pdf)
-
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 11</p>
 <p align="center"><b>Introdução ao IPv6</b></p>
