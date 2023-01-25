@@ -1881,10 +1881,7 @@ iface bge1 inet6 static
 <h3 id="7-usando-dhcpv6">7. Usando DHCPv6</h3>
 <p>O tipo de configuração apresentado na <a href="#42-configuracao-automatica-de-endereco-global-slaac">etapa 4.2</a> é algo mais próximo do DHCP no IPv4. No entanto, você não pode controlar qual endereço está realmente configurado em cada host porque eles são gerados a partir dos endereços MAC. Para um controle mais refinado da configuração automática de endereço, você precisará de outro método, como DHCPv6.</p>
 <p>Para configurar um host em uma rede que utiliza o DHCPv6, edite o arquivo interfaces (<strong>/etc/network/interfaces</strong>):</p>
-<pre><code>ifconfig_bge0=&quot;up&quot;
-ifconfig_bge0_ipv6=&quot;inet6 accept_rtadv&quot;
-rtsold_enable=&quot;YES&quot;
-rtsold_flags=&quot;-0 /usr/local/etc/dhcp6c.sh bge0&quot;
+<pre><code>iface eth0 inet6 dhcp
 </code></pre>
 <p>Verifique o estado atual da interface de rede:</p>
 <pre><code class="language-bash">$ ifconfig &lt;interface&gt;
