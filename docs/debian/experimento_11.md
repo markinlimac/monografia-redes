@@ -102,10 +102,11 @@ Para remover um endereço específico, pode-se usar o parâmetro *-alias*:
 $ ifconfig <interface> inet6 fe80::1/64 -alias
 ```
 
-#### 2.4 Configuração manual usando o arquivo *rc.conf*
-Para configurar o IPv6 no arquivo rc.conf (**/etc/rc.conf**) utiliza-se o parâmetro **ifconfig_&lt;interface&gt;_ipv6** para indicar que a interface **&lt;interface&gt;** é compatível com IPv6. Na seguinte configuração apenas um endereço de link-local é configurado automaticamente:
+#### 2.4 Configuração manual usando o arquivo *interfaces*
+Para configurar o IPv6 no arquivo interfaces (**/etc/network/interfaces**) utiliza-se o parâmetro **ifconfig_&lt;interface&gt;_ipv6** para indicar que a interface **&lt;interface&gt;** é compatível com IPv6. Na seguinte configuração apenas um endereço de link-local é configurado automaticamente:
 ```
-ifconfig_bge0_ipv6="inet6 auto_linklocal"
+auto eth0
+iface eth0 inet6 auto_linklocal
 ```
 
 Se você quiser adicionar outro endereço de link-local manualmente, você pode adicionar a linha **inet6** em **ifconfig_&lt;interface&gt;_ipv6**.
@@ -124,7 +125,7 @@ A partir dos exemplos dados até aqui, configure uma topologia semelhante a apre
 $ service netif restart <interface>
 ```
 
-<t style="color: red;">ATENÇÃO:</t> No FreeBSD a linha ```ifconfig_<interface>``` do arquivo rc.conf (**/etc/rc.conf**) não pode estar vazia, pois ela serve para dizer que a interface em questão está ativa. Caso não seja necessário ativar o ipv4 da maquina pode ser definido ```ifconfig_<interface>="up"```.
+<t style="color: red;">ATENÇÃO:</t> No FreeBSD a linha ```ifconfig_<interface>``` do arquivo interfaces (**/etc/network/interfaces**) não pode estar vazia, pois ela serve para dizer que a interface em questão está ativa. Caso não seja necessário ativar o ipv4 da maquina pode ser definido ```ifconfig_<interface>="up"```.
 
 ### 3. Validando as configurações
 Confira a conectividade básica enviando pacotes ICMPv6 para algum outro computador que esteja conectado à mesma rede:
@@ -136,7 +137,7 @@ Como proceder para configurar o esquema de resolução de nomes?
 
 ### 4. Internet em IPv6
 #### 4.1 Configuração manual
-Ao configurar e validar uma topologia semelhante a apresentada no inicio do experimento, pode ter ficado a duvida de como acessar destinos fora da rede local. Para que isso seja possível primeiro é necessário adicionar a seguinte linha ao arquivo rc.conf (**/etc/rc.conf**):
+Ao configurar e validar uma topologia semelhante a apresentada no inicio do experimento, pode ter ficado a duvida de como acessar destinos fora da rede local. Para que isso seja possível primeiro é necessário adicionar a seguinte linha ao arquivo interfaces (**/etc/network/interfaces**):
 ```
 ipv6_defaultrouter="<inet6_address>"
 ```
@@ -169,7 +170,7 @@ Para verificar se o seu roteador IPv6 oferece suporte a mensagens RA, você pode
 ```bash
 $ rtsol -D <interface>
 ```
-Caso a resposta contenha a linha **received RA from**, significa que é possível utilizar a configuração automática. No arquivo rc.conf (**/etc/rc.conf**) atualizar o valor da variável **ifconfig_&lt;interface&gt;_ipv6**:
+Caso a resposta contenha a linha **received RA from**, significa que é possível utilizar a configuração automática. No arquivo interfaces (**/etc/network/interfaces**) atualizar o valor da variável **ifconfig_&lt;interface&gt;_ipv6**:
 ```
 $ ifconfig_bge0_ipv6="inet6 accept_rtadv"
 ```
@@ -181,7 +182,7 @@ $ ifconfig <interface_nome>
 ```
 A palavra-chave **autoconf** deve ser mostrada logo após o endereço.
 
-<t style="color: red;">ATENÇÃO:</t> No caso da configuração automática, não é necessário definir o roteador padrão no arquivo rc.conf (<b>/etc/rc.conf</b>). Pois, o valor <b>inet6 accept_rtadv</b> configura um endereço IPv6 global e o roteador padrão.
+<t style="color: red;">ATENÇÃO:</t> No caso da configuração automática, não é necessário definir o roteador padrão no arquivo interfaces (<b>/etc/network/interfaces</b>). Pois, o valor <b>inet6 accept_rtadv</b> configura um endereço IPv6 global e o roteador padrão.
 
 ### 6. Configuração de um roteador IPv6
 A topologia a seguir mostra um exemplo de um rede que possui um roteador IPv6 para ter duas redes independentes. A LAN 1 e a LAN 2 são conectadas entre si pelo roteador, e outro roteador oferece acessibilidade à Internet IPv6.
@@ -193,7 +194,7 @@ A topologia a seguir mostra um exemplo de um rede que possui um roteador IPv6 pa
   <img src="../../img/topologia_experimento11_2.png" alt="image">
 </p>
 
-Para habilitar o encaminhamento de pacotes, é necessário a variável **ipv6_gateway_enable** no arquivo rc.conf (**/etc/rc.conf**). Assumindo que **bge0** e **bge1** são as interfaces de rede do roteador para LAN 1 e LAN 2 respectivamente, o arquivo ficara semelhante a isso:
+Para habilitar o encaminhamento de pacotes, é necessário a variável **ipv6_gateway_enable** no arquivo interfaces (**/etc/network/interfaces**). Assumindo que **bge0** e **bge1** são as interfaces de rede do roteador para LAN 1 e LAN 2 respectivamente, o arquivo ficara semelhante a isso:
 ```
 ipv6_gateway_enable="YES"
 ipv6_defaultrouter="fe80::5a52:8aff:fe10:e323%bge0" #router link-local address
@@ -213,7 +214,7 @@ Verifique se a rota foi adicionada com sucesso.
 $ route show
 ```
 
-Porém, o roteador FreeBSD ainda não habilitou o envio de mensagens RA, para configuração automática de hosts na rede. Para enviar mensagens RA, você precisa do serviço **rtadvd(8)** que pode ser ativado no arquivo rc.conf (**/etc/rc.conf**).
+Porém, o roteador FreeBSD ainda não habilitou o envio de mensagens RA, para configuração automática de hosts na rede. Para enviar mensagens RA, você precisa do serviço **rtadvd(8)** que pode ser ativado no arquivo interfaces (**/etc/network/interfaces**).
 ```
 ipv6_gateway_enable="YES"
 ipv6_defaultrouter="fe80::5a52:8aff:fe10:e323%bge0"
@@ -230,7 +231,7 @@ Configure H1 para utilizar a configuração automática de endereço e verifique
 ### 7. Usando DHCPv6
 O tipo de configuração apresentado na [etapa 4.2](#42-configuracao-automatica-de-endereco-global-slaac) é algo mais próximo do DHCP no IPv4. No entanto, você não pode controlar qual endereço está realmente configurado em cada host porque eles são gerados a partir dos endereços MAC. Para um controle mais refinado da configuração automática de endereço, você precisará de outro método, como DHCPv6.
 
-Para configurar um host em uma rede que utiliza o DHCPv6, edite o arquivo rc.conf (**/etc/rc.conf**):
+Para configurar um host em uma rede que utiliza o DHCPv6, edite o arquivo interfaces (**/etc/network/interfaces**):
 ```
 ifconfig_bge0="up"
 ifconfig_bge0_ipv6="inet6 accept_rtadv"
