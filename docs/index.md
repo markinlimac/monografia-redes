@@ -65,5 +65,5 @@ Experimento prático que apresenta como configurar o IPv6 nos sistemas operacion
 ## Tecnologias usadas nos experimentos
 Os experimentos são desenvolvidos para serem executados em equipamentos físicos que possuem FreeBSD ou Debian como sistema operacional.
 
-<img style="width: 40%" alt="" src="../img/freebsd.png">
+<img style="width: 40%" alt="" src="img/freebsd.png">
 <img style="width: 40%; padding-bottom: 15px; margin-left: 30px" alt="" src="img/debian.png">
