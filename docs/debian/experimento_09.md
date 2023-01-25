@@ -153,19 +153,21 @@ $ ipfw add 150 forward ip from 192.168.1.3 to any via 172.25.0.2
 
     Isso pode ser feito usando o recurso de NAT do *firewall* de R, adicionando as seguintes regras:
 ```bash
-$ # <interface> é o nome da interface de rede que está conectada à Internet
-$ ipfw add 160 nat 1 ip from 172.25.0.2 to any out via <interface>
+$ # <interface> é o ip da interface de rede que está conectada à Internet
+$ iptables -t nat -A POSTROUTING -s 172.25.0.2 -j SNAT --to <interface>
 ```
 
 - Ajustar a tabela de rotas para que h1 e h2 consigam pingar em S1.
-```bash
+<!-- ```bash
 $ route add -net 172.25.0.0/24 172.25.0.2
+``` -->
+```bash
+$ ip route add 172.25.0.0/24 via 172.25.0.2
 ```
 
 - Montar regras em R (e onde for preciso) para garantir o proxy transparente (ou seja, h1 e h2 não sabem da presença de um proxy). **Obs.**: Verificar se é possível resolver o desvio para o proxy usando um chain.
 ```bash
-$ ipfw add redirect_port tcp from 192.168.1.2 80 to 172.25.0.2 8080
-$ ipfw add redirect_port tcp from 192.168.1.3 80 to 172.25.0.2 8080
+$ iptables -t nat -A PREROUTING -i 192.168.1.1 -p tcp --dport 80 -j DNAT --to 172.25.0.2:3128
 ```
 
 ## *Questões para Estudo*

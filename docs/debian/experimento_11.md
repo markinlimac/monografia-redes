@@ -7,7 +7,7 @@
 <p align="center"><b>Introdução ao IPv6</b></p>
 
 ## *Introdução*
-O IPv6 é o sucessor do IPv4 e foi criado para resolver os problemas de escassez de endereços IP que ocorriam no IPv4. Ele fornece uma quantidade praticamente ilimitada de endereços IP, permitindo que as redes cresçam e evoluam de forma mais flexível e escalável. Neste experimento prático, vamos explorar como configurar o IPv6 no sistema operacional FreeBSD através da utilização de comandos e configurações no arquivo rc.conf (**/etc/rc.conf**).
+O IPv6 é o sucessor do IPv4 e foi criado para resolver os problemas de escassez de endereços IP que ocorriam no IPv4. Ele fornece uma quantidade praticamente ilimitada de endereços IP, permitindo que as redes cresçam e evoluam de forma mais flexível e escalável. Neste experimento prático, vamos explorar como configurar o IPv6 no sistema operacional Linux através da utilização de comandos e configurações no arquivo interfaces (**/etc/network/interfaces**).
 
 ## *Objetivos*
 1. Compreender as configurações básicas para navegabilidade em uma rede de computadores utilizando o IPv6.

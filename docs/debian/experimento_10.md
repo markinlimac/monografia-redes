@@ -11,7 +11,7 @@ O Domain Name System (DNS) é um importante componente da Internet, responsável
 
 ## *Objetivos*
 1. Demonstrar o funcionamento do DNS e sua importância na Internet.
-2. Mostrar como configurar um servidor DNS no FreeBSD.
+2. Mostrar como configurar um servidor DNS no Linux.
 3. Verificar o funcionamento do servidor DNS através de consultas utilizando os comandos **dig** e **nslookup**.
 
 ## *Teoria abordada no experimento*
@@ -35,13 +35,15 @@ Objetivo e funcionamento do protocolo DNS.
 </p>
 
 ### 2. Configurar os clientes na rede de testes e validar as configurações
+Certifique-se que eventuais serviços de suporte às configurações de rede estejam desativados.
+
 Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 
 ### 3. Instalação do pacote de servidor DNS
-Para a execução deste experimento é essencial a instalação do pacote **bind9**, que não é incluso por padrão no FreeBSD. Para prosseguir com a instalação, execute o seguinte comando:
+Para a execução deste experimento é essencial a instalação do pacote **bind9**, que não é incluso por padrão no Debian. Para prosseguir com a instalação, execute o seguinte comando:
 ```bash
-$ pkg install bind9
-$ service named start
+$ sudo apt-get install bind9
+$ sudo systemctl start bind9
 ```
 
 Verifique se o servidor DNS está funcionando corretamente com o seguinte comando:
@@ -50,20 +52,20 @@ $ nslookup localhost
 ```
 
 ### 4. Configuração do Servidor DNS
-Edite o arquivo de configuração do DNS, named.conf (**/usr/local/etc/namedb/named.conf**) e adicione as seguintes linhas para configurar as suas zonas de busca direta e inversa:
+Edite o arquivo de configuração do DNS, named.conf (**/etc/bind/named.conf**) e adicione as seguintes linhas para configurar as suas zonas de busca direta e inversa:
 ```
 zone "exemplo.com" {
     type master;
-    file "/usr/local/etc/namedb/master/exemplo.com.db";
+    file "/etc/bind/master/exemplo.com.db";
 };
 
 zone "1.168.192.in-addr.arpa" {
     type master;
-    file "/usr/local/etc/namedb/master/192.168.1.db";
+    file "etc/bind/master/192.168.1.db";
 };
 ```
 
-Crie os arquivos de zona de busca direta e inversa. O arquivo de zona de busca direta, exemplo.com.db (**/usr/local/etc/namedb/master/exemplo.com.db**), deve conter informações sobre os seus servidores de nomes e endereços IP:
+Crie os arquivos de zona de busca direta e inversa. O arquivo de zona de busca direta, exemplo.com.db (**/etc/bind/master/exemplo.com.db**), deve conter informações sobre os seus servidores de nomes e endereços IP:
 ```
 $TTL    86400
 @       IN      SOA     ns1.exemplo.com. admin.exemplo.com. (
@@ -81,7 +83,7 @@ H1      IN      A       192.168.1.2
 H2      IN      A       192.168.1.4
 ```
 
-O arquivo de zona de busca inversa, 192.168.1.db (**/usr/local/etc/namedb/master/192.168.1.db**), deve conter informações sobre os seus endereços IP e nomes de host:
+O arquivo de zona de busca inversa, 192.168.1.db (**/etc/bind/master/192.168.1.db**), deve conter informações sobre os seus endereços IP e nomes de host:
 ```
 $TTL    86400
 @       IN      SOA     ns1.exemplo.com. admin.exemplo.com. (
@@ -99,14 +101,13 @@ $TTL    86400
 
 Reinicie o serviço DNS usando o seguinte comando: 
 ```bash
-$ service named restart.
+$ sudo systemctl restart bind9
 ```
 
 Faça consultas ao servidor DNS para verificar se está funcionando corretamente:
 ```bash
 $ nslookup host_da_rede
 ```
-
 
 ### 5. Configuração do cliente DNS
 Para que outros hosts da rede usem o servidor DNS que você configurou, é necessário especificar o endereço IP do servidor DNS como sendo o servidor de nomes padrão (ou *nameserver*) desses hosts.
