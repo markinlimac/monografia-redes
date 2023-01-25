@@ -35,14 +35,21 @@ Conceitos básicos do IPv6 e o funcionamento básico de uma rede TCP/IP utilizan
 
 ### 2. Configurar os clientes na rede de testes
 #### 2.1 Configuração manual usando *ifconfig(8)*
-Para ver o estado atual da interface de rede que esta sendo usada na maquina, execute:
+Para ver o estado atual da interface de rede que está sendo usada na maquina, execute:
 ```bash
 $ ifconfig <interface>
 ```
 
-Caso o comando mostre na saída a linha **nd6 options** com a opção **IFDISABLED**, significa que o IPv6 esta desabilitado nesta interface. Caso esteja desabilitado, execute o comando:
+Caso o comando não mostre nenhum endereço IPv6 configurado, pode indicar que o IPv6 esta desabilitado nesta interface. Para verificar se está desabilitado, execute o comando:
 ```bash
-$ ifconfig <interface> inet6 -ifdisabled
+$ sysctl -a | grep net.ipv6.conf.<interface>.disable_ipv6
+```
+
+Esse comando irá exibir o valor da configuração **net.ipv6.conf.&lt;interface&gt;.disable_ipv6**, que controla se o IPv6 está habilitado ou desabilitado para todas as interfaces. Se o valor for 1, significa que o IPv6 está desabilitado, se for 0, significa que o IPv6 está habilitado.
+
+Caso o comando mostre que o IPv6 está desabilitado, adicione a seguinte linha no arquivo sysctl.conf (**/etc/sysctl.conf**):
+```bash
+net.ipv6.conf.<interface>.disable_ipv6 = 1
 ```
 
 Após a habilitação, verifique novamente o estado atual da interface de rede. Deverá ser capaz de ver a linha **inet6**, que será o endereço IPv6 configurado para a interface em questão.
