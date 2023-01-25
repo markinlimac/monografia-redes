@@ -95,8 +95,8 @@ Obs.: Esse tipo de configuração explorada no experimento é chamada de **Manua
 3. O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.
 
 ## *Referências Bibliográficas*
-RAINVILLE, Shane. How to configure network settings in FreeBSD. Serverlab, 2020. Disponível em: https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/. Acesso em: 10 dez. de 2022.
+vitux.com. Network Configuration in Debian 11. Data desconhecida. Vitux. Disponível em: https://vitux.com/network-configuration-in-debian/. Acesso em: 10 jan. de 2023.
 
-FreeBSD.org. ping(8). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?ping(8). Acesso em: 10 dez. 2022.
+debian.org. ping(8). Debian Manpages, 2022. Disponível em: hhttps://manpages.debian.org/testing/iputils-ping/ping.8.en.html. Acesso em: 10 jan. 2023.
 
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

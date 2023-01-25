@@ -94,8 +94,4 @@ Costa, Matheus. O que é HTTP. canaltech, 2019. Disponível em: https://canaltec
 
 Reynolds, Luke. Send an email using Telnet. linuxconfig, 2021. Disponível em: https://linuxconfig.org/send-an-email-using-telnet. Acesso em: 11 dez. de 2022.
 
-FreeBSD.org. host(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=host&sektion=1. Acesso em: 11 dez. 2022.
-
-FreeBSD.org. telnet(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?telnet. Acesso em: 11 dez. 2022.
-
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

@@ -75,20 +75,14 @@ Teste as configurações de rede usando as ferramentas discutidas em práticas a
 1. Alguns passos foram omitidos nesse roteiro. A partir da metodologia de testes, identifique o problema e apresente a solução para que a rede privada recém criada seja capaz de conectar-se à rede externa.
 2. Consulte a documentação das ferramentas usadas na implementação do NAT e indique o resultado de cada um dos comandos necessários à implementação do NAT.
 3. Como você sugere verificar se está acessando a rede externa através de um NAT?
-4. Reinicie o seu equipamento usado para a implementação de um NAT usando o sistema operacional FreeBSD e verifique se as suas configurações ainda funcionam. Descreva que tipo de procedimentos foram realizados para tornar as configurações de NAT persistentes.
+4. Reinicie o seu equipamento usado para a implementação de um NAT usando o sistema operacional Linux e verifique se as suas configurações ainda funcionam. Descreva que tipo de procedimentos foram realizados para tornar as configurações de NAT persistentes.
 
 ## *Referências Bibliográficas*
-HOLLAND, N; KNIGHT, J. PF - Network Address Translation. OpenBSD, 2004. Disponível em: https://www.openbsd.org/faq/pf/nat.html. Acesso em: 15 dez. de 2022.
+Comptia.org. What Is NAT?. Data desconhecida. CompTIA. Disponível em: https://www.comptia.org/content/guides/what-is-network-address-translation. Acesso em: 15 jan. de 2022.
 
-LEE, Chern. Network Address Translation. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://docs.freebsd.org/doc/6.1-RELEASE/usr/share/doc/handbook/network-natd.html. Acesso em: 15 dez. de 2022.
+DELFINO, Pedro. IPTABLES: Aprenda Como Utilizar A Principal Ferramenta Para Implementar Firewall No Linux. Data desconhecida. Profissionais Linux. Disponível em: https://e-tinet.com/linux/firewall-iptables/. Acesso em: 15 jan. de 2022.
 
-Comptia.org. What Is NAT?. Data desconhecida. CompTIA. Disponível em: https://www.comptia.org/content/guides/what-is-network-address-translation. Acesso em: 15 dez. de 2022.
-
-Scyphus Solutions Co. FreeBSD as NAT gateway. Scyphus Solutions Co, 2003. Disponível em: http://draft.scyphus.co.jp/freebsd/nat.html. Acesso em: 15 dez. de 2022.
-
-ELATOV, Karim. FreeBSD Firewall and NAT with PF. Github, 2011. Disponível em: https://elatov.github.io/2011/05/freebsd-firewall-and-nat-with-pf/. Acesso em: 15 dez. de 2022.
-
-NOOR, Justin. How To Configure Packet Filter (PF) on FreeBSD 12.1. Digital Ocean, 2020. Disponível em: https://www.digitalocean.com/community/tutorials/how-to-configure-packet-filter-pf-on-freebsd-12-1. Acesso em: 15 dez. de 2022.
+grindscale.io. Introduction to the Debian router / gateway. Data desconhecida. Profissionais Linux. Disponível em: https://gridscale.io/en/community/tutorials/debian-router-gateway/. Acesso em: 15 jan. de 2022.
 
 WETHERALL, D. J; TANENBAUM, A. S. Computer networks. Pearson Education, 2013.
 

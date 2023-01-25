@@ -101,15 +101,19 @@ Experimente realizar a conexão SSH entre H1 e S1 usando a regra de DNAT criada.
 2. Em relação aos [testes da Etapa 1](#4-testes-validacao-das-intervencoes-da-etapa-1) do roteiro, como é possível ao Nmap indicar a eventual presença de portas filtradas através do roteador R que atua como *Firewall*?
 
 ## *Referências Bibliográficas*
-FreeBSD.org. IPFW. Data desconhecida. FreeBSD Handbook. Disponível em: https://docs.freebsd.org/en/books/handbook/firewalls/#firewalls-ipfw. Acesso em: 17 dez. 2022.
-
-FreeBSD.org. IPFW. Data desconhecida. FreeBSD Handbook. Disponível em: https://docs.freebsd.org/doc/6.0-RELEASE/usr/share/doc/handbook/firewalls-ipfw.html. Acesso em: 17 dez. 2022.
-
-EDGAR. FreeBSD: Como configurar um firewall usando IPFW. Sempre Update, 2018. Disponível em: https://sempreupdate.com.br/freebsd-como-configurar-um-firewall-usando-ipfw/. Acesso em: 17 dez. de 2022.
+DELFINO, Pedro. IPTABLES: Aprenda Como Utilizar A Principal Ferramenta Para Implementar Firewall No Linux. Data desconhecida. Profissionais Linux. Disponível em: https://e-tinet.com/linux/firewall-iptables/. Acesso em: 15 jan. de 2023.
 
 Wikipedia.org. Firewall. Data desconhecida. Wikipedia. Disponível em: https://pt.wikipedia.org/wiki/Firewall. Acesso em: 17 dez. de 2022.
 
-DRUMOND, Tiago. Palestra Firewall descomplicado com FreeBSD - IPFW. YouTube, 12 de nov. de 2015. Disponível em: https://www.youtube.com/watch?v=_tIP4E22O_0. Acesso em: 17 dez. de 2022.
+MACEDO, R. T. Firewall com Iptables: Teoria e Prática. YouTube, 15 de jun. de 2021. Disponível em: https://www.youtube.com/watch?v=_xIuY_3EQ2o. Acesso em: 15 jan. de 2023.
+
+REIS, Fábio. Firewall iptables no Linux - parte 01 - Tabelas, Cadeias e Regras. YouTube, 23 de dez. de 2014. Disponível em: https://www.youtube.com/watch?v=LJlJlLgkNxg. Acesso em: 15 jan. de 2023.
+
+REIS, Fábio. Firewall iptables - Verificando e excluindo as regras e regra padrão da cadeia no Linux - parte 02. YouTube, 24 de dez. de 2014. Disponível em: https://www.youtube.com/watch?v=Sc2-4gL6gIg. Acesso em: 15 jan. de 2023.
+
+REIS, Fábio. Firewall iptables - Algumas regras de uso geral I (ping, mac, ssh, IP) - vídeo 03. YouTube, 26 de dez. de 2014. Disponível em: https://www.youtube.com/watch?v=LJlJlLgkNxg. Acesso em: 15 jan. de 2023.
+
+REIS, Fábio. Firewall iptables - Salvando e tornando as regras permanentes - vídeo 04. YouTube, 29 de dez. de 2014. Disponível em: https://www.youtube.com/watch?v=kV4h_RCYR6s. Acesso em: 15 jan. de 2023.
 
 WETHERALL, D. J; TANENBAUM, A. S. Computer networks. Pearson Education, 2013.
 

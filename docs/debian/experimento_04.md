@@ -98,12 +98,12 @@ $ traceroute ip_do_alvo
 5. Em relação à [etapa 6](#6-caminho-seguido-por-um-pacote) do presente roteiro, descreva o processo típico de detecção da rota percorrida por um pacote através da execução do comando **traceroute**.
 
 ## *Referências Bibliográficas*
-FreeBSD.org. ping(8). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?ping(8). Acesso em: 10 dez. 2022.
+debian.org. netstat(8). Debian Manpages, 2022. Disponível em: https://manpages.debian.org/bullseye/net-tools/netstat.8.pt_BR.html. Acesso em: 12 jan. 2023.
 
-FreeBSD.org. traceroute. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=traceroute. Acesso em: 12 dez. 2022.
+debian.org. route(8). Debian Manpages, 2022. Disponível em: https://manpages.debian.org/bullseye/net-tools/route.8.pt_BR.html. Acesso em: 12 jan. 2023.
 
-FreeBSD.org. netstat. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?netstat. Acesso em: 12 dez. 2022.
+debian.org. ping(8). Debian Manpages, 2022. Disponível em: https://manpages.debian.org/testing/iputils-ping/ping.8.en.html. Acesso em: 12 jan. 2023.
 
-FreeBSD.org. route. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?route. Acesso em: 12 dez. 2022.
+debian.org. traceroute. Debian Manpages, 2022. Disponível em: https://manpages.debian.org/bullseye/traceroute/traceroute.1.en.html. Acesso em: 12 jan. 2023.
 
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.

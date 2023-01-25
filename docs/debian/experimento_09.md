@@ -181,7 +181,7 @@ ROGÉRIO. FreeBSD com proxy Squid - Revista Infra Magazine 4. Devmedia, 2012. Di
 
 Linuxhelp.com. How to install squid proxy server on freeBSD. Data desconhecida. Linux Help. Disponível em: https://www.linuxhelp.com/how-to-install-squid-proxy-server-on-freebsd. Acesso em: 18 dez. 2022.
 
-FreeBSD.org. squid. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=squid. Acesso em: 18 dez. 2022.
+debian.org. squid. Debian Manpages, 2022. Disponível em: https://manpages.debian.org/bullseye/squid/squid.8.en.html. Acesso em: 17 jan. 2023.
 
 Wikipedia.org. Proxy. Data desconhecida. Wikipedia. Disponível em: https://pt.wikipedia.org/wiki/Proxy. Acesso em: 18 dez. de 2022.
 

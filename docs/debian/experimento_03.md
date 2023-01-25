@@ -95,18 +95,10 @@ onde **faixa_de_ip** pode ser uma faixa por intervalos (como 192.168.1.1-20, o q
 6. O **nmap** é considerado uma ferramenta extremamente poderosa. Como você a utilizaria para identificar quais são os equipamentos que estão ativos e em execução em uma rede?
 
 ## *Referências Bibliográficas*
-GITE, Vivek. FreeBSD List/Display Open Ports With sockstat Command. Cyberciti, 2008. Disponível em: https://www.cyberciti.biz/tips/freebsd-lists-open-internet-unix-domain-sockets.html. Acesso em: 11 dez. de 2022.
+GITE, Vivek. How to check open ports in Linux using the CLI. Cyberciti, 2022. Disponível em: https://www.cyberciti.biz/faq/how-to-check-open-ports-in-linux-using-the-cli/. Acesso em: 11 jan. de 2023.
 
 ELLINGWOOD, Justin. How To Use Netcat to Establish and Test TCP and UDP Connections. Digital Ocean, 2021. Disponível em: https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections. Acesso em: 11 dez. de 2022.
 
 SHIVANANDHAN, Manish. What is Nmap and How to Use it – A Tutorial for the Greatest Scanning Tool of All Time. FreeCodeCamp, 2021. Disponível em: https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-the-greatest-scanning-tool-of-all-time/. Acesso em: 11 dez. de 2022.
-
-FreeBSD.org. telnet(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?telnet. Acesso em: 11 dez. 2022.
-
-FreeBSD.org. nmap(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=nmap&manpath=SuSE+Linux%2Fi386+11.3. Acesso em: 11 dez. 2022.
-
-FreeBSD.org. nc(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?nc. Acesso em: 11 dez. 2022.
-
-FreeBSD.org. sockstat(1). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=sockstat&sektion=1. Acesso em: 11 dez. 2022.
 
 LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.
