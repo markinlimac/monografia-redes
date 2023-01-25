@@ -1278,16 +1278,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-configuracao-dos-equipamentos-etapa-1" class="md-nav__link">
-    2. Configuração dos equipamentos: etapa 1
+  <a href="#2-configurar-os-clientes-na-rede-de-testes-e-validar-as-configuracoes" class="md-nav__link">
+    2. Configurar os clientes na rede de testes e validar as configurações
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-configuracao-dos-equipamentos-etapa-2" class="md-nav__link">
-    3. Configuração dos equipamentos: etapa 2
+  <a href="#3-configuracao-dos-equipamentos" class="md-nav__link">
+    3. Configuração dos equipamentos
   </a>
+  
+    <nav class="md-nav" aria-label="3. Configuração dos equipamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapa-1" class="md-nav__link">
+    Etapa 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-2" class="md-nav__link">
+    Etapa 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1496,16 +1516,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-configuracao-dos-equipamentos-etapa-1" class="md-nav__link">
-    2. Configuração dos equipamentos: etapa 1
+  <a href="#2-configurar-os-clientes-na-rede-de-testes-e-validar-as-configuracoes" class="md-nav__link">
+    2. Configurar os clientes na rede de testes e validar as configurações
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-configuracao-dos-equipamentos-etapa-2" class="md-nav__link">
-    3. Configuração dos equipamentos: etapa 2
+  <a href="#3-configuracao-dos-equipamentos" class="md-nav__link">
+    3. Configuração dos equipamentos
   </a>
+  
+    <nav class="md-nav" aria-label="3. Configuração dos equipamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapa-1" class="md-nav__link">
+    Etapa 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-2" class="md-nav__link">
+    Etapa 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1548,57 +1588,178 @@
   </a>
 
 
-<h1 id="camada-de-aplicacao-proxy">Camada de Aplicação (Proxy)</h1>
-<p><a href="files/Pratica_de_Laboratorio_09.pdf">Baixar como PDF</a></p>
+<h1 id="camada-de-aplicacao-proxy">Camada de Aplicação (<em>Proxy</em>)</h1>
+<p><a href="files/debian/Pratica_de_Laboratorio_09.pdf">Baixar como PDF</a></p>
 <p><img style="width: 100%" alt="" src="../../img/header.jpg"></p>
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 09</p>
-<p align="center"><b>Camada de Aplicação (Proxy)</b></p>
+<p align="center"><b>Camada de Aplicação (<i>Proxy</i>)</b></p>
 
 <h2 id="introducao"><em>Introdução</em></h2>
 <p>Em redes de computadores, um <em>proxy</em> é um servidor (um sistema de computador ou uma aplicação) que age como um intermediário para requisições de clientes solicitando recursos de outros servidores. </p>
-<p>Um cliente conecta-se ao servidor <em>proxy</em>, solicitando algum serviço, como um arquivo, conexão, página web ou outros recursos disponíveis de um servidor diferente e o <em>proxy</em> avalia a solicitação como um meio de simplificar e controlar sua complexidade. Os <em>proxies</em> foram inventados para adicionar estrutura e encapsulamento a sistemas distribuídos. Hoje, a maioria dos <em>proxies</em> é <em>proxy web</em>, facilitando o acesso ao conteúdo na World Wide Web e fornecendo anonimato. [<a href="https://pt.wikipedia.org/wiki/Proxy">1</a>]</p>
+<p>Um cliente conecta-se ao servidor <em>proxy</em>, solicitando algum serviço, como um arquivo, conexão, página web ou outros recursos disponíveis de um servidor diferente e o <em>proxy</em> avalia a solicitação como um meio de simplificar e controlar sua complexidade. Os <em>proxies</em> foram inventados para adicionar estrutura e encapsulamento a sistemas distribuídos. Hoje, a maioria dos <em>proxies</em> é <em>proxy web</em>, facilitando o acesso ao conteúdo na World Wide Web e fornecendo anonimato.</p>
 <h2 id="objetivos"><em>Objetivos</em></h2>
 <ol>
-<li>Permitir que os alunos tenham contato com regras de Proxy em máquinas FreeBSD.</li>
+<li>Permitir que os alunos tenham contato com regras de <em>Proxy</em> em máquinas Linux.</li>
 </ol>
 <h2 id="teoria-abordada-no-experimento"><em>Teoria abordada no experimento</em></h2>
-<p>Objetivo e funcionamento de um proxy de aplicação.</p>
+<p>Objetivo e funcionamento de um <em>proxy</em> de aplicação.</p>
 <h2 id="material-necessario"><em>Material Necessário</em></h2>
 <ul>
 <li>Interfaces de rede (NIC's)</li>
-<li>Máquinas com sistema FreeBSD</li>
+<li>Máquinas com sistema GNU/Linux</li>
 <li>Cabos de rede – par trançado normal</li>
 <li>Switches ou HUBs</li>
-<li>Software nas máquinas: ambiente FreeBSD básico, pacote DNS server (bind9)</li>
-<li>Acesso à Internet – NÃO é necessário (instalar o squid)</li>
+<li>Software nas máquinas: ambiente GNU/Linux básico, pacote <em>Proxy server</em> (<strong>Squid</strong>)</li>
+<li>Acesso à Internet – necessário</li>
 </ul>
 <h2 id="roteiro"><em>Roteiro</em></h2>
 <h3 id="1-montagem-de-rede-interconectada-para-o-experimento">1. Montagem de rede interconectada para o experimento</h3>
-<p>Monte uma topologia de acordo com o seguinte diagrama:</p>
+<ul>
+<li>H1 (192.168.1.3), H2 (192.168.1.2) e R/eth0 (192.168.1.1).</li>
+</ul>
 <p align="center">
-  <img src="../../img/diagrama_proxy1.png" alt="image">
+  <img src="../../img/topologia_experimento9_0.png" alt="image">
 </p>
 
-<h3 id="2-configuracao-dos-equipamentos-etapa-1">2. Configuração dos equipamentos: etapa 1</h3>
-<p>Em R, instalar o SQUID (proxy server) com as seguintes funcionalidades: (i) controle de acesso web por máquina (IP), (ii) black list (BL) para h1 e h2, (iii) White list (wl) para h1 (e/ou h2). Na resposta, verificar e descrever qual o nível de prevalência entre wl e bl.</p>
+<h3 id="2-configurar-os-clientes-na-rede-de-testes-e-validar-as-configuracoes">2. Configurar os clientes na rede de testes e validar as configurações</h3>
+<p>Certifique-se que eventuais serviços de suporte às configurações de rede estejam desativados.</p>
+<p>Lembrem-se das etapas que foram percorridas na <strong>Prática de Laboratório 01</strong>.</p>
+<h3 id="3-configuracao-dos-equipamentos">3. Configuração dos equipamentos</h3>
+<p>Em R, instalar o SQUID (<em>proxy server</em>).</p>
+<pre><code class="language-bash">$ # atualizar os repositórios
+$ sudo apt-get update
+$ # instalar SQUID
+$ sudo apt-get install squid
+</code></pre>
+<p>Após a instalação, é possível verificar o arquivo de configuração do SQUID:</p>
+<pre><code class="language-bash">$ squid -f /etc/squid/squid.conf -k parse
+</code></pre>
+<p>Inicie o serviço SQUID:</p>
+<pre><code class="language-bash">$ systemctl start squid
+</code></pre>
+<p><t style="color: red;">ATENÇÃO:</t> É possível verificar o log do SQUID usando o comando <strong>tail -f /var/log/squid/access.log</strong>.</p>
+<h4 id="etapa-1">Etapa 1</h4>
+<p>Adicionar as seguintes funcionalidades ao SQUID:</p>
+<ul>
+<li>
+<p>controle de acesso web por máquina (IP).</p>
+<p>Edite o arquivo squid.conf (<strong>/etc/squid/squid.conf</strong>) para adicionar uma regra de acesso e adicione a regra criada ao conjunto de regras de acesso HTTP seguido pelo tipo de acesso (allow/deny):</p>
+</li>
+</ul>
+<pre><code># acl nome_da_regra src IP/mascara
+acl meu_ip src 192.168.1.3
+# http_access allow/deny nome_da_regra
+http_access allow meu_ip
+</code></pre>
+<ul>
+<li>
+<p>black list (BL) para h1 e h2.</p>
+<p>Edite o arquivo squid.conf (<strong>/etc/squid/squid.conf</strong>) para adicionar regras de blacklist para os endereços IP de H1 e H2 e adicione as regras criadas ao conjunto de regras de acesso HTTP seguido pelo tipo de acesso (deny):</p>
+</li>
+</ul>
+<pre><code># acl nome_da_regra_bl_h1 src IP
+acl blacklist_h1 src 192.168.1.3
+# acl nome_da_regra_bl_h2 src IP
+acl blacklist_h2 src 192.168.1.2
+# http_access allow nome_da_regra_bl_h1
+http_access deny blacklist_h1
+# http_access allow nome_da_regra_bl_h2
+http_access deny blacklist_h2
+</code></pre>
+<ul>
+<li>
+<p>White list (WL) para h1 (e/ou h2).</p>
+<p>Edite o arquivo squid.conf (<strong>/etc/squid/squid.conf</strong>) para adicionar regras de whitelist para os endereços IP de H1 e adicione as regras criadas ao conjunto de regras de acesso HTTP seguido pelo tipo de acesso (allow):</p>
+</li>
+</ul>
+<pre><code># acl nome_da_regra_wl_h1 src IP
+acl whitelist_h1 src 192.168.1.3
+# http_access allow nome_da_regra_wl_h1
+http_access allow whitelist_h1
+</code></pre>
+<p>Salve e reinicie o SQUID para que as configurações tenham efeito.</p>
+<pre><code class="language-bash">$ systemctl restart squid
+</code></pre>
+<p>Verificar e descrever qual o nível de prevalência entre wl e bl.</p>
+<p><t style="color: red;">ATENÇÃO:</t> As regras de acesso são aplicadas na ordem em que são definidas, por isso, é importante posicionar as regras de blacklist depois de qualquer outra regra de acesso, para garantir que essas regras sejam aplicadas corretamente.</p>
 <p>Ajustar h1 e h2 para que percebam a presença do proxy para o acesso Internet (configuração manual). <strong>Obs.</strong>: R possui acesso Internet, mas não possui NAT.</p>
-<h3 id="3-configuracao-dos-equipamentos-etapa-2">3. Configuração dos equipamentos: etapa 2</h3>
+<ul>
+<li>Em h1 e h2 adicionar seguinte configuração (também pode ser feito utilizando a configuração do browser) no arquivo apt.conf (<strong>/etc/apt/apt.conf</strong>):</li>
+</ul>
+<pre><code>Acquire::http::Proxy &quot;http://192.168.1.1:3128/&quot;;
+Acquire::https::Proxy &quot;http://192.168.1.1:3128/&quot;;
+</code></pre>
+<ul>
+<li>Em R, edite o arquivo sysctl.conf (<strong>/etc/sysctl.conf</strong>), para ativar o encaminhamento de pacotes IP (IP <em>forwarding</em>), remova o comentário da seguinte linha:</li>
+</ul>
+<pre><code>net.ipv4.ip_forward=1
+</code></pre>
+<ul>
+<li>Ative a configuração.</li>
+</ul>
+<pre><code class="language-bash">$ sysctl net.ipv4.ip_forward=1
+</code></pre>
+<ul>
+<li>Configure e reinicie o <em>firewall</em> para permitir as conexões de H1 e H2:</li>
+</ul>
+<pre><code class="language-bash">$ iptables -A INPUT -s 192.168.1.2 -j ACCEPT
+$ iptables -A INPUT -s 192.168.1.3 -j ACCEPT
+$ systemctl restart squid
+</code></pre>
+<h4 id="etapa-2">Etapa 2</h4>
 <p>Montar a configuração de rede abaixo e seguir os requisitos descritos a seguir.</p>
+<ul>
+<li>R/eth1 (172.25.0.1) e S1 (172.25.0.2).</li>
+<li>H1 (192.168.1.3), H2 (192.168.1.2) e R/eth0 (192.168.1.1).</li>
+</ul>
 <p align="center">
-  <img src="../../img/diagrama_proxy2.png" alt="image">
+  <img src="../../img/topologia_experimento9_1.png" alt="image">
 </p>
 
-<p>Transferir a função de proxy para S1, incluindo as restrições definidas nos itens (a) e (b).</p>
+<ul>
+<li>
+<p>Transferir a função de proxy para S1, incluindo as restrições definidas anteriormente.</p>
+<p>Instale o SQUID no S1 e configure-o para atuar como um proxy para as conexões de H1 e H2. Isso incluiria configurar as regras de controle de acesso por IP, black list (BL) e white list (WL) para H1 e H2.</p>
+<p>Configure R para encaminhar as conexões de H1 e H2 para S1:</p>
+</li>
+</ul>
+<pre><code class="language-bash">$ ipfw add 140 forward ip from 192.168.1.2 to any via 172.25.0.2
+$ ipfw add 150 forward ip from 192.168.1.3 to any via 172.25.0.2
+</code></pre>
+<ul>
+<li>
 <p>Montar um SNAT em R para que S1 possa acessar a Internet.</p>
-<p>Ajustar a tabela de rotas para que h1 e h2 consigam pingar em S1.</p>
-<p>Montar regras em R (e onde for preciso) para garantir o proxy transparente (ou seja, h1 e h2 não sabem da presença de um proxy Obs.: Verificar se é possível resolver o desvio para o proxy usando um chain.</p>
+<p>Isso pode ser feito usando o recurso de NAT do <em>firewall</em> de R, adicionando as seguintes regras:</p>
+</li>
+</ul>
+<pre><code class="language-bash">$ # &lt;interface&gt; é o nome da interface de rede que está conectada à Internet
+$ ipfw add 160 nat 1 ip from 172.25.0.2 to any out via &lt;interface&gt;
+</code></pre>
+<ul>
+<li>Ajustar a tabela de rotas para que h1 e h2 consigam pingar em S1.</li>
+</ul>
+<pre><code class="language-bash">$ route add -net 172.25.0.0/24 172.25.0.2
+</code></pre>
+<ul>
+<li>Montar regras em R (e onde for preciso) para garantir o proxy transparente (ou seja, h1 e h2 não sabem da presença de um proxy). <strong>Obs.</strong>: Verificar se é possível resolver o desvio para o proxy usando um chain.</li>
+</ul>
+<pre><code class="language-bash">$ ipfw add redirect_port tcp from 192.168.1.2 80 to 172.25.0.2 8080
+$ ipfw add redirect_port tcp from 192.168.1.3 80 to 172.25.0.2 8080
+</code></pre>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
 <ol>
-<li></li>
-<li></li>
+<li>Como o protocolo HTTP funciona e como ele é usado pelo Squid para implementar o proxy?</li>
+<li>Como o uso de chains no <em>firewall</em> Iptables pode ser usado para implementar políticas de <em>firewall</em> mais avançadas e flexíveis?</li>
+<li>Quais são as principais diferenças entre o proxy e o <em>firewall</em> e como eles podem ser usados ​​juntos para melhorar a segurança da rede?</li>
+<li>Como o Squid possui configuração para melhorar a segurança do proxy? Explique.</li>
 </ol>
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
-<p>[1] https://pt.wikipedia.org/wiki/Proxy</p>
+<p>ROGÉRIO. FreeBSD com proxy Squid - Revista Infra Magazine 4. Devmedia, 2012. Disponível em: https://www.devmedia.com.br/freebsd-com-proxy-squid-revista-infra-magazine-4/23440. Acesso em: 18 dez. 2022.</p>
+<p>Linuxhelp.com. How to install squid proxy server on freeBSD. Data desconhecida. Linux Help. Disponível em: https://www.linuxhelp.com/how-to-install-squid-proxy-server-on-freebsd. Acesso em: 18 dez. 2022.</p>
+<p>FreeBSD.org. squid. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=squid. Acesso em: 18 dez. 2022.</p>
+<p>Wikipedia.org. Proxy. Data desconhecida. Wikipedia. Disponível em: https://pt.wikipedia.org/wiki/Proxy. Acesso em: 18 dez. de 2022.</p>
+<p>WETHERALL, D. J; TANENBAUM, A. S. Computer networks. Pearson Education, 2013.</p>
+<p>LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.</p>
 
 
 

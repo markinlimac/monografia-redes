@@ -1623,16 +1623,16 @@
 </code></pre>
 <p><t style="color: red;">ATENÇÃO:</t> A ferramenta netcat precisa continuar executando a escuta do socket TCP para que o comando <strong>sockstat -4l</strong> o encontre. Portanto, abra outro terminal para executar o segundo comando. No FreeBSD, é possível alternar entre terminais usando os atalhos (<strong>Alt+F1</strong> e <strong>Alt+F2</strong>).</p>
 <p>Esse comando irá exibir todos os processos, IPv4 (<strong>-4</strong>), em estado de escuta (<strong>-l</strong>) e que abriram portas. Execute os próximos passos apenas se for possível identificar o processo da aplicação <strong>netcat</strong> vinculado à porta indicada.</p>
-<h3 id="4-interacoes-com-o-socket-servidor">4. Interações com o socket servidor</h3>
-<p>Na prática sobre camada de aplicação, usamos a aplicação telnet. Essa ferramenta é capaz de abrir sockets TCP cliente a servidores.</p>
-<p>Partindo do princípio que há um equipamento em que está aberta uma porta em estado de escuta, ou seja, há um socket servidor de uma aplicação, utilize a ferramenta telnet para se conectar a esse servidor. Apenas relembrando a sintaxe esperada para execuções do telnet:</p>
+<h3 id="4-interacoes-com-o-socket-servidor">4. Interações com o <em>socket</em> servidor</h3>
+<p>Na prática sobre camada de aplicação, usamos a aplicação <strong>telnet</strong>. Essa ferramenta é capaz de abrir <em>sockets</em> TCP cliente a servidores.</p>
+<p>Partindo do princípio que há um equipamento em que está aberta uma porta em estado de escuta, ou seja, há um <em>socket</em> servidor de uma aplicação, utilize a ferramenta <strong>telnet</strong> para se conectar a esse servidor. Apenas relembrando a sintaxe esperada para execuções do <strong>telnet</strong>:</p>
 <pre><code class="language-bash">$ telnet nome_do_host numero_da_porta
 </code></pre>
 <p>Uma vez aberto o socket, envie bytes através da digitação de caracteres do teclado. Para demandar o envido, pressione a tecla <strong>ENTER</strong> após as digitações.</p>
 <h3 id="5-identificacao-de-servicos-disponiveis-em-um-host">5. Identificação de serviços disponíveis em um host</h3>
 <p>Às vezes, faz-se necessário verificar se há serviços em execução em determinado host conectado à rede. Porém, diferentemente do cenário apresentado na <a href="#3-abertura-de-um-socket-servidor">etapa 3</a>, há situações em que não se terá acesso administrativo (ou físico) ao equipamento a ser analisado.</p>
 <p>Nesse contexto, será necessário empreender um teste do tipo <strong>caixa-preta</strong> para verificar se determinados serviços estão ativos. Na verdade, no contexto da camada de transporte, o teste verificará se determinadas portas estão abertas e em estado de escuta no equipamento sobre testes.</p>
-<p>As ferramentas até então estudadas são capazes de auxiliar o técnico nessa atividade de identificação de serviços ativos, porém demandarão uma série de interações do operador ou mesmo a programação de scripts que serão executados para varrer determinados conjuntos de parâmetros de interesse.</p>
+<p>As ferramentas até então estudadas são capazes de auxiliar o técnico nessa atividade de identificação de serviços ativos, porém demandarão uma série de interações do operador ou mesmo a programação de <em>scripts</em> que serão executados para varrer determinados conjuntos de parâmetros de interesse.</p>
 <p>Como as redes TCP/IP já estão em produção há algumas décadas, é natural que algumas ferramentas mais maduras e integradas estejam disponíveis para a identificação mais imediata dos serviços disponíveis. Uma dessas ferramentas é o <strong>nmap</strong>.</p>
 <p>Para varrer quais são os serviços ativos em determinado host, executa-se o seguinte comando:</p>
 <pre><code class="language-bash">$ nmap nome_do_host
@@ -1640,7 +1640,7 @@
 <p>É possível demandar uma varredura de um conjunto de equipamentos, por exemplo, todos os equipamentos pertencentes a uma rede. Basta alterar o comando acima da seguinte maneira:</p>
 <pre><code class="language-bash">$ nmap faixa_de_ip
 </code></pre>
-<p>onde <strong>faixa_de_ip</strong> pode ser uma faixa por intervalos (como 192.168.133.1-20, o que contemplaria todos os IPs entre 192.168.133.1 e 192.168.133.20) ou mesmo a indicação de uma subrede usando notação CIDR.</p>
+<p>onde <strong>faixa_de_ip</strong> pode ser uma faixa por intervalos (como 192.168.1.1-20, o que contemplaria todos os IPs entre 192.168.1.1 e 192.168.1.20) ou mesmo a indicação de uma subrede usando notação CIDR.</p>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
 <ol>
 <li>A porta de um servidor que provê aplicações sobre TCP pode se encontrar em diferentes estados. Quais são esses estados e como evolui a comunicação entre um cliente e um servidor TCP quando a porta se apresenta em cada um dos estados possíveis?</li>

@@ -903,7 +903,7 @@
         
           <li class="md-nav__item">
   <a href="#2-configurar-os-clientes-na-rede-de-testes" class="md-nav__link">
-    2. Configurar os clientes na rede de testes.
+    2. Configurar os clientes na rede de testes
   </a>
   
 </li>
@@ -1497,7 +1497,7 @@
         
           <li class="md-nav__item">
   <a href="#2-configurar-os-clientes-na-rede-de-testes" class="md-nav__link">
-    2. Configurar os clientes na rede de testes.
+    2. Configurar os clientes na rede de testes
   </a>
   
 </li>
@@ -1549,7 +1549,7 @@
 
 
 <h1 id="introducao-as-redes-de-computadores">Introdução às Redes de Computadores</h1>
-<p><a href="files/Pratica_de_Laboratorio_01.pdf">Baixar como PDF</a></p>
+<p><a href="files/debian/Pratica_de_Laboratorio_01.pdf">Baixar como PDF</a></p>
 <p><img style="width: 100%" alt="" src="../../img/header.jpg"></p>
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 01</p>
 <p align="center"><b>Introdução às Redes de Computadores</b></p>
@@ -1559,19 +1559,20 @@
 <h2 id="objetivos"><em>Objetivos</em></h2>
 <ol>
 <li>Compreender as configurações básicas para navegabilidade em uma rede de computadores.</li>
-<li>Exercitar configurações básicas em diferentes sistemas operacionais e entender como usar ferramentas de diagnóstico para validar configurações.</li>
+<li>Exercitar configurações básicas e entender como usar ferramentas de diagnóstico para validar configurações.</li>
 </ol>
 <h2 id="teoria-abordada-no-experimento"><em>Teoria abordada no experimento</em></h2>
 <p>Funcionamento básico de uma rede TCP/IP.</p>
 <h2 id="material-necessario"><em>Material Necessário</em></h2>
 <ul>
 <li>Interfaces de rede (NIC's)</li>
-<li>Máquinas com sistema FreeBSD</li>
+<li>Máquinas com sistema GNU/Linux</li>
 <li>Cabos de rede – par trançado normal</li>
 <li>Switches ou HUBs</li>
-<li>Software nas máquinas: ambiente FreeBSD básico</li>
+<li>Software nas máquinas: ambiente GNU/Linux básico</li>
 <li>Acesso à Internet – NÃO é necessário</li>
 <li>Desligar o servidor e cliente DHCP para as máquinas do experimento</li>
+<li>Ferramentas de diagnóstico: <strong>ifconfig</strong>, <strong>ping</strong></li>
 </ul>
 <h2 id="roteiro"><em>Roteiro</em></h2>
 <h3 id="1-montagem-de-rede-interconectada-para-o-experimento">1. Montagem de rede interconectada para o experimento</h3>
@@ -1582,21 +1583,20 @@
   <img src="../../img/topologia_experimento1.png" alt="image">
 </p>
 
-<h3 id="2-configurar-os-clientes-na-rede-de-testes">2. Configurar os clientes na rede de testes.</h3>
-<p>No FreeBSD, configure o arquivo rc.conf (<strong>/etc/rc.conf</strong>) e ponha a interface em questão configurável de forma estática, modificando o arquivo para que ele fique semelhante as linhas abaixo:</p>
-<pre><code>hostname=”freebsd”
-ifconfig_em0=”inet 192.0.2.7 netmask 255.255.255.0”
-ifconfig_em0_ipv6=”inet6 accept_rtadv”
-sshd_enable=”YES”
-# Set dumpdev to “AUTO” to enable crash dumps, “NO” to disable
-dumpdev=”AUTO”
-defaultrouter=”192.0.2.254”
+<h3 id="2-configurar-os-clientes-na-rede-de-testes">2. Configurar os clientes na rede de testes</h3>
+<p>Certifique-se que eventuais serviços de suporte às configurações de rede estejam desativados. No Debian, execute o seguinte comando (com conta de superusuário):</p>
+<pre><code class="language-bash">$ service network-manager stop
 </code></pre>
-<p>É possível que o equipamento usado para testes possua uma designação de interface de rede diferente 
-de em0. É praxe em0 ser vinculada à primeira interface de rede Ethernet do computador que executa o 
-kernel do FreeBSD.</p>
+<p>No Debian, configure o arquivo interfaes (<strong>/etc/network/interfaces</strong>) e ponha a interface em questão configurável de forma estática, modificando o arquivo para que ele fique semelhante as linhas abaixo:</p>
+<pre><code>auto eth0
+iface eth0 inet static
+    address 192.168.1.3
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+</code></pre>
+<p>É possível que o equipamento usado para testes possua uma designação de interface de rede diferente de eth0. É praxe eth0 ser vinculada à primeira interface de rede Ethernet do computador que executa o kernel do Linux.</p>
 <p>Dispondo de privilégios de superusuário, execute o seguinte comando para forçar a configuração da mesma:</p>
-<pre><code class="language-bash">$ ./etc/netstart &lt;interface&gt;
+<pre><code class="language-bash">$ ifup &lt;interface&gt;
 </code></pre>
 <p><t style="color: red;">ATENÇÃO:</t> substitua <strong>&lt;interface&gt;</strong> pelo identificador da interface de rede do equipamento de testes.</p>
 <p>Em seguida, para verificar o endereço configurado, use o comando:</p>
@@ -1604,8 +1604,8 @@ kernel do FreeBSD.</p>
 </code></pre>
 <p>Também é possível executar os seguintes comandos para configuração das interfaces de rede:</p>
 <pre><code class="language-bash">$ # ifconfig interface-name IP-address netmask Netmask
-$ ifconfig em0 192.168.133.250 netmask 255.255.255.0
-$ route add default 192.168.133.1
+$ ifconfig eth0 192.168.1.3 netmask 255.255.255.0
+$ route add default 192.168.1.1
 $ route -n
 </code></pre>
 <h3 id="3-validando-as-configuracoes">3. Validando as configurações</h3>
@@ -1616,6 +1616,7 @@ $ route -n
 <pre><code class="language-bash">$ ping &lt;IP-address&gt;
 </code></pre>
 <p>Como proceder para configurar o esquema de resolução de nomes?</p>
+<p>A maioria dos sistemas operacionais possuem ferramentas de auxílio à configuração de placas de redes. Execute os passos anteriores usando a ferramenta disponível em seu sistema operacional. </p>
 <p>Obs.: Esse tipo de configuração explorada no experimento é chamada de <strong>Manual</strong> ou <strong>Estática</strong>.</p>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
 <ol>
@@ -1624,9 +1625,9 @@ $ route -n
 <li>O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.</li>
 </ol>
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
-<p>RAINVILLE, Shane. How to configure network settings in FreeBSD. <strong>Serverlab</strong>, 2020. Disponível em: &lt;https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/&gt;. Acesso em: 10 dez. de 2022.</p>
-<p><strong>ping(8)</strong>. Disponível em: &lt;https://www.freebsd.org/cgi/man.cgi?ping(8)&gt;. Acesso em: 10 dez. 2022.</p>
-<p>LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019</p>
+<p>RAINVILLE, Shane. How to configure network settings in FreeBSD. Serverlab, 2020. Disponível em: https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/. Acesso em: 10 dez. de 2022.</p>
+<p>FreeBSD.org. ping(8). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?ping(8). Acesso em: 10 dez. 2022.</p>
+<p>LUCAS, M. W. Networking for Systems Administrators. 5th. ed. USA: Tilted Windmill Press, 2019.</p>
 
 
 
