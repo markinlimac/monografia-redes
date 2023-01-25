@@ -1587,7 +1587,7 @@
 <h2 id="objetivos"><em>Objetivos</em></h2>
 <ol>
 <li>Demonstrar o funcionamento do DNS e sua importância na Internet.</li>
-<li>Mostrar como configurar um servidor DNS no FreeBSD.</li>
+<li>Mostrar como configurar um servidor DNS no Linux.</li>
 <li>Verificar o funcionamento do servidor DNS através de consultas utilizando os comandos <strong>dig</strong> e <strong>nslookup</strong>.</li>
 </ol>
 <h2 id="teoria-abordada-no-experimento"><em>Teoria abordada no experimento</em></h2>
@@ -1612,28 +1612,29 @@
 </p>
 
 <h3 id="2-configurar-os-clientes-na-rede-de-testes-e-validar-as-configuracoes">2. Configurar os clientes na rede de testes e validar as configurações</h3>
+<p>Certifique-se que eventuais serviços de suporte às configurações de rede estejam desativados.</p>
 <p>Lembrem-se das etapas que foram percorridas na <strong>Prática de Laboratório 01</strong>.</p>
 <h3 id="3-instalacao-do-pacote-de-servidor-dns">3. Instalação do pacote de servidor DNS</h3>
-<p>Para a execução deste experimento é essencial a instalação do pacote <strong>bind9</strong>, que não é incluso por padrão no FreeBSD. Para prosseguir com a instalação, execute o seguinte comando:</p>
-<pre><code class="language-bash">$ pkg install bind9
-$ service named start
+<p>Para a execução deste experimento é essencial a instalação do pacote <strong>bind9</strong>, que não é incluso por padrão no Debian. Para prosseguir com a instalação, execute o seguinte comando:</p>
+<pre><code class="language-bash">$ sudo apt-get install bind9
+$ sudo systemctl start bind9
 </code></pre>
 <p>Verifique se o servidor DNS está funcionando corretamente com o seguinte comando:</p>
 <pre><code class="language-bash">$ nslookup localhost
 </code></pre>
 <h3 id="4-configuracao-do-servidor-dns">4. Configuração do Servidor DNS</h3>
-<p>Edite o arquivo de configuração do DNS, named.conf (<strong>/usr/local/etc/namedb/named.conf</strong>) e adicione as seguintes linhas para configurar as suas zonas de busca direta e inversa:</p>
+<p>Edite o arquivo de configuração do DNS, named.conf (<strong>/etc/bind/named.conf</strong>) e adicione as seguintes linhas para configurar as suas zonas de busca direta e inversa:</p>
 <pre><code>zone &quot;exemplo.com&quot; {
     type master;
-    file &quot;/usr/local/etc/namedb/master/exemplo.com.db&quot;;
+    file &quot;/etc/bind/master/exemplo.com.db&quot;;
 };
 
 zone &quot;1.168.192.in-addr.arpa&quot; {
     type master;
-    file &quot;/usr/local/etc/namedb/master/192.168.1.db&quot;;
+    file &quot;etc/bind/master/192.168.1.db&quot;;
 };
 </code></pre>
-<p>Crie os arquivos de zona de busca direta e inversa. O arquivo de zona de busca direta, exemplo.com.db (<strong>/usr/local/etc/namedb/master/exemplo.com.db</strong>), deve conter informações sobre os seus servidores de nomes e endereços IP:</p>
+<p>Crie os arquivos de zona de busca direta e inversa. O arquivo de zona de busca direta, exemplo.com.db (<strong>/etc/bind/master/exemplo.com.db</strong>), deve conter informações sobre os seus servidores de nomes e endereços IP:</p>
 <pre><code>$TTL    86400
 @       IN      SOA     ns1.exemplo.com. admin.exemplo.com. (
                         20201022      ;Serial
@@ -1649,7 +1650,7 @@ www     IN      A       192.168.1.3
 H1      IN      A       192.168.1.2
 H2      IN      A       192.168.1.4
 </code></pre>
-<p>O arquivo de zona de busca inversa, 192.168.1.db (<strong>/usr/local/etc/namedb/master/192.168.1.db</strong>), deve conter informações sobre os seus endereços IP e nomes de host:</p>
+<p>O arquivo de zona de busca inversa, 192.168.1.db (<strong>/etc/bind/master/192.168.1.db</strong>), deve conter informações sobre os seus endereços IP e nomes de host:</p>
 <pre><code>$TTL    86400
 @       IN      SOA     ns1.exemplo.com. admin.exemplo.com. (
                         20201022      ;Serial
@@ -1664,7 +1665,7 @@ H2      IN      A       192.168.1.4
 4       IN      PTR     H2.exemplo.com.
 </code></pre>
 <p>Reinicie o serviço DNS usando o seguinte comando: </p>
-<pre><code class="language-bash">$ service named restart.
+<pre><code class="language-bash">$ sudo systemctl restart bind9
 </code></pre>
 <p>Faça consultas ao servidor DNS para verificar se está funcionando corretamente:</p>
 <pre><code class="language-bash">$ nslookup host_da_rede

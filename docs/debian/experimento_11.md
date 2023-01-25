@@ -250,10 +250,7 @@ O tipo de configuração apresentado na [etapa 4.2](#42-configuracao-automatica-
 
 Para configurar um host em uma rede que utiliza o DHCPv6, edite o arquivo interfaces (**/etc/network/interfaces**):
 ```
-ifconfig_bge0="up"
-ifconfig_bge0_ipv6="inet6 accept_rtadv"
-rtsold_enable="YES"
-rtsold_flags="-0 /usr/local/etc/dhcp6c.sh bge0"
+iface eth0 inet6 dhcp
 ```
 
 Verifique o estado atual da interface de rede:

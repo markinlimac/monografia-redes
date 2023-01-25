@@ -1401,8 +1401,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24-configuracao-manual-usando-o-arquivo-rcconf" class="md-nav__link">
-    2.4 Configuração manual usando o arquivo rc.conf
+  <a href="#24-configuracao-manual-usando-o-arquivo-interfaces" class="md-nav__link">
+    2.4 Configuração manual usando o arquivo interfaces
   </a>
   
 </li>
@@ -1600,8 +1600,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24-configuracao-manual-usando-o-arquivo-rcconf" class="md-nav__link">
-    2.4 Configuração manual usando o arquivo rc.conf
+  <a href="#24-configuracao-manual-usando-o-arquivo-interfaces" class="md-nav__link">
+    2.4 Configuração manual usando o arquivo interfaces
   </a>
   
 </li>
@@ -1705,7 +1705,7 @@
 <p align="center"><b>Introdução ao IPv6</b></p>
 
 <h2 id="introducao"><em>Introdução</em></h2>
-<p>O IPv6 é o sucessor do IPv4 e foi criado para resolver os problemas de escassez de endereços IP que ocorriam no IPv4. Ele fornece uma quantidade praticamente ilimitada de endereços IP, permitindo que as redes cresçam e evoluam de forma mais flexível e escalável. Neste experimento prático, vamos explorar como configurar o IPv6 no sistema operacional FreeBSD através da utilização de comandos e configurações no arquivo rc.conf (<strong>/etc/rc.conf</strong>).</p>
+<p>O IPv6 é o sucessor do IPv4 e foi criado para resolver os problemas de escassez de endereços IP que ocorriam no IPv4. Ele fornece uma quantidade praticamente ilimitada de endereços IP, permitindo que as redes cresçam e evoluam de forma mais flexível e escalável. Neste experimento prático, vamos explorar como configurar o IPv6 no sistema operacional Linux através da utilização de comandos e configurações no arquivo interfaces (<strong>/etc/network/interfaces</strong>).</p>
 <h2 id="objetivos"><em>Objetivos</em></h2>
 <ol>
 <li>Compreender as configurações básicas para navegabilidade em uma rede de computadores utilizando o IPv6.</li>
@@ -1734,20 +1734,27 @@
 
 <h3 id="2-configurar-os-clientes-na-rede-de-testes">2. Configurar os clientes na rede de testes</h3>
 <h4 id="21-configuracao-manual-usando-ifconfig8">2.1 Configuração manual usando <em>ifconfig(8)</em></h4>
-<p>Para ver o estado atual da interface de rede que esta sendo usada na maquina, execute:</p>
+<p>Para ver o estado atual da interface de rede que está sendo usada na maquina, execute:</p>
 <pre><code class="language-bash">$ ifconfig &lt;interface&gt;
 </code></pre>
-<p>Caso o comando mostre na saída a linha <strong>nd6 options</strong> com a opção <strong>IFDISABLED</strong>, significa que o IPv6 esta desabilitado nesta interface. Caso esteja desabilitado, execute o comando:</p>
-<pre><code class="language-bash">$ ifconfig &lt;interface&gt; inet6 -ifdisabled
+<p>Caso o comando não mostre nenhum endereço IPv6 configurado, pode indicar que o IPv6 esta desabilitado nesta interface. Para verificar se está desabilitado, execute o comando:</p>
+<pre><code class="language-bash">$ sysctl -a | grep net.ipv6.conf.&lt;interface&gt;.disable_ipv6
+</code></pre>
+<p>Esse comando irá exibir o valor da configuração <strong>net.ipv6.conf.&lt;interface&gt;.disable_ipv6</strong>, que controla se o IPv6 está habilitado ou desabilitado para todas as interfaces. Se o valor for 1, significa que o IPv6 está desabilitado, se for 0, significa que o IPv6 está habilitado.</p>
+<p>Caso o comando mostre que o IPv6 está desabilitado, adicione a seguinte linha no arquivo sysctl.conf (<strong>/etc/sysctl.conf</strong>):</p>
+<pre><code>net.ipv6.conf.&lt;interface&gt;.disable_ipv6 = 0
+</code></pre>
+<p>Para forçar a mudança, execute:</p>
+<pre><code class="language-bash">$ sysctl -p
 </code></pre>
 <p>Após a habilitação, verifique novamente o estado atual da interface de rede. Deverá ser capaz de ver a linha <strong>inet6</strong>, que será o endereço IPv6 configurado para a interface em questão.</p>
 <p>Envie pacotes icmp (<strong>ping</strong>) para testar a configuração:</p>
 <pre><code class="language-bash">$ ping &lt;inet6_address&gt;
 </code></pre>
-<p>Execute o serviço SSH no FreeBSD e faça um teste para verificar se é possível conectar no SSH através do IPv6.</p>
+<p>Execute o serviço SSH no Debian e faça um teste para verificar se é possível conectar no SSH através do IPv6.</p>
 <pre><code class="language-bash">$ ssh -v &lt;inet6_address&gt;
 </code></pre>
-<p><t style="color: red;">ATENÇÃO:</t> Este teste irá falhar caso o parâmetro <i>AddressFamily</i>, no arquivo de configuração do <b>sshd_config(8)</b>, estiver definido como <b>inet</b>. Veja a saída de <b>sockstat -6 | grep sshd</b> para verificar se SSH escuta o soquete IPv6.</p>
+<p><t style="color: red;">ATENÇÃO:</t> Este teste irá falhar caso o parâmetro <i>AddressFamily</i>, no arquivo de configuração do <b>sshd_config</b>, estiver definido como <b>inet</b>. Veja a saída de <b>ss -6 -t -a | grep ssh</b> para verificar se SSH escuta o soquete IPv6.</p>
 <h4 id="22-enderecos-multicast-uteis">2.2 Endereços Multicast Úteis</h4>
 <p>Um endereço <em>Multicast</em> identifica um conjunto de interfaces, onde um pacote enviado a um endereço multicast é entregue a todas as interfaces associadas a esse endereço.</p>
 <p>A seguir estão representados dois importantes endereços <em>Multicast</em>:</p>
@@ -1767,27 +1774,34 @@
 <p>Envie pacotes icmp (<strong>ping</strong>) para testar a configuração:</p>
 <pre><code class="language-bash">$ ping fe80::1/64
 </code></pre>
-<p>Execute o serviço SSH no FreeBSD e faça um teste para verificar se é possível conectar no SSH através do IPv6.</p>
+<p>Execute o serviço SSH no Debian e faça um teste para verificar se é possível conectar no SSH através do IPv6.</p>
 <pre><code class="language-bash">$ ssh -v &lt;inet6_address&gt;
 </code></pre>
 <p>Para remover um endereço específico, pode-se usar o parâmetro <em>-alias</em>:</p>
 <pre><code class="language-bash">$ ifconfig &lt;interface&gt; inet6 fe80::1/64 -alias
 </code></pre>
-<h4 id="24-configuracao-manual-usando-o-arquivo-rcconf">2.4 Configuração manual usando o arquivo <em>rc.conf</em></h4>
-<p>Para configurar o IPv6 no arquivo rc.conf (<strong>/etc/rc.conf</strong>) utiliza-se o parâmetro <strong>ifconfig_&lt;interface&gt;_ipv6</strong> para indicar que a interface <strong>&lt;interface&gt;</strong> é compatível com IPv6. Na seguinte configuração apenas um endereço de link-local é configurado automaticamente:</p>
-<pre><code>ifconfig_bge0_ipv6=&quot;inet6 auto_linklocal&quot;
+<h4 id="24-configuracao-manual-usando-o-arquivo-interfaces">2.4 Configuração manual usando o arquivo <em>interfaces</em></h4>
+<p>Para configurar o IPv6 no arquivo interfaces (<strong>/etc/network/interfaces</strong>) utiliza-se o parâmetro <strong>iface &lt;interface&gt; inet6</strong> para indicar que a interface <strong>&lt;interface&gt;</strong> é compatível com IPv6. Na seguinte configuração apenas um endereço de link-local é configurado automaticamente:</p>
+<pre><code>auto eth0
+iface eth0 inet6 auto_linklocal
 </code></pre>
-<p>Se você quiser adicionar outro endereço de link-local manualmente, você pode adicionar a linha <strong>inet6</strong> em <strong>ifconfig_&lt;interface&gt;_ipv6</strong>.</p>
-<pre><code>ifconfig_bge0_ipv6=&quot;inet6 fe80::1/64&quot;
+<p>Se você quiser adicionar outro endereço de link-local manualmente, você pode adicionar a linha <strong>static</strong> em <strong>iface &lt;interface&gt; inet6</strong>.</p>
+<pre><code>auto eth0
+iface eth0 inet6 static
+    address fe80::1
+    netmask 64
 </code></pre>
-<p>Mais endereços podem ainda ser adicionados usando a linha <strong>ifconfig_&lt;interface&gt;_alias0</strong>:</p>
-<pre><code>ifconfig_bge0_ipv6=&quot;inet6 fe80::1/64&quot;
-ifconfig_bge0_alias0=&quot;inet6 2001:db8::1/64&quot;
+<p>Mais endereços podem ainda ser adicionados usando a mesma linha:</p>
+<pre><code>auto eth0
+iface eth0 inet6 static
+    address fe80::1
+    netmask 64
+    address fe80::2
+    netmask 64
 </code></pre>
 <p>A partir dos exemplos dados até aqui, configure uma topologia semelhante a apresentada no inicio do experimento. Após configurar os endereços execute o seguinte comando para reconfigurar a interface:</p>
-<pre><code class="language-bash">$ service netif restart &lt;interface&gt;
+<pre><code class="language-bash">$ ifdown &lt;interface&gt; &amp;&amp; ifup &lt;interface&gt;
 </code></pre>
-<p><t style="color: red;">ATENÇÃO:</t> No FreeBSD a linha <code>ifconfig_&lt;interface&gt;</code> do arquivo rc.conf (<strong>/etc/rc.conf</strong>) não pode estar vazia, pois ela serve para dizer que a interface em questão está ativa. Caso não seja necessário ativar o ipv4 da maquina pode ser definido <code>ifconfig_&lt;interface&gt;="up"</code>.</p>
 <h3 id="3-validando-as-configuracoes">3. Validando as configurações</h3>
 <p>Confira a conectividade básica enviando pacotes ICMPv6 para algum outro computador que esteja conectado à mesma rede:</p>
 <pre><code class="language-bash">$ ping &lt;inet6_address&gt;
@@ -1795,35 +1809,39 @@ ifconfig_bge0_alias0=&quot;inet6 2001:db8::1/64&quot;
 <p>Como proceder para configurar o esquema de resolução de nomes?</p>
 <h3 id="4-internet-em-ipv6">4. Internet em IPv6</h3>
 <h4 id="41-configuracao-manual">4.1 Configuração manual</h4>
-<p>Ao configurar e validar uma topologia semelhante a apresentada no inicio do experimento, pode ter ficado a duvida de como acessar destinos fora da rede local. Para que isso seja possível primeiro é necessário adicionar a seguinte linha ao arquivo rc.conf (<strong>/etc/rc.conf</strong>):</p>
-<pre><code>ipv6_defaultrouter=&quot;&lt;inet6_address&gt;&quot;
+<p>Ao configurar e validar uma topologia semelhante a apresentada no inicio do experimento, pode ter ficado a duvida de como acessar destinos fora da rede local. Para que isso seja possível primeiro é necessário adicionar a seguinte linha ao arquivo interfaces (<strong>/etc/network/interfaces</strong>):</p>
+<pre><code>auto eth0
+iface eth0 inet6 static
+    address fe80::1
+    netmask 64
+    gateway 2001:0db8:0:f100::1
 </code></pre>
 <p>Esta variável especifica o roteador padrão.</p>
 <p>Caso você não saiba o endereço ipv6 do seu roteador você pode executar comandos que foram explicados anteriormente neste experimento. Tente!</p>
-<p>Após especificar o roteador padrão no arquivo é necessário reconfigurar a interface através do utilitário <strong>service</strong>, ja apresentado no presente experimento.</p>
+<p>Após especificar o roteador padrão no arquivo é necessário reconfigurar a interface através do utilitário <strong>ifconfig</strong>, ja apresentado no presente experimento.</p>
 <p>Verifique o estado atual da interface de rede:</p>
 <pre><code class="language-bash">$ ifconfig &lt;interface&gt;
 </code></pre>
 <p>Após configurado o endereço padrão do roteador você pode enviar pacotes ICMPv6 através da internet:</p>
-<pre><code class="language-bash">$ ping www.freebsd.org
+<pre><code class="language-bash">$ ping www.debian.org
 </code></pre>
 <p>Observe que a resolução de nomes de domínio DNS é executada pelos servidores de nomes listados em resolv.conf (<strong>/etc/resolv.conf</strong>). Se o seu roteador IPv6 funcionar como um proxy DNS, você pode colocar o endereço IPv6 assim:</p>
 <pre><code>nameserver &lt;inet6_address&gt;
 </code></pre>
 <h4 id="42-configuracao-automatica-de-endereco-global-slaac">4.2 Configuração automática de endereço global (SLAAC)</h4>
 <p>O IPv6 possui recursos de configuração automática de endereço através de mensagens RA do roteador (protocolo NDP). É possível configurar um endereço IPv6 automaticamente, caso o seu roteador ofereça suporte às mensagens RA.</p>
-<p>Para verificar se o seu roteador IPv6 oferece suporte a mensagens RA, você pode usar o utilitário <strong>rtsol</strong> com  um sinalizador <strong>-D</strong>. Ele envia uma mensagem RS e mostra as mensagens RA dos roteadores:</p>
-<pre><code class="language-bash">$ rtsol -D &lt;interface&gt;
+<p>Para verificar se o seu roteador IPv6 oferece suporte a mensagens RA, você pode usar o utilitário <strong>ping6</strong> no endereço de <em>multicast</em>. O comando envia um pacote ICMPv6 para o endereço de multicast na interface definida e se o roteador suporta RA, ele deve responder.:</p>
+<pre><code class="language-bash">$ ping6 -I eth0 ff02::1%eth0
 </code></pre>
-<p>Caso a resposta contenha a linha <strong>received RA from</strong>, significa que é possível utilizar a configuração automática. No arquivo rc.conf (<strong>/etc/rc.conf</strong>) atualizar o valor da variável <strong>ifconfig_&lt;interface&gt;_ipv6</strong>:</p>
-<pre><code>$ ifconfig_bge0_ipv6=&quot;inet6 accept_rtadv&quot;
+<p>Caso a resposta contenha o endereço do roteador, significa que é possível utilizar a configuração automática. No arquivo sysctl.conf (<strong>/etc/sysctl.conf</strong>) atualizar o valor da variável <strong>net.ipv6.conf.&lt;interface&gt;.accept_ra</strong>:</p>
+<pre><code>$ net.ipv6.conf.all.accept_ra=&lt;value&gt;
 </code></pre>
-<p>O valor <strong>inet6 accept_rtadv</strong> permite que a interface <strong>bge0</strong> aceite mensagens RA para configurar a interface.</p>
+<p>Onde &lt;value&gt; é um número inteiro que representa o valor de configuração. O valor padrão é 2, que significa que as mensagens RA são aceitas, mas somente se o endereço IPv6 de link-local já foi configurado manualmente.</p>
 <p>Verifique o estado atual da interface de rede:</p>
 <pre><code class="language-bash">$ ifconfig &lt;interface_nome&gt;
 </code></pre>
 <p>A palavra-chave <strong>autoconf</strong> deve ser mostrada logo após o endereço.</p>
-<p><t style="color: red;">ATENÇÃO:</t> No caso da configuração automática, não é necessário definir o roteador padrão no arquivo rc.conf (<b>/etc/rc.conf</b>). Pois, o valor <b>inet6 accept_rtadv</b> configura um endereço IPv6 global e o roteador padrão.</p>
+<p><t style="color: red;">ATENÇÃO:</t> No caso da configuração automática, não é necessário definir o roteador padrão no arquivo interfaces (<b>/etc/network/interfaces</b>). Pois, o valor <b>net.ipv6.conf.&lt;interface&gt;.accept_ra</b> configura um endereço IPv6 global e o roteador padrão.</p>
 <h3 id="6-configuracao-de-um-roteador-ipv6">6. Configuração de um roteador IPv6</h3>
 <p>A topologia a seguir mostra um exemplo de um rede que possui um roteador IPv6 para ter duas redes independentes. A LAN 1 e a LAN 2 são conectadas entre si pelo roteador, e outro roteador oferece acessibilidade à Internet IPv6.</p>
 <ul>
@@ -1834,34 +1852,35 @@ ifconfig_bge0_alias0=&quot;inet6 2001:db8::1/64&quot;
   <img src="../../img/topologia_experimento11_2.png" alt="image">
 </p>
 
-<p>Para habilitar o encaminhamento de pacotes, é necessário a variável <strong>ipv6_gateway_enable</strong> no arquivo rc.conf (<strong>/etc/rc.conf</strong>). Assumindo que <strong>bge0</strong> e <strong>bge1</strong> são as interfaces de rede do roteador para LAN 1 e LAN 2 respectivamente, o arquivo ficara semelhante a isso:</p>
-<pre><code>ipv6_gateway_enable=&quot;YES&quot;
-ipv6_defaultrouter=&quot;fe80::5a52:8aff:fe10:e323%bge0&quot; #router link-local address
-ifconfig_bge0=&quot;up&quot;
-ifconfig_bge0_ipv6=&quot;inet6 2001:0db8:0:f101::2/64&quot;
-ifconfig_bge1=&quot;up&quot;
-ifconfig_bge1_ipv6=&quot;inet6 2001:0db8:0:f100::1/64&quot;
+<p>Para habilitar o encaminhamento de pacotes, é necessário que a variável <strong>net.ipv6.conf.all.forwarding</strong> esteja ativa. Você deve editar o arquivo sysctl.conf (<strong>/etc/sysctl.conf</strong>) e adicionar ou modificar a seguinte linha:</p>
+<pre><code>net.ipv6.conf.all.forwarding=1
+</code></pre>
+<p>Assumindo que <strong>bge0</strong> e <strong>bge1</strong> são as interfaces de rede do roteador para LAN 1 e LAN 2 respectivamente, o arquivo interfaces (<strong>/etc/network/interfaces</strong>) ficara semelhante a isso:</p>
+<pre><code>auto bge0
+iface bge0 inet6 static
+    address 2001:0db8:0:f101::2
+    netmask 64
+    gateway fe80::5a52:8aff:fe10:e323
+
+auto bge1
+iface bge1 inet6 static
+    address 2001:0db8:0:f100::1
+    netmask 64
+    gateway fe80::5a52:8aff:fe10:e323
 </code></pre>
 <p>A interface que conecta a LAN 1 (<strong>bge0</strong>) não tem conhecimento da rota para a interface da LAN 2 (<strong>bge1</strong>). Por isso, é necessário adicionar uma configuração de rota estática nela usando um endereço de link-local da interface <strong>bge1</strong>.</p>
-<pre><code class="language-bash">$ route add -inet6  2001:0db8:0:f100::1/64 -interface bge1
+<pre><code class="language-bash">$ ip -6 route add 2001:0db8:0:f100::1/64 dev bge1
 </code></pre>
 <p>Verifique se a rota foi adicionada com sucesso.</p>
-<pre><code class="language-bash">$ route show
+<pre><code class="language-bash">$ ip route show
 </code></pre>
-<p>Porém, o roteador FreeBSD ainda não habilitou o envio de mensagens RA, para configuração automática de hosts na rede. Para enviar mensagens RA, você precisa do serviço <strong>rtadvd(8)</strong> que pode ser ativado no arquivo rc.conf (<strong>/etc/rc.conf</strong>).</p>
-<pre><code>ipv6_gateway_enable=&quot;YES&quot;
-ipv6_defaultrouter=&quot;fe80::5a52:8aff:fe10:e323%bge0&quot;
-ifconfig_bge0=&quot;up&quot;
-ifconfig_bge0_ipv6=&quot;inet6 2001:db8:0:1::1/64&quot;
-ifconfig_bge1=&quot;up&quot;
-ifconfig_bge1_ipv6=&quot;inet6 2001:db8:0:2::1/64&quot;
-rtadvd_enable=&quot;YES&quot;
-rtadvd_interfaces=&quot;bge1&quot;
+<p>Porém, o roteador Debian ainda não habilitou o envio de mensagens RA, para configuração automática de hosts na rede. Para enviar mensagens RA, você precisa editar o arquivo sysctl.conf (<strong>/etc/sysctl.conf</strong>) e adicionar ou modificar a seguinte linha:</p>
+<pre><code>net.ipv6.conf.all.send_redirects=1
 </code></pre>
 <p>Configure H1 para utilizar a configuração automática de endereço e verifique se está tudo ocorrendo da maneira correta.</p>
 <h3 id="7-usando-dhcpv6">7. Usando DHCPv6</h3>
 <p>O tipo de configuração apresentado na <a href="#42-configuracao-automatica-de-endereco-global-slaac">etapa 4.2</a> é algo mais próximo do DHCP no IPv4. No entanto, você não pode controlar qual endereço está realmente configurado em cada host porque eles são gerados a partir dos endereços MAC. Para um controle mais refinado da configuração automática de endereço, você precisará de outro método, como DHCPv6.</p>
-<p>Para configurar um host em uma rede que utiliza o DHCPv6, edite o arquivo rc.conf (<strong>/etc/rc.conf</strong>):</p>
+<p>Para configurar um host em uma rede que utiliza o DHCPv6, edite o arquivo interfaces (<strong>/etc/network/interfaces</strong>):</p>
 <pre><code>ifconfig_bge0=&quot;up&quot;
 ifconfig_bge0_ipv6=&quot;inet6 accept_rtadv&quot;
 rtsold_enable=&quot;YES&quot;
@@ -1874,11 +1893,11 @@ rtsold_flags=&quot;-0 /usr/local/etc/dhcp6c.sh bge0&quot;
 <pre><code class="language-bash">$ ip -f inet6 addr show
 </code></pre>
 <p>Caso apareça a palavra <strong>dynamic</strong> ao lado do endereço IPv6 significa que o host foi configurado através do DHCPv6.</p>
-<p>Procure saber sobre a configuração de um servidor DHCPv6 utilizando o FreeBSD.</p>
+<p>Procure saber sobre a configuração de um servidor DHCPv6 utilizando o Debian.</p>
 <p><t style="color: red;">ATENÇÃO:</t> É necessário ter um servidor DHCPv6 configurado na rede para que o experimento anterior funcione.</p>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
 <ol>
-<li>Em certo momento do experimento, bastou apenas executar o comando <strong>ifconfig &lt;interface&gt; inet6 -ifdisabled</strong> para que um IPv6 fosse configurado. Por que ocorreu isso e como desativar essa configuração automática?</li>
+<li>Em certo momento do experimento, bastou apenas mudar o valor da variável <strong>net.ipv6.conf.&lt;interface&gt;.disable_ipv6</strong> para que um IPv6 fosse configurado. Por que ocorreu isso e como desativar essa configuração automática?</li>
 <li>O que é StateLess Address AutoConfiguration (SLAAC) e qual sua utilidade na atribuição de endereços IPv6?</li>
 <li>Explique os tipos de endereço IPv6 e seus respectivos prefixos? </li>
 <li>Para acessar a internet por meio do IPv4 é necessário o uso do NAT. No IPv6 também é necessário? Explique.</li>
