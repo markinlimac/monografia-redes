@@ -27,8 +27,8 @@ Objetivo e funcionamento do esquema NAT.
 ### 1. Montagem de rede interconectada para o experimento
 Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o gateway da topologia e lhe dê dois endereços de IP: um IP fixo e válido para a rede de saída e um IP restrito, inválido.
 
-- H1, H2 e G/eth0.
-- S1 e G/eth1.
+- H1, H2 e G/eth0 (/24).
+- S1 e G/eth1. (/16)
 
 <!-- <p align="center">
   <img src="../../img/topologia_experimento6.png" alt="image">
