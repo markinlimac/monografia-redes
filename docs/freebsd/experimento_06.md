@@ -27,10 +27,10 @@ Objetivo e funcionamento do esquema NAT.
 ### 1. Montagem de rede interconectada para o experimento
 Monte uma topologia com 3 ou mais máquinas. Escolha uma para ser o gateway da topologia e lhe dê dois endereços de IP: um IP fixo e válido para a rede de saída e um IP restrito, inválido.
 
-<!-- - H1 (192.168.1.3), H2 (192.168.1.2) e G/eth0 (192.168.1.1).
-- S1 (172.25.0.2) e G/eth1 (172.25.0.1).
+- H1, H2 e G/eth0.
+- S1 e G/eth1.
 
-<p align="center">
+<!-- <p align="center">
   <img src="../../img/topologia_experimento6.png" alt="image">
 </p> -->
 
@@ -55,18 +55,59 @@ $ sysctl net.inet.ip.forwarding=1
 ```
 
 ### 4. Configuração do Packet Filter (PF)
+Primeiramente, pode ser necessário ativar o PF. Para isso, adicione no arquivo rc.conf (**/etc/rc.conf**):
+```
+pf_enable=yes
+pf_rules="/etc/pf.conf"
+gateway_enable="YES"
+```
+E execute o comando:
+```bash
+$ sysrc pf_enable=yes
+```
+
+Copie o arquivo pf.conf (**/usr/shared/examples/pf/pf.conf**) para **/etc/**:
+```bash
+$ cp /usr/shared/examples/pf/pf.conf /etc/pf.conf
+```
+
+Caso deseje ativar o suporte de log do PF, adicione a seguinte linha no arquivo rc.conf (**/etc/rc.conf**):
+```
+pflog_enable=yes
+```
+E execute o comando:
+```bash
+$ sysrc pflog_enable=yes
+```
+
+Após todas essas configurações inicie o pf e o pflog:
+```bash
+$ service pf start
+$ service pflog start
+```
+
 Identifique as interfaces configuradas no passo acima e realize os ajustes adequados. Doravante, chamaremos **ethSaida** a interface de saída e **ethPriv** a interface interna (com ou sem DHCP).
+
+Limpe todas as regras configuradas no PF:
+```bash
+$ pfctl -F all -f /etc/pf.conf
+```
 
 Configure o arquivo de configuração do pf (**/etc/pf.conf**) para executar o NAT na interface de saída para quaisquer pacotes provenientes da rede interna, substituindo o endereço privado pelo endereço externo:
 ```
-pass out on ethSaida inet from ethPriv:network to any nat-to (ethSaida)
+pass from ethPriv:network to any port $ports keep state
+```
+
+Para ativar as configurações:
+```bash
+$ pfctl -e
 ```
 
 Há várias maneiras de configurar o arquivo pf.conf para funcionar como NAT, mas a maneira descrita é a que funciona melhor para os mais variados tipos de endereçamento de rede, seja ele manual ou dinâmico.
 
-Para visualizar as traduções NAT ativas, o utilitário **pfctl(8)** é usado com o parâmetro **-s state**. Esta opção listará todas as sessões NAT atuais:
+Para visualizar as traduções NAT ativas, o utilitário **pfctl** é usado com o parâmetro **-s nat**. Esta opção listará todas as sessões NAT atuais:
 ```bash
-$ pfctl -s state
+$ pfctl -s nat
 ```
 
 Explique a saída do comando anterior.

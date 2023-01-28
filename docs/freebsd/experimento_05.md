@@ -45,9 +45,9 @@ $ pkg install isc-dhcp44-server
 ### 4. Configuração do Servidor DHCP
 Os arquivos mais importantes do servidor DHCP a ser usado, são:
 
-**/etc/dhcp/dhcpd.conf** : configurações para o servidor DHCP
+**/usr/local/etc/dhcpd.conf** : configurações para o servidor DHCP
 
-**/var/lib/dhcp/dhcpd.leases** : *leases* já ofertados pelo servidor DHCP
+**/var/db/dhcpd.leases** : *leases* já ofertados pelo servidor DHCP
 
 A configuração do servidor está toda no arquivo **dhcpd.conf**. Segue abaixo um exemplo comentado:
 ```
@@ -85,9 +85,13 @@ O comando abaixo pode ser executado para verificar a sintaxe do arquivo **dhcpd.
 $ dhcpd -t
 ```
 
-Em caso de nenhum erro de sintaxe indicado pelo comando acima, deve-se reiniciar o servidor para que as alterações tenham efeito.
+Em caso de nenhum erro de sintaxe indicado pelo comando acima, deve-se reiniciar o servidor para que as alterações tenham efeito. Porém, primeiro é necessário adicionar a seguinte variável no arquivo rc.conf (**/etc/rc.conf**):
+```
+dhcpd_enable="YES"
+```
+Depois executar o servidor:
 ```bash
-$ service isc-dhcp-server start ou service isc-dhcpd start
+$ service isc-dhcpd start
 ```
 
 esta é a maneira correta de disparar serviços num servidor FreeBSD, porém queremos ver o que está acontecendo com o servidor na sua tela. Por isso vamos disparar o servidor “na mão” com o comando:
@@ -96,14 +100,14 @@ $ dhcpd -d -f <interface de rede>
 ```
 a opção **-d** habilita o modo de depuração, que fornece um rastreamento mais detalhado do processo de inicialização do servidor DHCP e a opção **-f** especifica qual interface de rede deve ser usada.
 
-Para disparar o serviço somente numa interface sempre, acrescente a opção da interface no arquivo **/etc/default/isc-dhcp-server**:
+Para disparar o serviço somente em uma interface sempre, acrescente a opção da interface no inicio do arquivo **/usr/local/etc/dhcpd.conf**:
 ```
 INTERFACES="em0";
 ```
 
-Após a configuração do servidor DHCP, caso apresente algum problema e não esteja funcionando, pode ser necessário verificar os arquivos de log do sistema (**/var/log/syslog**), com o seguinte comando:
+Após a configuração do servidor DHCP, caso apresente algum problema e não esteja funcionando, pode ser necessário verificar os arquivos de log do sistema (**/var/log/messages**), com o seguinte comando:
 ```bash
-$ grep dhcpd /var/log/syslog
+$ grep dhcpd /var/log/messages
 ```
 
 ### 5. Configuração do cliente DHCP
@@ -127,6 +131,7 @@ Verifique se o cliente está usando o servidor DHCP correto:
 ```bash
 $ dhclient -v
 ```
+<t style="color: red;">ATENÇÃO:</t> Caso o parâmetro **-v** não exista na versão do servidor em execução, pode ser usado o comando **cat /var/db/dhclient.leases.&lt;interface&gt;**.
 
 Através do arquivo de *leases*, verifique as concessões ativas do servidor dhcp:
 ```bash

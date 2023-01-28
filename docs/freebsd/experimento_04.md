@@ -74,8 +74,6 @@ Para conferir o estado de atividade das interfaces de rede:
 $ netstat -i
 ```
 
-O comando **netstat** é considerado uma ferramenta clássica de rede e muitas de suas funcionalidades já foram substituídas por outros comandos, como o comando **ip**.
-
 ### 6. Caminho seguido por um pacote
 Há uma aplicação que exercita os serviços típicos e protocolos da camada de forma a identificar o caminho seguido por um pacote. Esse tipo de informação é muito útil para um administrador de redes de computadores que necessita validar a execução de suas intervenções no esquema de roteamento seguido por um sistema autônomo.
 
@@ -90,7 +88,7 @@ $ traceroute ip_do_alvo
 1. A descrição de informações específicas sobre a interface de rede obtida através da execução do comando **ifconfig** é bem extensa. Partindo do resultado da execução do comando em seu equipamento e tomando como referência a interface que foi usada nos testes, descreva em detalhes o significado de cada um dos itens discriminados na segunda coluna de saída do comando.
 2. Equipamentos que implementam a pilha de protocolos TCP/IP apresentam, tipicamente, uma saída padrão durante a execução do comando **ifconfig**. Indique que saída é essa e como ela se faz útil na construção de sistemas que funcionarão sobre redes de comunicações.
 3. A execução do comando **ping** em uma rede é uma das primeiras medidas para verificação de continuidade de serviço. Embora seja um comando muito simples de invocar e cujos resultados práticos são muito fáceis de interpretar, a riqueza de detalhes da saída típica de execução do **ping** é grande. Descreva cada um dos itens que compõem a saída de execução típica de um comando **ping**.
-4. Em relação à [etapa 5](#5-tabela-de-encaminhamento) do presente roteiro, descreva cada um dos itens que compõem a saída de execução típica de um comando **netstat -nr**. Qual seria a sintaxe usada para extrair a mesma informação, porém a partir do comando **ip**?
+4. Em relação à [etapa 5](#5-tabela-de-encaminhamento) do presente roteiro, descreva cada um dos itens que compõem a saída de execução típica de um comando **netstat -nr**.
 5. Em relação à [etapa 6](#6-caminho-seguido-por-um-pacote) do presente roteiro, descreva o processo típico de detecção da rota percorrida por um pacote através da execução do comando **traceroute**.
 
 ## *Referências Bibliográficas*

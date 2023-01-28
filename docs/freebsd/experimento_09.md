@@ -37,9 +37,6 @@ Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 ### 3. Configuração dos equipamentos
 Em R, instalar o SQUID (*proxy server*).
 ```bash
-$ # atualizar os repositórios
-$ pkg update
-$ # instalar SQUID
 $ pkg install squid
 ```
 

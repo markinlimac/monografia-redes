@@ -71,6 +71,11 @@ As ferramentas até então estudadas são capazes de auxiliar o técnico nessa a
 
 Como as redes TCP/IP já estão em produção há algumas décadas, é natural que algumas ferramentas mais maduras e integradas estejam disponíveis para a identificação mais imediata dos serviços disponíveis. Uma dessas ferramentas é o **nmap**.
 
+Para instalar o nmap no FreeBSD:
+```bash
+$ pkg install nmap
+```
+
 Para varrer quais são os serviços ativos em determinado host, executa-se o seguinte comando:
 ```bash
 $ nmap nome_do_host

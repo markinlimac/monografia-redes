@@ -57,7 +57,7 @@ Experimento que apresenta conceitos de *proxy*, que é um servidor (um sistema d
 
 Experimento que apresenta o DNS (*Domain Name System*), um importante componente da Internet, responsável por fazer a tradução de nomes de domínio para endereços IP e vice-versa, que tem por objetivo demonstrar o funcionamento do DNS e sua importância na Internet, mostrar como configurar um servidor DNS nos sistemas operacionais usados e verificar o funcionamento do servidor DNS através de consultas por meio de utilitários.
 
-### Prática de Laboratório 11 - Introdução ao IPV6
+### Prática de Laboratório 11 - Introdução ao IPv6
 ###### [FreeBSD](https://markinlimac.github.io/monografia-redes/freebsd/experimento_11/) | [Debian](https://markinlimac.github.io/monografia-redes/debian/experimento_11/)
 
 Experimento prático que apresenta como configurar o IPv6 nos sistemas operacionais usados através da utilização de comandos e configurações no arquivo de configuração de rede, que tem por objetivo compreender as configurações básicas para navegabilidade em uma rede de computadores utilizando o IPv6 e exercitar configurações básicas e entender como usar ferramentas de diagnóstico para validar configurações.

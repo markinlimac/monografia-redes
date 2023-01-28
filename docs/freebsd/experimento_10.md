@@ -38,7 +38,14 @@ Lembrem-se das etapas que foram percorridas na **Prática de Laboratório 01**.
 ### 3. Instalação do pacote de servidor DNS
 Para a execução deste experimento é essencial a instalação do pacote **bind9**, que não é incluso por padrão no FreeBSD. Para prosseguir com a instalação, execute o seguinte comando:
 ```bash
-$ pkg install bind9
+$ pkg install bind916
+```
+Adicione a seguinte linha no arquivo rc.conf (**/etc/rc.conf**):
+```
+named_enable="YES"
+```
+E execute o comando:
+```bash
 $ service named start
 ```
 

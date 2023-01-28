@@ -51,9 +51,9 @@ kernel do FreeBSD.
 
 Dispondo de privilégios de superusuário, execute o seguinte comando para forçar a configuração da mesma:
 ```bash
-$ ./etc/netstart <interface>
+$ ifconfig <interface> up
 ```
-<t style="color: red;">ATENÇÃO:</t> substitua **&lt;interface&gt;** pelo identificador da interface de rede do equipamento de testes.
+<t style="color: red;">ATENÇÃO:</t> substitua **&lt;interface&gt;** pelo identificador da interface de rede do equipamento de testes. Ao configurar a rede pelo arquivo rc.conf pode ser que o host perca a referência do servidor DNS, caso isso aconteça edite a variável <b>nameserver</b> do arquivo resolv.conf (<b>/etc/resolv.conf</b>).  
 
 Em seguida, para verificar o endereço configurado, use o comando:
 ```bash

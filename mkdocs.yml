@@ -28,11 +28,11 @@ nav:
     - Prática de Laboratório 04:
       - Depuração de Problemas na Camada de Internet: freebsd/experimento_04.md
     - Prática de Laboratório 05:
-      - Camada de Internet (DHCP): freebsd/experimento_05.md
+      - Camada de Aplicação (DHCP): freebsd/experimento_05.md
     - Prática de Laboratório 06:
       - Camada de Internet (NAT): freebsd/experimento_06.md
     - Prática de Laboratório 07:
-      - Camada de Rede (ARP): freebsd/experimento_07.md
+      - Camada de Enlace (ARP): freebsd/experimento_07.md
     - Prática de Laboratório 08:
       - Firewall: freebsd/experimento_08.md
     - Prática de Laboratório 09:
@@ -40,7 +40,7 @@ nav:
     - Prática de Laboratório 10:
       - Camada de Aplicação (DNS): freebsd/experimento_10.md
     - Prática de Laboratório 11:
-      - Introdução ao IPV6: freebsd/experimento_11.md
+      - Introdução ao IPv6: freebsd/experimento_11.md
   - Debian:
     - Prática de Laboratório 01:
       - Introdução às Redes de Computadores: debian/experimento_01.md
@@ -51,11 +51,11 @@ nav:
     - Prática de Laboratório 04:
       - Depuração de Problemas na Camada de Internet: debian/experimento_04.md
     - Prática de Laboratório 05:
-      - Camada de Internet (DHCP): debian/experimento_05.md
+      - Camada de Aplicação (DHCP): debian/experimento_05.md
     - Prática de Laboratório 06:
       - Camada de Internet (NAT): debian/experimento_06.md
     - Prática de Laboratório 07:
-      - Camada de Rede (ARP): debian/experimento_07.md
+      - Camada de Enlace (ARP): debian/experimento_07.md
     - Prática de Laboratório 08:
       - Firewall: debian/experimento_08.md
     - Prática de Laboratório 09:
@@ -63,4 +63,4 @@ nav:
     - Prática de Laboratório 10:
       - Camada de Aplicação (DNS): debian/experimento_10.md
     - Prática de Laboratório 11:
-      - Introdução ao IPV6: debian/experimento_11.md
+      - Introdução ao IPv6: debian/experimento_11.md
