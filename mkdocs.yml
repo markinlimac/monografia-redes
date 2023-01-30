@@ -28,7 +28,7 @@ nav:
     - Prática de Laboratório 04:
       - Depuração de Problemas na Camada de Internet: freebsd/experimento_04.md
     - Prática de Laboratório 05:
-      - Camada de Aplicação (DHCP): freebsd/experimento_05.md
+      - Camada de Internet (DHCP): freebsd/experimento_05.md
     - Prática de Laboratório 06:
       - Camada de Internet (NAT): freebsd/experimento_06.md
     - Prática de Laboratório 07:
@@ -51,7 +51,7 @@ nav:
     - Prática de Laboratório 04:
       - Depuração de Problemas na Camada de Internet: debian/experimento_04.md
     - Prática de Laboratório 05:
-      - Camada de Aplicação (DHCP): debian/experimento_05.md
+      - Camada de Internet (DHCP): debian/experimento_05.md
     - Prática de Laboratório 06:
       - Camada de Internet (NAT): debian/experimento_06.md
     - Prática de Laboratório 07:

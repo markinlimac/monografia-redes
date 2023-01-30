@@ -1,11 +1,11 @@
-# Camada de Aplicação (DHCP)
+# Camada de Internet (DHCP)
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 05</p>
-<p align="center"><b>Camada de Aplicação (DHCP)</b></p>
+<p align="center"><b>Camada de Internet (DHCP)</b></p>
 
 ## *Introdução*
-Para o correto funcionamento de redes, alguns serviços de nível de aplicação complementam as funções básicas de rede, oferecendo funcionalidades que facilitam a administração da rede. Um dos mais úteis serviços de rede em uso nas redes TCP/IP hoje, é implementado pelo protocolo DHCP (*Dynamic Host Configuration Protocol*).
+Para o correto funcionamento de redes, alguns serviços de nível de internet complementam as funções básicas de rede, oferecendo funcionalidades que facilitam a administração da rede. Um dos mais úteis serviços de rede em uso nas redes TCP/IP hoje, é implementado pelo protocolo DHCP (*Dynamic Host Configuration Protocol*).
 
 ## *Objetivos*
 1. Visualizar a importância dos serviços de atribuição dinâmica de configurações.
