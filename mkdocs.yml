@@ -34,7 +34,7 @@ nav:
     - Prática de Laboratório 07:
       - Camada de Enlace (ARP): freebsd/experimento_07.md
     - Prática de Laboratório 08:
-      - Firewall: freebsd/experimento_08.md
+      - Operação e Proteção de Redes (Firewall): freebsd/experimento_08.md
     - Prática de Laboratório 09:
       - Camada de Aplicação (Proxy): freebsd/experimento_09.md
     - Prática de Laboratório 10:
@@ -57,7 +57,7 @@ nav:
     - Prática de Laboratório 07:
       - Camada de Enlace (ARP): debian/experimento_07.md
     - Prática de Laboratório 08:
-      - Firewall: debian/experimento_08.md
+      - Operação e Proteção de Redes (Firewall): debian/experimento_08.md
     - Prática de Laboratório 09:
       - Camada de Aplicação (Proxy): debian/experimento_09.md
     - Prática de Laboratório 10:

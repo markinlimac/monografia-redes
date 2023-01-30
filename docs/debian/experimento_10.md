@@ -21,7 +21,7 @@ Objetivo e funcionamento do protocolo DNS.
 - Cabos de rede – par trançado normal
 - Switches ou HUBs
 - Software nas máquinas: ambiente GNU/Linux básico, pacotes de servidor DNS (**bind9**)
-- Acesso à Internet – NÃO é necessário
+- Acesso à Internet – necessário
 - Desligar o servidor DNS para as máquinas de aula
 
 ## *Roteiro*

@@ -1,4 +1,4 @@
-# *Firewall*
+# *Operação e Proteção de Redes (Firewall)*
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
 <p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 08</p>
