@@ -1,0 +1,31 @@
+p {
+    margin: 0 0 5px;
+}
+.main-block {
+    font-family: Roboto, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #1c87c9;
+    outline: none;
+    resize: none;
+}
+input::placeholder {
+    color: #666;
+}
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #1c87c9; 
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+.submit-btn:hover {
+    background: #2371a0;
+}

@@ -1,7 +1,7 @@
 # Introdução ao IPv6
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
-<p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 11</p>
+<p align="center" style="font-family:Trebuchet MS;" class="header">Prática de Laboratório 11</p>
 <p align="center"><b>Introdução ao IPv6</b></p>
 
 ## *Introdução*

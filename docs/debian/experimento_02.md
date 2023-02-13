@@ -1,7 +1,7 @@
 # Depuração de Problemas na Camada de Aplicação
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
-<p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 02</p>
+<p align="center" style="font-family:Trebuchet MS;" class="header">Prática de Laboratório 02</p>
 <p align="center"><b>Depuração de Problemas na Camada de Aplicação</b></p>
 
 ## *Introdução*

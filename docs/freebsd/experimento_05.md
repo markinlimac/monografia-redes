@@ -1,7 +1,7 @@
 # Camada de Internet (DHCP)
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
-<p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 05</p>
+<p align="center" style="font-family:Trebuchet MS;" class="header">Prática de Laboratório 05</p>
 <p align="center"><b>Camada de Internet (DHCP)</b></p>
 
 ## *Introdução*

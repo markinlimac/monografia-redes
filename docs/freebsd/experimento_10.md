@@ -1,7 +1,7 @@
 # Camada de Aplicação (DNS)
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
-<p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 10</p>
+<p align="center" style="font-family:Trebuchet MS;" class="header">Prática de Laboratório 10</p>
 <p align="center"><b>Camada de Aplicação (DNS)</b></p>
 
 ## *Introdução*

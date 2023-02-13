@@ -1,7 +1,7 @@
 # Introdução às Redes de Computadores
 
 <img style="width: 100%" alt="" src="../../img/header.jpg">
-<p align="center" style="font-family:Trebuchet MS;">Prática de Laboratório 01</p>
+<p align="center" style="font-family:Trebuchet MS;" class="header">Prática de Laboratório 01</p>
 <p align="center"><b>Introdução às Redes de Computadores</b></p>
 
 ## *Introdução*
@@ -85,37 +85,29 @@ Como proceder para configurar o esquema de resolução de nomes?
 Obs.: Esse tipo de configuração explorada no experimento é chamada de **Manual** ou **Estática**.
 
 ## *Questões para Estudo*
-<!-- <form>
-  <label for="subject">Assunto:</label>
-  <input type="text" id="subject" name="subject">
-  <br><br>
-  <label for="message">Há alguma forma mais simples de se realizar a configuração dos equipamentos para que sejam devidamente conectados à rede?</label>
-  <textarea id="message" name="message"></textarea>
-  <br><br>
-  <input type="button" value="Enviar" onclick="window.location.href='mailto:{{teacher.email}}?subject=' + document.getElementById('subject').value + '&body=' + document.getElementById('message').value">
-</form> -->
-<!-- <form action="http://teste.com/" method="post">
-    <P>
-    <label for="name">Name: </label> <input type="text" id="name"><br>
-    <label for="email">Email: </label> <input type="text" id="email"><br>
-    <input type="submit" value="Send">
-    </P>
-</form> -->
-
-<button id="submit-button">Enviar</button>
-
-<script>
-document.getElementById("submit-button").addEventListener("click", function() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://example.com/api/send_email", true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.send(JSON.stringify({to: "teste@gmail.com", subject: "Assunto de Teste", message: "Mensagem de Teste"}));
-});
-</script>
-
-1. Há alguma forma mais simples de se realizar a configuração dos equipamentos para que sejam devidamente conectados à rede?
-2. Qual é a lista mínima de informações necessárias para que determinado equipamento fique plenamente operacional em uma rede?
-3. O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.
+<link rel="stylesheet" href="../../style.css">
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. Há alguma forma mais simples de se realizar a configuração dos equipamentos para que sejam devidamente conectados à rede?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Qual é a lista mínima de informações necessárias para que determinado equipamento fique plenamente operacional em uma rede?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('{{teacher.email}}')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
 
 ## *Referências Bibliográficas*
 RAINVILLE, Shane. How to configure network settings in FreeBSD. Serverlab, 2020. Disponível em: https://www.serverlab.ca/tutorials/unix/how-to-set-static-ip-and-dhcp-in-freebsd/. Acesso em: 10 dez. de 2022.
