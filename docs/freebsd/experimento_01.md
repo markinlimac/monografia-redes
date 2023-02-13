@@ -85,6 +85,34 @@ Como proceder para configurar o esquema de resolução de nomes?
 Obs.: Esse tipo de configuração explorada no experimento é chamada de **Manual** ou **Estática**.
 
 ## *Questões para Estudo*
+<!-- <form>
+  <label for="subject">Assunto:</label>
+  <input type="text" id="subject" name="subject">
+  <br><br>
+  <label for="message">Há alguma forma mais simples de se realizar a configuração dos equipamentos para que sejam devidamente conectados à rede?</label>
+  <textarea id="message" name="message"></textarea>
+  <br><br>
+  <input type="button" value="Enviar" onclick="window.location.href='mailto:{{teacher.email}}?subject=' + document.getElementById('subject').value + '&body=' + document.getElementById('message').value">
+</form> -->
+<!-- <form action="http://teste.com/" method="post">
+    <P>
+    <label for="name">Name: </label> <input type="text" id="name"><br>
+    <label for="email">Email: </label> <input type="text" id="email"><br>
+    <input type="submit" value="Send">
+    </P>
+</form> -->
+
+<button id="submit-button">Enviar</button>
+
+<script>
+document.getElementById("submit-button").addEventListener("click", function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://example.com/api/send_email", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.send(JSON.stringify({to: "teste@gmail.com", subject: "Assunto de Teste", message: "Mensagem de Teste"}));
+});
+</script>
+
 1. Há alguma forma mais simples de se realizar a configuração dos equipamentos para que sejam devidamente conectados à rede?
 2. Qual é a lista mínima de informações necessárias para que determinado equipamento fique plenamente operacional em uma rede?
 3. O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.

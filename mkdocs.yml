@@ -3,6 +3,13 @@ site_name: Trabalho de Conclusão de Curso
 repo_name: "monografia-redes"
 repo_url: "https://github.com/markinlimac/monografia-redes"
 
+plugins:
+  - markdownextradata
+
+extra:
+  teacher:
+    email: markinlimac@gmail.com
+
 theme: 
   name: material
   language: pt
