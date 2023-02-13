@@ -1,0 +1,39 @@
+explicar o que é necessario para o funcionamento basico de uma rede de computadores resumidamente
+atraves dessa explicação conseguir definir os temas dos experimentos
+
+cada experimento tem um tema, decidir quais são os temas (introdução)
+decidir os objetivos de cada experimento
+decidir as referencias teoricas de cada tema (experimento)
+o que vai ser usado em cada experimento (material necessario)
+definir o roteiro de cada experimento
+definir testes para serem executados para testar se as configurações deram certo
+definir a topologia de rede para cada experimento
+
+TEMAS:
+ - Introdução às rede de computadores (configuração basica para conectar equipamentos em uma rede - ip)
+ - Depuração de problemas na camada de Aplicação (ferramentas de diagnostico para validar configurações iniciais protocolos http, smtp, dns)
+ - Depuração de Problemas na Camada de Transporte (ferramentas de diagnostico para validar configurações iniciais protocolos tcp)
+ - Depuração de Problemas na Camada de Rede (
+ - Camada de Rede: DHCP
+ - Camada de Rede: NAT
+ - Camada de Enlace: ARP
+ - Firewall
+ - Camada de Aplicação: Proxy
+
+explicar como vai ser feito os casos de testes, os materiais necessarios (cabo, software, sistema operacional etc)
+cada experimento tera uma topologia de rede
+cada experimento tera um tema
+
+
+- Seção de cronograma de atividades
+
+
+REFERENCIAL TEORICO
+explicar classificação de uma rede quanto sua extensao fisica
+explicar topologia de rede
+
+
+
+
+O QUE TENHO QUE ESCREVER NA METODOLOGIA
+detalhar o processor para geração de um conjunto de experimentos praticos para confuiguração basica de uma rede de computadores

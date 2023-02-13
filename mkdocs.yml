@@ -1,0 +1,73 @@
+site_name: Trabalho de Conclusão de Curso
+
+repo_name: "monografia-redes"
+repo_url: "https://github.com/markinlimac/monografia-redes"
+
+plugins:
+  - markdownextradata
+
+extra:
+  teacher:
+    email: markinlimac@gmail.com
+
+theme: 
+  name: material
+  language: pt
+  logo: 'img/unb.png'
+  favicon: 'img/unb.ico'
+  features:
+    - content.tabs.link
+
+# markdown_extensions:
+#   - pymdownx.superfences
+#   - pymdownx.tabbed:
+#       alternate_style: true
+
+nav:
+  - Home: index.md
+  - FreeBSD:
+    - Prática de Laboratório 01:
+      - Introdução às Redes de Computadores: freebsd/experimento_01.md
+    - Prática de Laboratório 02:
+      - Depuração de Problemas na Camada de Aplicação: freebsd/experimento_02.md
+    - Prática de Laboratório 03:
+      - Depuração de Problemas na Camada de Transporte: freebsd/experimento_03.md
+    - Prática de Laboratório 04:
+      - Depuração de Problemas na Camada de Internet: freebsd/experimento_04.md
+    - Prática de Laboratório 05:
+      - Camada de Internet (DHCP): freebsd/experimento_05.md
+    - Prática de Laboratório 06:
+      - Camada de Internet (NAT): freebsd/experimento_06.md
+    - Prática de Laboratório 07:
+      - Camada de Enlace (ARP): freebsd/experimento_07.md
+    - Prática de Laboratório 08:
+      - Operação e Proteção de Redes (Firewall): freebsd/experimento_08.md
+    - Prática de Laboratório 09:
+      - Camada de Aplicação (Proxy): freebsd/experimento_09.md
+    - Prática de Laboratório 10:
+      - Camada de Aplicação (DNS): freebsd/experimento_10.md
+    - Prática de Laboratório 11:
+      - Introdução ao IPv6: freebsd/experimento_11.md
+  - Debian:
+    - Prática de Laboratório 01:
+      - Introdução às Redes de Computadores: debian/experimento_01.md
+    - Prática de Laboratório 02:
+      - Depuração de Problemas na Camada de Aplicação: debian/experimento_02.md
+    - Prática de Laboratório 03:
+      - Depuração de Problemas na Camada de Transporte: debian/experimento_03.md
+    - Prática de Laboratório 04:
+      - Depuração de Problemas na Camada de Internet: debian/experimento_04.md
+    - Prática de Laboratório 05:
+      - Camada de Internet (DHCP): debian/experimento_05.md
+    - Prática de Laboratório 06:
+      - Camada de Internet (NAT): debian/experimento_06.md
+    - Prática de Laboratório 07:
+      - Camada de Enlace (ARP): debian/experimento_07.md
+    - Prática de Laboratório 08:
+      - Operação e Proteção de Redes (Firewall): debian/experimento_08.md
+    - Prática de Laboratório 09:
+      - Camada de Aplicação (Proxy): debian/experimento_09.md
+    - Prática de Laboratório 10:
+      - Camada de Aplicação (DNS): debian/experimento_10.md
+    - Prática de Laboratório 11:
+      - Introdução ao IPv6: debian/experimento_11.md
