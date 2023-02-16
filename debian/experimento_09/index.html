@@ -1716,12 +1716,34 @@ $ route add -net 172.25.0.0/24 172.25.0.2
 <pre><code class="language-bash">$ iptables -t nat -A PREROUTING -i 192.168.1.1 -p tcp --dport 80 -j DNAT --to 172.25.0.2:3128
 </code></pre>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
-<ol>
-<li>Como o protocolo HTTP funciona e como ele é usado pelo Squid para implementar o proxy?</li>
-<li>Como o uso de chains no <em>firewall</em> Iptables pode ser usado para implementar políticas de <em>firewall</em> mais avançadas e flexíveis?</li>
-<li>Quais são as principais diferenças entre o proxy e o <em>firewall</em> e como eles podem ser usados ​​juntos para melhorar a segurança da rede?</li>
-<li>Como o Squid possui configuração para melhorar a segurança do proxy? Explique.</li>
-</ol>
+<p><link rel="stylesheet" href="../../style.css"></p>
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. Como o protocolo HTTP funciona e como ele é usado pelo Squid para implementar o proxy?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Como o uso de chains no <i>firewall</i> Iptables pode ser usado para implementar políticas de <i>firewall</i> mais avançadas e flexíveis?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. Quais são as principais diferenças entre o proxy e o <i>firewall</i> e como eles podem ser usados ​​juntos para melhorar a segurança da rede?</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Como o Squid possui configuração para melhorar a segurança do proxy? Explique.</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('teste@email.com')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
+
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
 <p>ROGÉRIO. FreeBSD com proxy Squid - Revista Infra Magazine 4. Devmedia, 2012. Disponível em: https://www.devmedia.com.br/freebsd-com-proxy-squid-revista-infra-magazine-4/23440. Acesso em: 18 dez. 2022.</p>
 <p>Linuxhelp.com. How to install squid proxy server on freeBSD. Data desconhecida. Linux Help. Disponível em: https://www.linuxhelp.com/how-to-install-squid-proxy-server-on-freebsd. Acesso em: 18 dez. 2022.</p>

@@ -1623,13 +1623,38 @@ serviços que usamos diariamente.</p>
 <pre><code class="language-bash">$ traceroute ip_do_alvo
 </code></pre>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
-<ol>
-<li>A descrição de informações específicas sobre a interface de rede obtida através da execução do comando <strong>ifconfig</strong> é bem extensa. Partindo do resultado da execução do comando em seu equipamento e tomando como referência a interface que foi usada nos testes, descreva em detalhes o significado de cada um dos itens discriminados na segunda coluna de saída do comando.</li>
-<li>Equipamentos que implementam a pilha de protocolos TCP/IP apresentam, tipicamente, uma saída padrão durante a execução do comando <strong>ifconfig</strong>. Indique que saída é essa e como ela se faz útil na construção de sistemas que funcionarão sobre redes de comunicações.</li>
-<li>A execução do comando <strong>ping</strong> em uma rede é uma das primeiras medidas para verificação de continuidade de serviço. Embora seja um comando muito simples de invocar e cujos resultados práticos são muito fáceis de interpretar, a riqueza de detalhes da saída típica de execução do <strong>ping</strong> é grande. Descreva cada um dos itens que compõem a saída de execução típica de um comando <strong>ping</strong>.</li>
-<li>Em relação à <a href="#5-tabela-de-encaminhamento">etapa 5</a> do presente roteiro, descreva cada um dos itens que compõem a saída de execução típica de um comando <strong>netstat -nr</strong>.</li>
-<li>Em relação à <a href="#6-caminho-seguido-por-um-pacote">etapa 6</a> do presente roteiro, descreva o processo típico de detecção da rota percorrida por um pacote através da execução do comando <strong>traceroute</strong>.</li>
-</ol>
+<p><link rel="stylesheet" href="../../style.css"></p>
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. A descrição de informações específicas sobre a interface de rede obtida através da execução do comando <b>ifconfig</b> é bem extensa. Partindo do resultado da execução do comando em seu equipamento e tomando como referência a interface que foi usada nos testes, descreva em detalhes o significado de cada um dos itens discriminados na segunda coluna de saída do comando.</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Equipamentos que implementam a pilha de protocolos TCP/IP apresentam, tipicamente, uma saída padrão durante a execução do comando <b>ifconfig</b>. Indique que saída é essa e como ela se faz útil na construção de sistemas que funcionarão sobre redes de comunicações.</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. A execução do comando <b>ping</b> em uma rede é uma das primeiras medidas para verificação de continuidade de serviço. Embora seja um comando muito simples de invocar e cujos resultados práticos são muito fáceis de interpretar, a riqueza de detalhes da saída típica de execução do <b>ping</b> é grande. Descreva cada um dos itens que compõem a saída de execução típica de um comando <b>ping</b>.</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Em relação à <a href="#5-tabela-de-encaminhamento">etapa 5</a> do presente roteiro, descreva cada um dos itens que compõem a saída de execução típica de um comando <b>netstat -nr</b>.</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+<p class="question">5. Em relação à <a href="#6-caminho-seguido-por-um-pacote">etapa 6</a> do presente roteiro, descreva o processo típico de detecção da rota percorrida por um pacote através da execução do comando <b>traceroute</b>.</p>
+<div>
+<textarea rows="4" id="4"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('teste@email.com')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
+
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
 <p>FreeBSD.org. ping(8). Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?ping(8). Acesso em: 10 dez. 2022.</p>
 <p>FreeBSD.org. traceroute. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://www.freebsd.org/cgi/man.cgi?query=traceroute. Acesso em: 12 dez. 2022.</p>

@@ -1726,10 +1726,26 @@ $ ipfw add 110 deny udp from 172.25.0.2 to 192.168.1.3
 <p>Experimente realizar a conexão SSH entre H1 e S1 usando a regra de DNAT criada.</p>
 <p><t style="color: red;">ATENÇÃO:</t> É possível verificar o log do <i>firewall</i> usando o comando <strong>ipfw show log</strong> ou <strong>ipfw show log verbose</strong> para obter informações adicionais, como endereços IP e portas. Para verificar o log do sistema, você pode usar o comando <strong>tail -f /var/log/messages</strong> ou <strong>syslog</strong> que irá exibir as mensagens de log geradas pelo sistema operacional.</p>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
-<ol>
-<li>O serviço ssh é sobre o TCP ou UDP? Conferir com o tcpdump, simulando a situação onde S1 faz ssh em H1.</li>
-<li>Em relação aos <a href="#5-testes-validacao-das-intervencoes-da-etapa-1">testes da Etapa 1</a> do roteiro, como é possível ao Nmap indicar a eventual presença de portas filtradas através do roteador R que atua como <em>Firewall</em>?</li>
-</ol>
+<p><link rel="stylesheet" href="../../style.css"></p>
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. O serviço ssh é sobre o TCP ou UDP? Conferir com o tcpdump, simulando a situação onde S1 faz ssh em H1.</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Em relação aos <a href="#5-testes-validacao-das-intervencoes-da-etapa-1">testes da Etapa 1</a> do roteiro, como é possível ao Nmap indicar a eventual presença de portas filtradas através do roteador R que atua como <i>Firewall</i>?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('teste@email.com')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
+
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
 <p>FreeBSD.org. IPFW. Data desconhecida. FreeBSD Handbook. Disponível em: https://docs.freebsd.org/en/books/handbook/firewalls/#firewalls-ipfw. Acesso em: 17 dez. 2022.</p>
 <p>FreeBSD.org. IPFW. Data desconhecida. FreeBSD Handbook. Disponível em: https://docs.freebsd.org/doc/6.0-RELEASE/usr/share/doc/handbook/firewalls-ipfw.html. Acesso em: 17 dez. 2022.</p>

@@ -1615,12 +1615,34 @@ $ service pflog start
 <p>Explique a saída do comando anterior.</p>
 <p>Teste as configurações de rede usando as ferramentas discutidas em práticas anteriores. Recomenda-se as seguintes etapas de testes: teste de conectividade entre equipamentos da rede privada e o gateway com NAT, teste de conectividade entre equipamentos da rede privada e equipamentos situados na rede de saída do gateway e teste de conectividade entre equipamentos da rede privada e equipamentos na rede externa.</p>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
-<ol>
-<li>Alguns passos foram omitidos nesse roteiro. A partir da metodologia de testes, identifique o problema e apresente a solução para que a rede privada recém criada seja capaz de conectar-se à rede externa.</li>
-<li>Consulte a documentação das ferramentas usadas na implementação do NAT e indique o resultado de cada um dos comandos necessários à implementação do NAT.</li>
-<li>Como você sugere verificar se está acessando a rede externa através de um NAT?</li>
-<li>Reinicie o seu equipamento usado para a implementação de um NAT usando o sistema operacional FreeBSD e verifique se as suas configurações ainda funcionam. Descreva que tipo de procedimentos foram realizados para tornar as configurações de NAT persistentes.</li>
-</ol>
+<p><link rel="stylesheet" href="../../style.css"></p>
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. Alguns passos foram omitidos nesse roteiro. A partir da metodologia de testes, identifique o problema e apresente a solução para que a rede privada recém criada seja capaz de conectar-se à rede externa.</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Consulte a documentação das ferramentas usadas na implementação do NAT e indique o resultado de cada um dos comandos necessários à implementação do NAT.</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. Como você sugere verificar se está acessando a rede externa através de um NAT?</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Reinicie o seu equipamento usado para a implementação de um NAT usando o sistema operacional FreeBSD e verifique se as suas configurações ainda funcionam. Descreva que tipo de procedimentos foram realizados para tornar as configurações de NAT persistentes.</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('teste@email.com')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
+
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
 <p>HOLLAND, N; KNIGHT, J. PF - Network Address Translation. OpenBSD, 2004. Disponível em: https://www.openbsd.org/faq/pf/nat.html. Acesso em: 15 dez. de 2022.</p>
 <p>LEE, Chern. Network Address Translation. Data desconhecida. FreeBSD Manual Pages. Disponível em: https://docs.freebsd.org/doc/6.1-RELEASE/usr/share/doc/handbook/network-natd.html. Acesso em: 15 dez. de 2022.</p>

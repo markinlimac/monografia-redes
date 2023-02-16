@@ -1611,14 +1611,42 @@
 </code></pre>
 <p>onde <strong>faixa_de_ip</strong> pode ser uma faixa por intervalos (como 192.168.1.1-20, o que contemplaria todos os IPs entre 192.168.1.1 e 192.168.1.20) ou mesmo a indicação de uma subrede usando notação CIDR.</p>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
-<ol>
-<li>A porta de um servidor que provê aplicações sobre TCP pode se encontrar em diferentes estados. Quais são esses estados e como evolui a comunicação entre um cliente e um servidor TCP quando a porta se apresenta em cada um dos estados possíveis?</li>
-<li>Que tipo de informações o arquivo <strong>/etc/services</strong> provê?</li>
-<li>Que tipo de ferramentas você recomendaria para a repetição dos mesmos procedimentos sobre UDP?</li>
-<li>Em relação à <a href="#4-interacoes-com-o-socket-servidor">etapa 4</a> do presente roteiro, descreva o que se observou durante as interações com o socket servidor.</li>
-<li>Como você implementaria um transmissor básico de arquivos usando apenas as ferramentas executadas nesse experimento?</li>
-<li>O <strong>nmap</strong> é considerado uma ferramenta extremamente poderosa. Como você a utilizaria para identificar quais são os equipamentos que estão ativos e em execução em uma rede?</li>
-</ol>
+<p><link rel="stylesheet" href="../../style.css"></p>
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. A porta de um servidor que provê aplicações sobre TCP pode se encontrar em diferentes estados. Quais são esses estados e como evolui a comunicação entre um cliente e um servidor TCP quando a porta se apresenta em cada um dos estados possíveis?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Que tipo de informações o arquivo <b>/etc/services</b> provê?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. Que tipo de ferramentas você recomendaria para a repetição dos mesmos procedimentos sobre UDP?</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Em relação à <a href="#4-interacoes-com-o-socket-servidor">etapa 4</a> do presente roteiro, descreva o que se observou durante as interações com o socket servidor.</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+<p class="question">5. Como você implementaria um transmissor básico de arquivos usando apenas as ferramentas executadas nesse experimento?</p>
+<div>
+<textarea rows="4" id="4"></textarea>
+</div>
+<p class="question">6. O <b>nmap</b> é considerado uma ferramenta extremamente poderosa. Como você a utilizaria para identificar quais são os equipamentos que estão ativos e em execução em uma rede?</p>
+<div>
+<textarea rows="4" id="5"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('teste@email.com')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
+
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
 <p>GITE, Vivek. FreeBSD List/Display Open Ports With sockstat Command. Cyberciti, 2008. Disponível em: https://www.cyberciti.biz/tips/freebsd-lists-open-internet-unix-domain-sockets.html. Acesso em: 11 dez. de 2022.</p>
 <p>ELLINGWOOD, Justin. How To Use Netcat to Establish and Test TCP and UDP Connections. Digital Ocean, 2021. Disponível em: https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections. Acesso em: 11 dez. de 2022.</p>

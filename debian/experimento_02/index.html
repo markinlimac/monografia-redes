@@ -1607,12 +1607,34 @@
 </code></pre>
 <p><strong>DESAFIO</strong>: Usando os conceitos sobre Camada de Aplicação, use o comando <strong>telnet</strong> para enviar um e-mail a um usuário de determinado servidor de e-mail.</p>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
-<ol>
-<li>Em relação ao serviço de resolução de nomes, há um parâmetro opcional a ser indicado ao comando <strong>nslookup</strong>. Em que contexto é conveniente indicar um valor para esse parâmetro?</li>
-<li>Qual é o papel do arquivo <strong>/etc/hosts</strong> no processo de resolução de nomes?</li>
-<li>Em relação às interações com o protocolo HTTP, foi possível identificar o cabeçalho de uma requisição típica? Em relação às respostas do servidor, identifique os campos típicos da resposta incluindo descrições sobre as linhas de cabeçalho e o campo de <em>payload</em>.</li>
-<li>Em vários dos protocolos ora estudados, foi presenciada uma etapa de autorização que preparava uma sessão para a recepção de comandos de determinado cliente. O SMTP demonstrou-se um protocolo que não demanda uma etapa de autorização. Em que momento isso acontece? O fato de essa etapa ser suprimida resulta em algum risco para um serviço de e-mail?</li>
-</ol>
+<p><link rel="stylesheet" href="../../style.css"></p>
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. Em relação ao serviço de resolução de nomes, há um parâmetro opcional a ser indicado ao comando <b>nslookup</b>. Em que contexto é conveniente indicar um valor para esse parâmetro?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Qual é o papel do arquivo <b>/etc/hosts</b> no processo de resolução de nomes?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. Em relação às interações com o protocolo HTTP, foi possível identificar o cabeçalho de uma requisição típica? Em relação às respostas do servidor, identifique os campos típicos da resposta incluindo descrições sobre as linhas de cabeçalho e o campo de payload.</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Em vários dos protocolos ora estudados, foi presenciada uma etapa de autorização que preparava uma sessão para a recepção de comandos de determinado cliente. O SMTP demonstrou-se um protocolo que não demanda uma etapa de autorização. Em que momento isso acontece? O fato de essa etapa ser suprimida resulta em algum risco para um serviço de e-mail?</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('teste@email.com')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
+
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
 <p>Brasil, HSC. Saiba o que é e como funciona o protocolo SMTP. hscbrasil, 2019. Disponível em: https://www.hscbrasil.com.br/protocolo-smtp/. Acesso em: 11 dez. de 2022.</p>
 <p>Costa, Matheus. O que é HTTP. canaltech, 2019. Disponível em: https://canaltech.com.br/internet/o-que-e-http/. Acesso em: 11 dez. de 2022.</p>

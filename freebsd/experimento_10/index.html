@@ -1649,12 +1649,34 @@ H2      IN      A       192.168.1.4
 <pre><code class="language-bash">$ nslookup host_da_rede
 </code></pre>
 <h2 id="questoes-para-estudo"><em>Questões para Estudo</em></h2>
-<ol>
-<li>Como você faria para adicionar um registro MX (Mail Exchange) ao seu arquivo de zona de busca direta?</li>
-<li>Como você faria para configurar uma zona secundária (slave) no seu servidor DNS?</li>
-<li>Como você faria para monitorar e solucionar problemas comuns de desempenho em um servidor DNS, como consultas de DNS não autorizadas ou ataques de negação de serviço (DoS)?</li>
-<li>Como você faria para configurar o seu servidor DNS para fornecer serviços de resolução de nomes para redes privadas usando NAT?</li>
-</ol>
+<p><link rel="stylesheet" href="../../style.css"></p>
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. Como você faria para adicionar um registro MX (Mail Exchange) ao seu arquivo de zona de busca direta?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Como você faria para configurar uma zona secundária (slave) no seu servidor DNS?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. Como você faria para monitorar e solucionar problemas comuns de desempenho em um servidor DNS, como consultas de DNS não autorizadas ou ataques de negação de serviço (DoS)?</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Como você faria para configurar o seu servidor DNS para fornecer serviços de resolução de nomes para redes privadas usando NAT?</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('teste@email.com')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
+
 <h2 id="referencias-bibliograficas"><em>Referências Bibliográficas</em></h2>
 <p>LEE, C; RHODES, T; GERZO, D. Domain Name System (DNS). Data desconhecida. FreeBSD Handbook. Disponível em: https://docs.freebsd.org/doc/7.4-RELEASE/usr/share/doc/handbook/network-dns.html. Acesso em: 19 dez. 2022.</p>
 <p>OLIVEIRA, W. P. Instalando e configurando o Serviço DNS na rede com Linux com BIND9 - Parte 1. YouTube, 6 de abr. de 2021. Disponível em: https://www.youtube.com/watch?v=m1ffSGGRDb0. Acesso em: 19 dez. de 2022.</p>
