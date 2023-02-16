@@ -5,21 +5,32 @@ No mundo atual, o uso das redes de computadores se tornou algo imprescindível n
 Este trabalho foi desenvolvido durante o Trabalho de Conclusão de Curso 2 pelo aluno Marco Antônio de Lima Costa como requisito para graduação em Engenharia de Software pela Universidade de Brasília. A aplicação pode ser acessada em: https://markinlimac.github.io/monografia-redes/.
 
 ## Estrutura do Repositório
-### Assets
-Pasta gerada automaticamente ao executar 
-
 ### Docs
+Pasta que contém os arquivos de código da documentação.
 
-### img
-
-### mkdcos.yml
-
-### README.md
+* Debian: Pasta que contém os arquivos de código da documentação referentes ao Debian.
+* Files: Pasta que contém arquivos importantes para a aplicação.
+* Freebsd: Pasta que contém os arquivos de código da documentação referentes ao FreeBSD.
+* Img: Pasta que contém arquivos de imagem usadas na aplicação.
+* index.md: Arquivo de código da documentação referente a página inicial da aplicação.
+* main.js: Arquivo de código javascript que contém algumas funções comumente utilizadas na aplicação. Pode ser importante para criação de novas funcionalidades.
+* style.css: Arquivo de estilização css que contém alguns estilos comumente utilizados na aplicação. Pode ser importante para criação de novas funcionalidades.
 
 ### .gitignore
+Arquivo de configuração do Git que permite especificar quais arquivos e pastas não devem ser rastreados pelo Git e não devem ser incluídos em commits.
+
+### README.md
+Arquivo frequentemente utilizado como uma documentação inicial de um projeto ou repositório em plataformas de hospedagem de código, como o GitHub (Este arquivo).
+
+### mkdcos.yml
+Arquivo de configuração utilizado pelo MkDocs, que permite criar documentação em formato Markdown para projetos.
 
 ## Dependências
-## Como rodar o projeto
+https://www.mkdocs.org/ (pip install mkdocs)  
+https://github.com/rosscdh/mkdocs-markdownextradata-plugin (pip install mkdocs-markdownextradata-plugin)
+
 ## Como Implementar no seu repositório
+1. Faça um fork deste repositório
+
 ## Licença
 ## Contato
