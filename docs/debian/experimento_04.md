@@ -89,11 +89,37 @@ $ traceroute ip_do_alvo
 ```
 
 ## *Questões para Estudo*
-1. A descrição de informações específicas sobre a interface de rede obtida através da execução do comando **ifconfig** é bem extensa. Partindo do resultado da execução do comando em seu equipamento e tomando como referência a interface que foi usada nos testes, descreva em detalhes o significado de cada um dos itens discriminados na segunda coluna de saída do comando.
-2. Equipamentos que implementam a pilha de protocolos TCP/IP apresentam, tipicamente, uma saída padrão durante a execução do comando **ifconfig**. Indique que saída é essa e como ela se faz útil na construção de sistemas que funcionarão sobre redes de comunicações.
-3. A execução do comando **ping** em uma rede é uma das primeiras medidas para verificação de continuidade de serviço. Embora seja um comando muito simples de invocar e cujos resultados práticos são muito fáceis de interpretar, a riqueza de detalhes da saída típica de execução do **ping** é grande. Descreva cada um dos itens que compõem a saída de execução típica de um comando **ping**.
-4. Em relação à [etapa 5](#5-tabela-de-encaminhamento) do presente roteiro, descreva cada um dos itens que compõem a saída de execução típica de um comando **netstat -nr**. Qual seria a sintaxe usada para extrair a mesma informação, porém a partir do comando **ip**?
-5. Em relação à [etapa 6](#6-caminho-seguido-por-um-pacote) do presente roteiro, descreva o processo típico de detecção da rota percorrida por um pacote através da execução do comando **traceroute**.
+<link rel="stylesheet" href="../../style.css">
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. A descrição de informações específicas sobre a interface de rede obtida através da execução do comando <b>ifconfig</b> é bem extensa. Partindo do resultado da execução do comando em seu equipamento e tomando como referência a interface que foi usada nos testes, descreva em detalhes o significado de cada um dos itens discriminados na segunda coluna de saída do comando.</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Equipamentos que implementam a pilha de protocolos TCP/IP apresentam, tipicamente, uma saída padrão durante a execução do comando <b>ifconfig</b>. Indique que saída é essa e como ela se faz útil na construção de sistemas que funcionarão sobre redes de comunicações.</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. A execução do comando <b>ping</b> em uma rede é uma das primeiras medidas para verificação de continuidade de serviço. Embora seja um comando muito simples de invocar e cujos resultados práticos são muito fáceis de interpretar, a riqueza de detalhes da saída típica de execução do <b>ping</b> é grande. Descreva cada um dos itens que compõem a saída de execução típica de um comando <b>ping</b>.</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Em relação à <a href="#5-tabela-de-encaminhamento">etapa 5</a> do presente roteiro, descreva cada um dos itens que compõem a saída de execução típica de um comando <b>netstat -nr</b>. Qual seria a sintaxe usada para extrair a mesma informação, porém a partir do comando <b>ip</b></p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+<p class="question">5. Em relação à <a href="#6-caminho-seguido-por-um-pacote">etapa 6</a> do presente roteiro, descreva o processo típico de detecção da rota percorrida por um pacote através da execução do comando <b>traceroute</b>.</p>
+<div>
+<textarea rows="4" id="4"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('{{teacher.email}}')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
 
 ## *Referências Bibliográficas*
 debian.org. netstat(8). Debian Manpages, 2022. Disponível em: https://manpages.debian.org/bullseye/net-tools/netstat.8.pt_BR.html. Acesso em: 12 jan. 2023.

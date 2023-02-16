@@ -95,8 +95,25 @@ Experimente realizar a conexão SSH entre H1 e S1 usando a regra de DNAT criada.
 <t style="color: red;">ATENÇÃO:</t> Para verificar o log do sistema, você pode usar o comando **tail -f /var/log/syslog | grep "iptables"** que irá exibir as mensagens de log geradas pelo sistema operacional.
 
 ## *Questões para Estudo*
-1. O serviço ssh é sobre o TCP ou UDP? Conferir com o tcpdump, simulando a situação onde S1 faz ssh em H1.
-2. Em relação aos [testes da Etapa 1](#4-testes-validacao-das-intervencoes-da-etapa-1) do roteiro, como é possível ao Nmap indicar a eventual presença de portas filtradas através do roteador R que atua como *Firewall*?
+<link rel="stylesheet" href="../../style.css">
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. O serviço ssh é sobre o TCP ou UDP? Conferir com o tcpdump, simulando a situação onde S1 faz ssh em H1.</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Em relação aos <a href="#4-testes-validacao-das-intervencoes-da-etapa-1">testes da Etapa 1</a> do roteiro, como é possível ao Nmap indicar a eventual presença de portas filtradas através do roteador R que atua como <i>Firewall</i>?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('{{teacher.email}}')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
 
 ## *Referências Bibliográficas*
 DELFINO, Pedro. IPTABLES: Aprenda Como Utilizar A Principal Ferramenta Para Implementar Firewall No Linux. Data desconhecida. Profissionais Linux. Disponível em: https://e-tinet.com/linux/firewall-iptables/. Acesso em: 15 jan. de 2023.

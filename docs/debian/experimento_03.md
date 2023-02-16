@@ -85,12 +85,41 @@ $ nmap faixa_de_ip
 onde **faixa_de_ip** pode ser uma faixa por intervalos (como 192.168.1.1-20, o que contemplaria todos os IPs entre 192.168.1.1 e 192.168.1.20) ou mesmo a indicação de uma subrede usando notação CIDR.
 
 ## *Questões para Estudo*
-1. A porta de um servidor que provê aplicações sobre TCP pode se encontrar em diferentes estados. Quais são esses estados e como evolui a comunicação entre um cliente e um servidor TCP quando a porta se apresenta em cada um dos estados possíveis?
-2. Que tipo de informações o arquivo **/etc/services** provê?
-3. Que tipo de ferramentas você recomendaria para a repetição dos mesmos procedimentos sobre UDP?
-4. Em relação à [etapa 4](#4-interacoes-com-o-socket-servidor) do presente roteiro, descreva o que se observou durante as interações com o *socket* servidor.
-5. Como você implementaria um transmissor básico de arquivos usando apenas as ferramentas executadas nesse experimento?
-6. O **nmap** é considerado uma ferramenta extremamente poderosa. Como você a utilizaria para identificar quais são os equipamentos que estão ativos e em execução em uma rede?
+<link rel="stylesheet" href="../../style.css">
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. A porta de um servidor que provê aplicações sobre TCP pode se encontrar em diferentes estados. Quais são esses estados e como evolui a comunicação entre um cliente e um servidor TCP quando a porta se apresenta em cada um dos estados possíveis?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Que tipo de informações o arquivo <b>/etc/services</b> provê?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. Que tipo de ferramentas você recomendaria para a repetição dos mesmos procedimentos sobre UDP?</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Em relação à <a href="#4-interacoes-com-o-socket-servidor">etapa 4</a> do presente roteiro, descreva o que se observou durante as interações com o socket servidor.</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+<p class="question">5. Como você implementaria um transmissor básico de arquivos usando apenas as ferramentas executadas nesse experimento?</p>
+<div>
+<textarea rows="4" id="4"></textarea>
+</div>
+<p class="question">6. O <b>nmap</b> é considerado uma ferramenta extremamente poderosa. Como você a utilizaria para identificar quais são os equipamentos que estão ativos e em execução em uma rede?</p>
+<div>
+<textarea rows="4" id="5"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('{{teacher.email}}')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
 
 ## *Referências Bibliográficas*
 GITE, Vivek. How to check open ports in Linux using the CLI. Cyberciti, 2022. Disponível em: https://www.cyberciti.biz/faq/how-to-check-open-ports-in-linux-using-the-cli/. Acesso em: 11 jan. de 2023.

@@ -267,13 +267,45 @@ Procure saber sobre a configuração de um servidor DHCPv6 utilizando o Debian.
 <t style="color: red;">ATENÇÃO:</t> É necessário ter um servidor DHCPv6 configurado na rede para que o experimento anterior funcione.
 
 ## *Questões para Estudo*
-1. Em certo momento do experimento, bastou apenas mudar o valor da variável **net.ipv6.conf.&lt;interface&gt;.disable_ipv6** para que um IPv6 fosse configurado. Por que ocorreu isso e como desativar essa configuração automática?
-2. O que é StateLess Address AutoConfiguration (SLAAC) e qual sua utilidade na atribuição de endereços IPv6?
-3. Explique os tipos de endereço IPv6 e seus respectivos prefixos? 
-4. Para acessar a internet por meio do IPv4 é necessário o uso do NAT. No IPv6 também é necessário? Explique.
-5. Um roteador pode ser configurado usando o recurso de configuração automática? Explique.
-6. Como funciona a configuração automática de endereço através do protocolo NDP?
-7. Em vários momentos do experimento foi omitido a parte do identificador de zona e isso pode ter causado problemas. O que é o identificador de zona e por que é necessário ele em um endereço de IPv6?
+<link rel="stylesheet" href="../../style.css">
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. Em certo momento do experimento, bastou apenas mudar o valor da variável <b>net.ipv6.conf.&lt;interface&gt;.disable_ipv6</b> para que um IPv6 fosse configurado. Por que ocorreu isso e como desativar essa configuração automática?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. O que é StateLess Address AutoConfiguration (SLAAC) e qual sua utilidade na atribuição de endereços IPv6?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. Explique os tipos de endereço IPv6 e seus respectivos prefixos?</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Para acessar a internet por meio do IPv4 é necessário o uso do NAT. No IPv6 também é necessário? Explique.</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+<p class="question">5. Um roteador pode ser configurado usando o recurso de configuração automática? Explique.</p>
+<div>
+<textarea rows="4" id="4"></textarea>
+</div>
+<p class="question">6. Como funciona a configuração automática de endereço através do protocolo NDP?</p>
+<div>
+<textarea rows="4" id="5"></textarea>
+</div>
+<p class="question">7. Em vários momentos do experimento foi omitido a parte do identificador de zona e isso pode ter causado problemas. O que é o identificador de zona e por que é necessário ele em um endereço de IPv6?</p>
+<div>
+<textarea rows="4" id="6"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('{{teacher.email}}')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
 
 ## *Referências Bibliográficas*
 SATO, Hiroki. Pragmatic IPv6 (Part 1). FreeBSD Journal, 2022. Disponível em: https://freebsdfoundation.org/wp-content/uploads/2022/06/hiroki_IPv6.pdf. Acesso em: 20 dez. 2022.

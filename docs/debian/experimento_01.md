@@ -88,9 +88,29 @@ A maioria dos sistemas operacionais possuem ferramentas de auxílio à configura
 Obs.: Esse tipo de configuração explorada no experimento é chamada de **Manual** ou **Estática**.
 
 ## *Questões para Estudo*
-1. Há alguma forma mais simples de se realizar a configuração dos equipamentos para que sejam devidamente conectados à rede?
-2. Qual é a lista mínima de informações necessárias para que determinado equipamento fique plenamente operacional em uma rede?
-3. O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.
+<link rel="stylesheet" href="../../style.css">
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. Há alguma forma mais simples de se realizar a configuração dos equipamentos para que sejam devidamente conectados à rede?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Qual é a lista mínima de informações necessárias para que determinado equipamento fique plenamente operacional em uma rede?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. O que acontece quando alguma das informações necessárias é suprimida? Elabore melhor os cenários.</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('{{teacher.email}}')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
 
 ## *Referências Bibliográficas*
 vitux.com. Network Configuration in Debian 11. Data desconhecida. Vitux. Disponível em: https://vitux.com/network-configuration-in-debian/. Acesso em: 10 jan. de 2023.

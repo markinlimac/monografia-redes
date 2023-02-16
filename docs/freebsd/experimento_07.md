@@ -69,10 +69,33 @@ $ telnet ip_do_host_inexistente porta_do_servico
 Em seguida, repita o comando arp.
 
 ## *Questões para Estudo*
-1. Qual foi a diferença de saídas observadas entre a primeira e as duas últimas chamadas ao comando ARP?
-2. Suponha que uma aplicação utilize um esquema de controle de acesso baseado no valor do MAC address das placas de rede. Haveria algum problema de segurança nessa abordagem? Justifique.
-3. É possível que o protocolo ARP interfira no desempenho de uma rede? Elabore sua resposta, apresentando exemplos/justificativas.
-4. Há, na literatura, ataques que envolvem o protocolo ARP? Se a resposta for afirmativa, cite exemplos.
+<link rel="stylesheet" href="../../style.css">
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. Qual foi a diferença de saídas observadas entre a primeira e as duas últimas chamadas ao comando ARP?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Suponha que uma aplicação utilize um esquema de controle de acesso baseado no valor do MAC address das placas de rede. Haveria algum problema de segurança nessa abordagem? Justifique.</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. É possível que o protocolo ARP interfira no desempenho de uma rede? Elabore sua resposta, apresentando exemplos/justificativas.</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Há, na literatura, ataques que envolvem o protocolo ARP? Se a resposta for afirmativa, cite exemplos.</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('{{teacher.email}}')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
 
 ## *Referências Bibliográficas*
 Geeksforgeeks.org. How Address Resolution Protocol (ARP) works?. GeeksForGeeks, 2022. Disponível em: https://www.geeksforgeeks.org/how-address-resolution-protocol-arp-works/. Acesso em: 16 dez. de 2022.

@@ -139,11 +139,37 @@ $ cat /var/lib/dhcp/dhcpd.leases | less
 Visualize as mensagens sendo trocadas entre cliente e servidor DHCP com um analisador de protocolos. Altere as configurações do servidor DHCP de forma que um dos hosts tenha IP previamente definido em função de seu endereço MAC. Verifique se as mudanças foram aplicadas aos hosts de sua rede.
 
 ## *Questões para Estudo*
-1. DHCP pode funcionar através de redes ligadas por roteadores?
-2. O que é a função de BOOTP/DHCP *relay*?
-3. Analise as possíveis configurações do arquivo **dhcpd.conf**. Que opções de configuração se pode passar automaticamente via DHCP para hosts numa rede? Isto pode ser usado em outros serviços de rede?
-4. Qual a vantagem de se fixar IP's por endereço MAC?
-5. Podemos ter mais de um servidor DHCP numa rede? Pode haver alguma confusão? O que acontece se houver?
+<link rel="stylesheet" href="../../style.css">
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. DHCP pode funcionar através de redes ligadas por roteadores?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. O que é a função de BOOTP/DHCP <i>relay</i>?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. Analise as possíveis configurações do arquivo <b>dhcpd.conf</b> Que opções de configuração se pode passar automaticamente via DHCP para hosts numa rede? Isto pode ser usado em outros serviços de rede?</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Qual a vantagem de se fixar IP's por endereço MAC?</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+<p class="question">5. Podemos ter mais de um servidor DHCP numa rede? Pode haver alguma confusão? O que acontece se houver?</p>
+<div>
+<textarea rows="4" id="4"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('{{teacher.email}}')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
 
 ## *Referências Bibliográficas*
 REIS, Fábio. Como configurar um servidor DHCP no Linux. Boson treinamentos, 2013. Disponível em: http://www.bosontreinamentos.com.br/linux/servidor-dhcp-no-linux/. Acesso em: 14 dez. de 2022.

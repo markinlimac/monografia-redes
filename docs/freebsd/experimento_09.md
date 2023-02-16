@@ -166,10 +166,33 @@ $ ipfw add redirect_port tcp from 192.168.1.3 80 to 172.25.0.2 8080
 ```
 
 ## *Questões para Estudo*
-1. Como o protocolo HTTP funciona e como ele é usado pelo Squid para implementar o proxy?
-2. Como o uso de chains no *firewall* IPFW pode ser usado para implementar políticas de *firewall* mais avançadas e flexíveis?
-3. Quais são as principais diferenças entre o proxy e o *firewall* e como eles podem ser usados ​​juntos para melhorar a segurança da rede?
-10. Como o Squid possui configuração para melhorar a segurança do proxy? Explique.
+<link rel="stylesheet" href="../../style.css">
+<div class="main-block">
+<form>
+<div class="info">
+<input style="width:49%" type="text" name="nome" placeholder="Nome" required>
+<input style="width:49%" type="number" name="matricula" placeholder="Matrícula" required>
+</div>
+<p class="question">1. Como o protocolo HTTP funciona e como ele é usado pelo Squid para implementar o proxy?</p>
+<div>
+<textarea rows="4" id="0"></textarea>
+</div>
+<p class="question">2. Como o uso de chains no <i>firewall</i> IPFW pode ser usado para implementar políticas de <i>firewall</i> mais avançadas e flexíveis?</p>
+<div>
+<textarea rows="4" id="1"></textarea>
+</div>
+<p class="question">3. Quais são as principais diferenças entre o proxy e o <i>firewall</i> e como eles podem ser usados ​​juntos para melhorar a segurança da rede?</p>
+<div>
+<textarea rows="4" id="2"></textarea>
+</div>
+<p class="question">4. Como o Squid possui configuração para melhorar a segurança do proxy? Explique.</p>
+<div>
+<textarea rows="4" id="3"></textarea>
+</div>
+</form>
+<button class="submit-btn" id="submit-btn" onclick="getInfos('{{teacher.email}}')">Enviar</button>
+</div>
+<script src="../../main.js"></script>
 
 ## *Referências Bibliográficas*
 ROGÉRIO. FreeBSD com proxy Squid - Revista Infra Magazine 4. Devmedia, 2012. Disponível em: https://www.devmedia.com.br/freebsd-com-proxy-squid-revista-infra-magazine-4/23440. Acesso em: 18 dez. 2022.
