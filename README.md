@@ -26,11 +26,71 @@ Arquivo frequentemente utilizado como uma documentação inicial de um projeto o
 Arquivo de configuração utilizado pelo MkDocs, que permite criar documentação em formato Markdown para projetos.
 
 ## Dependências
-https://www.mkdocs.org/ (pip install mkdocs)  
-https://github.com/rosscdh/mkdocs-markdownextradata-plugin (pip install mkdocs-markdownextradata-plugin)
+* [Python](https://www.python.org/)
+* [MkDocs](https://www.mkdocs.org/): Gerador de sites estáticos voltado para documentação (técnica) de projetos.
+* [mkdocs-markdownextradata-plugin](https://github.com/rosscdh/mkdocs-markdownextradata-plugin): Um plug-in MkDocs que permite criar variáveis extras no mkdocs.yml para serem usadas nos arquivos markdown.
+* [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/): Tema para MkDocs.
 
 ## Como Implementar no seu repositório
-1. Faça um fork deste repositório
+1. Faça um fork deste repositório  
+<p align="center">
+  <img src="docs/img/fork.png" alt="image">
+</p>
+Após fazer o fork você terá uma cópia do projeto em um repositório próprio, onde é possível fazer todas as alterações que quiser na branch master.
 
+2. Crie um clone local do seu fork
+<p align="center">
+  <img src="docs/img/clone.png" alt="image">
+</p>
+Após copiar a URL de clone do repositório, deve-se criar um clone no computador usando o comando do Git. Para isso abra o Git Bash e cole o endereço, como o exemplo a seguir:
+
+```bash
+$ git clone <endereço do repositorio>
+```
+Feito isso você terá em sua máquina o código do presente repositório.
+
+3. Instale as dependências:
+```bash
+$ pip install mkdocs
+$ pip install mkdocs-markdownextradata-plugin
+$ pip install mkdocs-material
+``` 
+    
+4. Abra o projeto no editor de texto de sua preferência.
+
+5. Configure o arquivo [mkdocs.yml](mkdocs.yml):
+    * site_name: Define o nome do site.
+    * repo_name: Define o nome do repositório.
+    * repo_url: Define a url do repositório.
+    * extra>teacher>email: Variável criada com o plugin "mkdocs-markdownextradata-plugin" para armazenar email que recebera os formulários de *Questões para Estudo* preenchidos.
+    * nav: Serve para criar novas páginas e definir a navegação delas no site.
+
+6. Configure os arquivos *markdown* que farão parte da página web. O presente repositório possui um [template](template.md) dos arquivos que ja estão implementados, para facilitar a adição de novos conteúdos.
+
+7. Para executar o projeto localmente:
+```bash
+$ mkdocs serve
+```
+
+8. Após todos os testes basta fazer o commit das alterações, enviar para o repositório remoto (git push). E para publicar a página no github pages basta executar o comando:
+``` bash
+$ mkdocs gh-deploy
+``` 
+Ao fazer isso, o próprio MkDocs criará uma branch chamada gh-pages com o conteúdo da página estática e servirá sua aplicação usando o github.io. A url para acessar a sua página será exibida na saída do comando.
+
+### Observação
+Para adicionar perguntas na seção *Questões para Estudo*, basta adicionar o seguinte trecho de código, alterando o id da textarea, dentro da tag form:
+```html
+    <p class="question">Texto da questão</p>
+    <div>
+        <textarea rows="4" id="0"></textarea>
+    </div>
+```
 ## Licença
+Este projeto é licenciado sob a licença MIT - consulte o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
+
 ## Contato
+[Marco Antônio de Lima Costa](https://github.com/markinlimac)  
+Email: markinlimac@gmail.com  
+Telefone: (61) 98287-5322  
+Linkedin: https://www.linkedin.com/in/marcolimac/
